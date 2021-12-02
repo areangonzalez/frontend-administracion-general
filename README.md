@@ -1,27 +1,32 @@
 # FrontendAdministracionGeneral
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.8.
+Este proyecto esta generado con imagen de docker  [Angular CLI](https://github.com/angular/angular-cli) version 9.1.5.
+ - [Angular CLI](https://github.com/angular/angular-cli) version 12.2.8
+ - [Ng Bootstrap](https://github.com/ng-bootstrap/ng-bootstrap) v5.1.3
 
-## Development server
+## Instalacion del proyecto via docker
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Descargamos la imagen de docker:
+  
+  `docker pull trion/ng-cli:12.2.8`
+Nos dirigimos al directorio donde tenemos el proyecto y seguimos los siguientes pasos:
 
-## Code scaffolding
+ - Utilizamos el siguiente comando a instalar, que nos proporcionara la instalación continua del proyecto:
+    
+    `docker run -u $(id -u) --rm -v "$PWD":/app trion/ng-cli:12.2.8 npm ci`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Una vez completado los pasos anteriores iniciamos el docker que contiene nuestro sistema:
 
-## Build
+Iniciamos el proyecto con la imagen de docker `trion/ng-cli:12.2.8`:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+   `docker run -u $(id -u) --rm -p 4400:4200 -v "$PWD":/app trion/ng-cli:12.2.8 ng serve --host 0.0.0.0`
 
-## Running unit tests
+Mediante docker-compose:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`docker-compose up -d`
 
-## Running end-to-end tests
+ - Inicializa el `ng serve` en el puerto `4400` para el modo de `DEV`, abrirlo en `http://localhost:4400`. La aplicacion recarga automaticamentente mediante el cambio de un archivo.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+ ## Ayuda
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Para mas ayuda dobre Angular CLI utilice `ng help` o ingresa a [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
