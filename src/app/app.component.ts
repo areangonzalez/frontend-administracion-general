@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend-administracion-general';
+  mostrar: boolean = false;
+
+
+  ocultarMenu(ocultar: boolean) {
+    return this.mostrar = ocultar;
+  }
 }

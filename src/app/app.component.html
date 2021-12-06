@@ -1,1 +1,10 @@
-Hola mundo
+  <div class="d-flex flex-nowrap">
+    <layout-menu class="start" [ngClass]="{'ocultar': mostrar}"></layout-menu>
+    <div class="main">
+      <layout-cabecera (ocultarMenu)="ocultarMenu($event)" ></layout-cabecera>
+      <main class="contenedor-principal" >
+        <h2>Hola Mundo</h2>
+
+      </main>
+    </div>
+  </div>

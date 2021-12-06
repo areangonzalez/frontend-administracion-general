@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+// Required
+
+/* $body-bg: #000;
+$body-color: #fff;
+ */
+  @import '~bootstrap/scss/bootstrap';
+  @import '~bootstrap-darkmode/css/darktheme';
+  @import './assets/styles/theme-auto.scss';
+  @import './assets/styles/theme-dark.scss';
