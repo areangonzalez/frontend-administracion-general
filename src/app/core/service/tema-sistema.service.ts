@@ -11,4 +11,5 @@ export class TemaSistemaService {
     ) {
     _themeService.theme$.subscribe(theme => theme);
   }
+
 }

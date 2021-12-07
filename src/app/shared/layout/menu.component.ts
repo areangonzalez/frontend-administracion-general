@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemeService, THEME_LOADER, THEME_SAVER } from 'ng-bootstrap-darkmode';
+import { of } from 'rxjs';
+
 
 @Component({
   selector: 'layout-menu',
@@ -6,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-
-  constructor() { }
+  public tema: any;
+  constructor(private _themeService: ThemeService ) {
+    _themeService.theme$.subscribe(theme => this.getTheme(theme));
+  }
 
   ngOnInit(): void {
+  }
+
+  getTheme(theme: any) {
+    if (!theme){
+      this.tema = 'auto';
+      this._themeService.theme$.next('auto');
+    }else{
+      this.tema = theme;
+    }
   }
 
 }

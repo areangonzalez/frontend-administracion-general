@@ -2,8 +2,11 @@
 
 [data-theme="dark"] a { color: #fff; }
 [data-theme="dark"] a:hover { color: #eee; }
+[data-theme="dark"] a:focus { color: #eee; }
 
 [data-theme="dark"] .text-dark { color: #fff !important; }
+[data-theme="dark"] .text-dark:hover { color: #fff !important; }
+[data-theme="dark"] .text-dark:focus { color: #fff !important; }
 
 /* BUTTONS */
 

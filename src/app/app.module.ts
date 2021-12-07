@@ -18,7 +18,9 @@ import { AppComponent } from './app.component';
     NgbModule,
     NgBootstrapDarkmodeModule
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
