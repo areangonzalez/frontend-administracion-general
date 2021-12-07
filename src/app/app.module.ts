@@ -5,7 +5,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {of} from 'rxjs';
 import {NgBootstrapDarkmodeModule, THEME_LOADER, THEME_SAVER} from 'ng-bootstrap-darkmode';
 
-
 import { CabeceraComponent, MenuComponent } from "./shared";
 import { AppComponent } from './app.component';
 
@@ -19,16 +18,7 @@ import { AppComponent } from './app.component';
     NgbModule,
     NgBootstrapDarkmodeModule
   ],
-  providers: [
-    {
-      provide: THEME_LOADER,
-      useValue: () => of('light'),
-    },
-    {
-      provide: THEME_SAVER,
-      useValue: (theme: any) => console.log('saving', theme),
-    },
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

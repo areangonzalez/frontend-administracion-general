@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { TemaSistemaService } from 'src/app/core/service';
 
 @Component({
   selector: 'layout-cabecera',
@@ -8,7 +9,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class CabeceraComponent implements OnInit {
   @Output('ocultarMenu') public ocultarMenu = new EventEmitter();
   public mostrar = false;
-  constructor() { }
+  constructor(private _tema: TemaSistemaService) { }
 
   ngOnInit(): void {
   }
