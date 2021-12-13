@@ -1,7 +1,7 @@
 [data-theme="auto"] { background-color: #eee !important; color: #000; }
 
-[data-theme="auto"] a { color: #0d6efd; }
-[data-theme="auto"] a:hover { color: #0a58ca; }
+[data-theme="auto"] a { color: #212529; }
+[data-theme="auto"] a:hover { color: #1a1e21; }
 
 [data-theme="auto"] .text-dark { color: #000 !important; }
 
@@ -10,7 +10,7 @@
 [data-theme="auto"] .btn-link { color: #0d6efd; }
 [data-theme="auto"] .btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
 
-[data-theme="auto"] .btn-dark { color: #ccff99; background-color: #036954; border-color: #025c4a; }
+[data-theme="auto"] .btn-dark { color: #fff; background-color: #212529; border-color: #212529; }
 [data-theme="auto"] .btn-dark:hover { color: #ccff99; background-color: #036954; border-color: #025c4a; }
 [data-theme="auto"] .btn-check:focus + .btn-dark,
 [data-theme="auto"] .btn-dark:focus { color: #ccff99; background-color: #036954; border-color: #036954; box-shadow: 0 0 0 0.25rem rgba(211, 212, 213, 0.5); }
@@ -200,3 +200,25 @@
 [data-theme="auto"] .form-select:disabled { color: #6c757d; background-color: #e9ecef; }
 
 [data-theme="auto"] .form-select:-moz-focusring { text-shadow: 0 0 0 #495057; }
+
+/* PROPIOS */
+[data-theme="auto"] .btn-toggle-nav > {
+  li {
+    &:hover {
+      background-color: rgb(57, 136, 81);
+      a {
+        &:hover { color:rgb(168, 233, 139) !important;}
+      }
+    }
+  }
+}
+[data-theme="auto"] .btn-sombra {
+  transition: box-shadow 0.5s ease-in, box-shadow 1s ease-out;
+  -webkit-transition: -webkit-box-shadow 0.5s ease-in, -webkit-box-shadow 1s ease-out;
+  -moz-transition: -moz-box-shadow 0.5s ease-in, -moz-box-shadow 1s ease-out;
+  &:hover {
+    box-shadow: 0px 7px 7px 0px rgba(57, 136, 81);
+    -webkit-box-shadow: 0px 7px 7px 0px rgba(57, 136, 81);
+    -moz-box-shadow: 0px 7px 7px 0px rgba(57, 136, 81);
+  }
+}

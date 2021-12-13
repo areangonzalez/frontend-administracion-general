@@ -1,0 +1,22 @@
+/* PROPIOS SCSS */
+[data-theme="light"] .btn-toggle-nav {
+  li {
+    &:hover {
+      background-color: #eee;
+      a {
+        &:hover {
+          color: #000 !important;
+        }
+      }
+    }
+  }
+}
+
+[data-theme="light"] .btn-sombra {
+  transition: box-shadow 0.5s ease-in, box-shadow 1s ease-out, -moz-box-shadow 0.5s ease-in, -moz-box-shadow 1s ease-out;
+  &:hover {
+    box-shadow: 0px 7px 7px 0px rgba(172, 172, 172, 0.75);
+    -webkit-box-shadow: 0px 7px 7px 0px rgba(172, 172, 172, 0.75);
+    -moz-box-shadow: 0px 7px 7px 0px rgba(172, 172, 172, 0.75);
+  }
+}

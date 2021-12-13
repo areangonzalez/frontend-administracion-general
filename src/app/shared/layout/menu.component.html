@@ -4,61 +4,44 @@
     <img *ngIf="(tema == 'dark')" src="../../../assets/img/logoRN-white.svg" width="50" height="30" alt="Desarrollo humano y articulación solidaria">
     <div class="nombre-ds">Ministerio de Desarrollo Humano y Articulación Solidaria</div>
   </span>
-  <hr style="color: transparent;">
-  <div class="mb-auto">
-    <ul class="list-unstyled ps-0">
+  <div class="mb-auto pt-1">
+    <ul class="list-unstyled mb-0">
       <li class="mb-1">
-        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-          Gestor Cuenta Bancaria
-        </button>
-        <div class="collapse" id="home-collapse" >
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">Overview</a></li>
-            <li><a href="#" class="link-dark rounded">Updates</a></li>
-            <li><a href="#" class="link-dark rounded">Reports</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="mb-1">
-        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+        <button class="btn btn-toggle-nav btn-sombra align-items-center w-100 rounded" style="text-align: left !important;" (click)="invCollapse.toggle()" [attr.aria-expanded]="!isCollapsedInv">
+          <i *ngIf="isCollapsedInv" class="fas fa-chevron-right"></i>
+          <i *ngIf="!isCollapsedInv" class="fas fa-chevron-down"></i>
+          &nbsp;&nbsp;
           Inventario
         </button>
-        <div class="collapse" id="dashboard-collapse" >
+        <div class="collapse" #invCollapse="ngbCollapse" [(ngbCollapse)]="isCollapsedInv" >
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">Overview</a></li>
-            <li><a href="#" class="link-dark rounded">Weekly</a></li>
-            <li><a href="#" class="link-dark rounded">Monthly</a></li>
-            <li><a href="#" class="link-dark rounded">Annually</a></li>
+            <li><a href="#" class="link-dark rounded">Marca</a></li>
+            <li><a href="#" class="link-dark rounded">Producto</a></li>
+            <li><a href="#" class="link-dark rounded">Unidad de Medida</a></li>
           </ul>
         </div>
       </li>
       <li class="mb-1">
-        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+        <button class="btn btn-toggle-nav btn-sombra align-items-center w-100 rounded" style="text-align: left !important;" (click)="lugCollapse.toggle()" [attr.aria-expanded]="!isCollapsedLug">
+          <i *ngIf="isCollapsedLug" class="fas fa-chevron-right"></i>
+          <i *ngIf="!isCollapsedLug" class="fas fa-chevron-down"></i>
+          &nbsp;&nbsp;
           Lugar
         </button>
-        <div class="collapse" id="orders-collapse" >
+        <div class="collapse" #lugCollapse="ngbCollapse" [(ngbCollapse)]="isCollapsedLug" >
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">New</a></li>
-            <li><a href="#" class="link-dark rounded">Processed</a></li>
-            <li><a href="#" class="link-dark rounded">Shipped</a></li>
-            <li><a href="#" class="link-dark rounded">Returned</a></li>
+            <li><a href="#" class="link-dark rounded">Localidad</a></li>
           </ul>
         </div>
       </li>
     </ul>
   </div>
     <hr>
-    <div class="dropdown">
-      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>mdo</strong>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-      <li><a class="dropdown-item" href="#">Profile</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Sign out</a></li>
-    </ul>
+    <div class="user-tag">
+      <button class="btn btn-toggle-nav btn-sombra align-items-center w-100 rounded" style="text-align: left !important;">
+        <i class="fas fa-sign-out-alt"></i>
+        &nbsp;&nbsp;
+        Cerrar Sesión
+      </button>
   </div>
 </div>

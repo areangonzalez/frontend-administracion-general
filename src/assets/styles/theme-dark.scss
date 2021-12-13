@@ -1,6 +1,6 @@
 [data-theme="dark"] { background-color: #111 !important; color: #fff; }
 
-[data-theme="dark"] a { color: #fff; }
+[data-theme="dark"] a { color: #fff !important; }
 [data-theme="dark"] a:hover { color: #eee; }
 [data-theme="dark"] a:focus { color: #eee; }
 
@@ -203,3 +203,25 @@
 [data-theme="dark"] .form-select:disabled { color: #6c757d; background-color: #e9ecef; }
 
 [data-theme="dark"] .form-select:-moz-focusring { text-shadow: 0 0 0 #495057; }
+
+/* PROPIOS */
+[data-theme="dark"] .btn-toggle-nav {
+  li {
+    &:hover {
+      background-color: #000;
+      a {
+        &:hover {
+          color: #fff !important;
+        }
+      }
+    }
+  }
+}
+[data-theme="dark"] .btn-sombra {
+  transition: box-shadow 0.5s ease-in, box-shadow 1s ease-out, -moz-box-shadow 0.5s ease-in, -moz-box-shadow 1s ease-out;
+  &:hover {
+    box-shadow: 0px 7px 7px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 7px 7px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 7px 7px 0px rgba(0,0,0,0.75);
+  }
+}

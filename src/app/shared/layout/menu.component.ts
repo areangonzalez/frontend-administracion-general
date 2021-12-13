@@ -10,6 +10,9 @@ import { of } from 'rxjs';
 })
 export class MenuComponent implements OnInit {
   public tema: any;
+  public isCollapsedInv:boolean = true;
+  public isCollapsedLug:boolean = true;
+
   constructor(private _themeService: ThemeService ) {
     _themeService.theme$.subscribe(theme => this.getTheme(theme));
   }

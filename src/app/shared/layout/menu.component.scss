@@ -11,3 +11,20 @@ nav.sidebar {
   font-size: 11px;
   margin-bottom: -2px;
 }
+.btn {
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+.btn-toggle-nav {
+  a {
+    display: inline-flex;
+    padding: 0.1875rem 0.5rem;
+    margin-top: 0.125rem;
+    margin-left: 1.25rem;
+    text-decoration: none;
+    width: 90%;
+    height: 100%;
+  }
+}
+
