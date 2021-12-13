@@ -7,11 +7,17 @@ import {NgBootstrapDarkmodeModule, THEME_LOADER, THEME_SAVER} from 'ng-bootstrap
 
 import { CabeceraComponent, MenuComponent } from "./shared";
 import { AppComponent } from './app.component';
+import { MarcaComponent } from './invetnario/marca/marca.component';
+import { ProductoComponent } from './invetnario/producto/producto.component';
+import { UnidadMedidaComponent } from './invetnario/unidad-medida/unidad-medida.component';
 
 @NgModule({
   declarations: [
     CabeceraComponent, MenuComponent,
-    AppComponent
+    AppComponent,
+    MarcaComponent,
+    ProductoComponent,
+    UnidadMedidaComponent
   ],
   imports: [
     BrowserModule,
