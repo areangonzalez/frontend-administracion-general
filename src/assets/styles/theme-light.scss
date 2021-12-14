@@ -11,7 +11,14 @@
     }
   }
 }
-
+[data-theme="light"] .solo-link {
+  &:hover {
+    background-color: #eee;
+    a {
+      &:hover { color:#000 !important;}
+    }
+  }
+}
 [data-theme="light"] .btn-sombra {
   transition: box-shadow 0.5s ease-in, box-shadow 1s ease-out, -moz-box-shadow 0.5s ease-in, -moz-box-shadow 1s ease-out;
   &:hover {

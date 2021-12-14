@@ -1,7 +1,7 @@
 [data-theme="auto"] { background-color: #eee !important; color: #000; }
 
 [data-theme="auto"] a { color: #212529; }
-[data-theme="auto"] a:hover { color: #1a1e21; }
+/* [data-theme="auto"] a:hover { color: #1a1e21; } */
 
 [data-theme="auto"] .text-dark { color: #000 !important; }
 
@@ -213,12 +213,12 @@
   }
 }
 [data-theme="auto"] .solo-link {
-    &:hover {
-      background-color: rgb(57, 136, 81);
-      a {
-        &:hover { color:rgb(168, 233, 139) !important;}
-      }
+  &:hover {
+    background-color: rgb(57, 136, 81);
+    a {
+      &:hover { color:rgb(168, 233, 139) !important;}
     }
+  }
 }
 [data-theme="auto"] .btn-sombra {
   transition: box-shadow 0.5s ease-in, box-shadow 1s ease-out;
