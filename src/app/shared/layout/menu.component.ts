@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ThemeService, THEME_LOADER, THEME_SAVER } from 'ng-bootstrap-darkmode';
-import { of } from 'rxjs';
-
+import { ThemeService } from 'ng-bootstrap-darkmode';
 
 @Component({
   selector: 'layout-menu',

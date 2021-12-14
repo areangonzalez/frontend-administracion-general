@@ -6,6 +6,7 @@
   </span>
   <div class="mb-auto pt-1">
     <ul class="list-unstyled mb-0">
+      <li class="solo-link" [routerLinkActive]="['active']" ><a [routerLink]="['/inicio']" class="link-dark rounded"><i class="fas fa-home" style="padding-top: 2px;"></i>&nbsp;&nbsp;Inicio</a></li>
       <li class="mb-1">
         <button class="btn btn-toggle-nav btn-sombra align-items-center w-100 rounded" style="text-align: left !important;" (click)="invCollapse.toggle()" [attr.aria-expanded]="!isCollapsedInv">
           <i *ngIf="isCollapsedInv" class="fas fa-chevron-right"></i>
@@ -15,9 +16,11 @@
         </button>
         <div class="collapse" #invCollapse="ngbCollapse" [(ngbCollapse)]="isCollapsedInv" >
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">Marca</a></li>
-            <li><a href="#" class="link-dark rounded">Producto</a></li>
-            <li><a href="#" class="link-dark rounded">Unidad de Medida</a></li>
+            <li [routerLinkActive]="['active']" ><a [routerLink]="['/inventario/categoria']" class="link-dark rounded">Categoría</a></li>
+            <li [routerLinkActive]="['active']" ><a [routerLink]="['/inventario/marca']" class="link-dark rounded">Marca</a></li>
+            <li [routerLinkActive]="['active']" ><a [routerLink]="['/inventario/producto']" class="link-dark rounded">Producto</a></li>
+            <li [routerLinkActive]="['active']" ><a [routerLink]="['/inventario/proovedor']" class="link-dark rounded">Proovedor</a></li>
+            <li [routerLinkActive]="['active']" ><a [routerLink]="['/inventario/unidad-medida']" class="link-dark rounded">Unidad de Medida</a></li>
           </ul>
         </div>
       </li>

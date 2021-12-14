@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {of} from 'rxjs';
-import {NgBootstrapDarkmodeModule, THEME_LOADER, THEME_SAVER} from 'ng-bootstrap-darkmode';
+import {NgBootstrapDarkmodeModule} from 'ng-bootstrap-darkmode';
 
 import { RoutingModule } from './routing.module';
 
