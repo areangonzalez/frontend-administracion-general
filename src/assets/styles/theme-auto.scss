@@ -206,20 +206,18 @@
   li {
     &:hover {
       background-color: rgb(57, 136, 81);
-      a {
-        &:hover { color:rgb(168, 233, 139) !important;}
-      }
+      a { &:hover { color:rgb(168, 233, 139) !important;} }
     }
   }
 }
+[data-theme="auto"] .btn-toggle-nav > li.active { background-color: rgb(57, 136, 81); a { color:rgb(168, 233, 139) !important;} }
 [data-theme="auto"] .solo-link {
   &:hover {
     background-color: rgb(57, 136, 81);
-    a {
-      &:hover { color:rgb(168, 233, 139) !important;}
-    }
+    a { &:hover { color:rgb(168, 233, 139) !important;} }
   }
 }
+[data-theme="auto"] .solo-link.active { background-color: rgb(57, 136, 81); a { color:rgb(168, 233, 139) !important; } }
 [data-theme="auto"] .btn-sombra {
   transition: box-shadow 0.5s ease-in, box-shadow 1s ease-out;
   -webkit-transition: -webkit-box-shadow 0.5s ease-in, -webkit-box-shadow 1s ease-out;
