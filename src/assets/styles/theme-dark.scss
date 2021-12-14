@@ -209,22 +209,18 @@
   li {
     &:hover {
       background-color: #000;
-      a {
-        &:hover {
-          color: #fff !important;
-        }
-      }
+      a { &:hover { color: #fff !important; } }
     }
   }
 }
+[data-theme="dark"] .btn-toggle-nav > li.active { background-color: #000; a { color:#fff !important;} }
 [data-theme="dark"] .solo-link {
   &:hover {
     background-color: #000;
-    a {
-      &:hover { color:#fff !important;}
-    }
+    a { &:hover { color:#fff !important;} }
   }
 }
+[data-theme="dark"] .solo-link.active { background-color: #000; a { color:#fff !important;} }
 [data-theme="dark"] .btn-sombra {
   transition: box-shadow 0.5s ease-in, box-shadow 1s ease-out, -moz-box-shadow 0.5s ease-in, -moz-box-shadow 1s ease-out;
   &:hover {
