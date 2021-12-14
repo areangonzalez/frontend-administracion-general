@@ -5,24 +5,21 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {of} from 'rxjs';
 import {NgBootstrapDarkmodeModule, THEME_LOADER, THEME_SAVER} from 'ng-bootstrap-darkmode';
 
+import { RoutingModule } from './routing.module';
+
 import { CabeceraComponent, MenuComponent } from "./shared";
 import { AppComponent } from './app.component';
-import { MarcaComponent } from './invetnario/marca/marca.component';
-import { ProductoComponent } from './invetnario/producto/producto.component';
-import { UnidadMedidaComponent } from './invetnario/unidad-medida/unidad-medida.component';
 
 @NgModule({
   declarations: [
     CabeceraComponent, MenuComponent,
-    AppComponent,
-    MarcaComponent,
-    ProductoComponent,
-    UnidadMedidaComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
-    NgBootstrapDarkmodeModule
+    NgBootstrapDarkmodeModule,
+    RoutingModule
   ],
   providers: [
 
