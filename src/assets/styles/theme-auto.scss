@@ -123,8 +123,8 @@
 
 /* BACKGROUNDS */
 
-[data-theme="auto"] .bg-light { background-color: #8cc63f !important; }
-[data-theme="auto"] .bg-dark { background-color: #036954 !important; }
+[data-theme="auto"] .bg-light { background-color: #f8f9fa !important; }
+[data-theme="auto"] .bg-dark { background-color: #212529 !important; }
 [data-theme="auto"] .bg-white { background-color: #fff !important; }
 
 [data-theme="auto"] .bg-white.text-white,
@@ -146,9 +146,9 @@
 
 /* SHADOWS */
 
-[data-theme="auto"] .shadow { box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.15) !important; }
-[data-theme="auto"] .shadow-sm { box-shadow: 0 0.125rem 0.25rem rgba(255, 255, 255, 0.075) !important; }
-[data-theme="auto"] .shadow-lg { box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) !important; }
+[data-theme="auto"] .shadow { box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; }
+[data-theme="auto"] .shadow-sm { box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
+[data-theme="auto"] .shadow-lg { box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important; }
 
 /* CARDS */
 
@@ -202,6 +202,7 @@
 [data-theme="auto"] .form-select:-moz-focusring { text-shadow: 0 0 0 #495057; }
 
 /* PROPIOS */
+[data-theme="auto"] .bg-dhyas { background-color: #8cc63f !important; }
 [data-theme="auto"] .btn-toggle-nav > {
   li {
     &:hover {
@@ -228,3 +229,4 @@
     -moz-box-shadow: 0px 7px 7px 0px rgba(57, 136, 81);
   }
 }
+

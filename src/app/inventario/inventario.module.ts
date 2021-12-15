@@ -7,6 +7,7 @@ import { ProductoComponent } from './producto';
 import { UnidadMedidaComponent } from './unidad-medida';
 import { CategoriaComponent } from './categoria';
 import { ProveedorComponent } from './proveedor';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ProveedorComponent } from './proveedor';
   ],
   imports: [
     CommonModule,
-    InventarioRoutingModule
+    InventarioRoutingModule,
+    SharedModule
   ]
 })
 export class InventarioModule { }
