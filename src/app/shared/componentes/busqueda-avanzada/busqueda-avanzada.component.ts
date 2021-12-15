@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UtilService } from 'src/app/core/service';
 
@@ -8,6 +8,7 @@ import { UtilService } from 'src/app/core/service';
   styleUrls: ['./busqueda-avanzada.component.scss']
 })
 export class BusquedaAvanzadaComponent implements OnInit {
+    @Input("placeholder") public placeholder: any;
     @Output("obtenerBusqueda") public obtenerBusqueda = new EventEmitter();
     public btnSeleccion: boolean = false;
     public mostrar: boolean = false;
@@ -21,7 +22,7 @@ export class BusquedaAvanzadaComponent implements OnInit {
   
     ngOnInit() {
     }
-    
+
     /**
      * funcion que emite la devolucion de parametros al componente padre
      */
