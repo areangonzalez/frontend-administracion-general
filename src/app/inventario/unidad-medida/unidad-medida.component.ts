@@ -12,4 +12,8 @@ export class UnidadMedidaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  realizarBusqueda(params: any) {
+    console.log(params);
+  }
+
 }

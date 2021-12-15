@@ -12,4 +12,8 @@ export class MarcaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  realizarBusqueda(params: any) {
+    console.log(params);
+  }
+
 }
