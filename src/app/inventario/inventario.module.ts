@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 import { InventarioRoutingModule } from './inventario-routing.module';
 import { MarcaComponent } from './marca';
@@ -20,6 +22,7 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
+    NgbModule,
     InventarioRoutingModule,
     SharedModule
   ]

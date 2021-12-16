@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ConfigurarPagina } from 'src/app/core/model';
+import { ConfiguracionParaPaginarService } from 'src/app/core/service';
 
 @Component({
   selector: 'shared-tabla-personalizada',
@@ -10,13 +13,13 @@ export class TablaPersonalizadaComponent implements OnInit {
   @Input("listaDatos") public listaDatos: any;
   public tituloEditar = 'Editar ';
   public pagina: number = 1;
-  //public configPaginacion:ConfigurarPagina = new ConfigurarPagina();
+  public configPaginacion:ConfigurarPagina = new ConfigurarPagina();
   public pageSize = 10;
   public listadoRender: any[] = [];
   public titulosTabla: string[] =[];
 
   constructor(
-      //private _router: Router, private _configurarPagina: ConfiguracionParaPaginarService
+      private _router: Router, private _configurarPagina: ConfiguracionParaPaginarService
     ) {
   }
 
@@ -48,8 +51,8 @@ export class TablaPersonalizadaComponent implements OnInit {
 
   paginacion(listadoArray: any, pagina: number, pagesize:number) {
     let datos = {pagesize: pagesize, page: pagina, total_filtrado: listadoArray.length};
-    // this.configPaginacion = this._configurarPagina.config(datos, pagina);
-    // this.listadoRender = this._configurarPagina.paginarListado(pagina, pagesize, listadoArray);
+    this.configPaginacion = this._configurarPagina.config(datos, pagina);
+    this.listadoRender = this._configurarPagina.paginarListado(pagina, pagesize, listadoArray);
   }
 
   cambiarCantRegistros(cant:any) {

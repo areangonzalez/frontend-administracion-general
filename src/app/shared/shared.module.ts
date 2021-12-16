@@ -1,6 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -13,12 +14,12 @@ import { BusquedaAvanzadaComponent, TablaPersonalizadaComponent } from './compon
     TablaPersonalizadaComponent
   ],
   imports: [
-    CommonModule,
+    CommonModule, NgbPaginationModule,
     RouterModule, FormsModule, ReactiveFormsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
-    RouterModule, FormsModule, ReactiveFormsModule,
+    NgbPaginationModule, RouterModule, FormsModule, ReactiveFormsModule,
     BusquedaAvanzadaComponent, TablaPersonalizadaComponent
   ]
 })
