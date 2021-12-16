@@ -1,0 +1,19 @@
+<div class="bg-light shadow-sm p-3 mt-3">
+  <table class="table table-light table-sm table-hover">
+    <thead>
+      <tr>
+        <th *ngFor="let titulo of titulosTabla">{{titulo}}</th>
+        <th class="text-end w-25">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let fila of listaDatos">
+        <td *ngFor="let col of titulosTabla">{{fila[col]}}</td>
+        <td class="text-end w-25">
+          <button type="button" class="btn btn-secondary btn-sm">E->{{fila['id']}}</button>
+          <button type="button" class="btn btn-danger btn-sm">B->{{fila['id']}}</button>
+        </td>
+      </tr>
+      </tbody>
+  </table>
+</div>

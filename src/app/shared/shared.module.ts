@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { BusquedaAvanzadaComponent } from './componentes';
+import { BusquedaAvanzadaComponent, TablaPersonalizadaComponent } from './componentes';
 
 
 @NgModule({
   declarations: [
-    BusquedaAvanzadaComponent
+    BusquedaAvanzadaComponent,
+    TablaPersonalizadaComponent
   ],
   imports: [
     CommonModule,
@@ -17,8 +18,8 @@ import { BusquedaAvanzadaComponent } from './componentes';
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
-    RouterModule, FormsModule,
-    BusquedaAvanzadaComponent, ReactiveFormsModule
+    RouterModule, FormsModule, ReactiveFormsModule,
+    BusquedaAvanzadaComponent, TablaPersonalizadaComponent
   ]
 })
 export class SharedModule { }
