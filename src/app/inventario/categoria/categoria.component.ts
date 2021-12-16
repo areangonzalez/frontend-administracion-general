@@ -9,7 +9,7 @@ export class CategoriaComponent implements OnInit {
   public listado: any = [
     { "id": 1, "nombre": "alimento/s" },
     { "id": 2, "nombre": "Bebida/s" },
-    { "id": 3, "nombre": "Otros" },
+    { "id": 3, "nombre": "Otros" }
   ];
   public titulos: string[] = [];
 

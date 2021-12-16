@@ -1,4 +1,25 @@
 <div class="bg-light shadow-sm p-3 mt-3">
+  <div class="d-flex justify-content-between mb-2">
+    <div class="d-flex align-items-center p-2 font-weight-bold">
+      <span *ngIf="configPaginacion.totalRegistros > 0">{{nombreAbm}}: {{configPaginacion.cantRegistros}} - {{configPaginacion.totalRegistros}} de {{configPaginacion.colleccionSize}}</span>
+      <span *ngIf="configPaginacion.totalRegistros == 0">{{nombreAbm}}: {{configPaginacion.cantRegistros}}</span>
+    </div>
+    <div class="d-flex align-items-center">
+      <!-- <span class="font-weight-bold mr-3">Registos por pagina:</span> -->
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 pr-0" >
+        <div class="input-group">
+          <span class="input-group-text"> Registros por página</span>
+          <select id="inputState" class="form-control" [(ngModel)]="pageSize" (change)="cambiarCantRegistros($event)">
+            <option value="5" selected>5</option>
+            <option value="10" selected>10</option>
+            <option value="25" selected>25</option>
+            <option value="50" selected>50</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <table class="table table-light table-sm table-hover">
     <thead>
       <tr>
@@ -10,8 +31,8 @@
       <tr *ngFor="let fila of listaDatos">
         <td *ngFor="let col of titulosTabla">{{fila[col]}}</td>
         <td class="text-end w-25">
-          <button type="button" class="btn btn-secondary btn-sm">E->{{fila['id']}}</button>
-          <button type="button" class="btn btn-danger btn-sm">B->{{fila['id']}}</button>
+          <button type="button" class="btn btn-secondary btn-sm"><i class="far fa-edit"></i></button>
+          <button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
         </td>
       </tr>
       </tbody>

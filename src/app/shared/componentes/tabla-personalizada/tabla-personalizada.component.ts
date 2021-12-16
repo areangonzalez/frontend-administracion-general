@@ -11,6 +11,7 @@ import { ConfiguracionParaPaginarService } from 'src/app/core/service';
 export class TablaPersonalizadaComponent implements OnInit {
   @Input("titulosArray") public titulosArray: any;
   @Input("listaDatos") public listaDatos: any;
+  @Input("nombreAbm") public nombreAbm: any;
   public tituloEditar = 'Editar ';
   public pagina: number = 1;
   public configPaginacion:ConfigurarPagina = new ConfigurarPagina();
@@ -61,6 +62,8 @@ export class TablaPersonalizadaComponent implements OnInit {
   }
 
   cambiarPagina(pagina:number) {
+    console.log(pagina);
+
     this.paginacion(this.listaDatos, pagina, this.pageSize);
   }
 
