@@ -31,7 +31,7 @@
       <tr *ngFor="let fila of listaDatos">
         <td *ngFor="let col of titulosTabla">{{fila[col]}}</td>
         <td class="text-end w-25">
-
+          <shared-crear-editar-modal [titulo]="'Editar modal'"></shared-crear-editar-modal>
           <button type="button" class="btn btn-secondary btn-sm"><i class="far fa-edit"></i></button>
           <button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
         </td>

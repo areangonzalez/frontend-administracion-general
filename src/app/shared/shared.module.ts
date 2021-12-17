@@ -5,15 +5,19 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { BusquedaAvanzadaComponent, TablaPersonalizadaComponent } from './componentes';
-import { CrearEditarModalComponent } from './componentes/modal/crear-editar-modal.component';
+import {
+  BusquedaAvanzadaComponent, TablaPersonalizadaComponent, CrearEditarModalContent, CrearEditarModalComponent,
+  FormPersonalizadoComponent
+} from './componentes';
+import {  } from './componentes/form/form-personalizado.component';
+
 
 
 @NgModule({
   declarations: [
     BusquedaAvanzadaComponent,
     TablaPersonalizadaComponent,
-    CrearEditarModalComponent
+    CrearEditarModalContent, CrearEditarModalComponent, FormPersonalizadoComponent
   ],
   imports: [
     CommonModule, NgbPaginationModule,
@@ -22,7 +26,8 @@ import { CrearEditarModalComponent } from './componentes/modal/crear-editar-moda
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
     NgbPaginationModule, RouterModule, FormsModule, ReactiveFormsModule,
-    BusquedaAvanzadaComponent, TablaPersonalizadaComponent
+    BusquedaAvanzadaComponent, TablaPersonalizadaComponent,
+    CrearEditarModalContent, CrearEditarModalComponent, FormPersonalizadoComponent
   ]
 })
 export class SharedModule { }

@@ -6,18 +6,19 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   template: `
   <div class="modal-header">
     <h4 class="modal-title">{{titulo}}</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.close('closed')">
+    <button type="button" class="close bg-light " aria-label="Close" (click)="cancelar(true)">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
+    Hola mundo
           <!-- <abm-form [armarForm]="armarForm" (cancelarForm)="cancelar($event)" [importarDatos]="importarDatos" (obtenerDatos)="obtenerDatos($event)"></abm-form> -->
   </div>
 `,
   styleUrls: ['./crear-editar-modal.component.scss']
 })
 @Injectable()
-export class CrearEditarModalContent {
+export class CrearEditarModalContent implements OnInit {
   @Input("titulo") public titulo: any;
   @Input("tipo") public tipo: any; // tipo agregar/modificar
   /* @Input('importarDatos') public importarDatos: any;
