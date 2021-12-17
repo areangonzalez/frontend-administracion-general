@@ -11,8 +11,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
     </button>
   </div>
   <div class="modal-body">
-    Hola mundo
-          <!-- <abm-form [armarForm]="armarForm" (cancelarForm)="cancelar($event)" [importarDatos]="importarDatos" (obtenerDatos)="obtenerDatos($event)"></abm-form> -->
+    <shared-form-personalizado [armarForm]="armarForm" (cancelarForm)="cancelar($event)" [importarDatos]="importarDatos" (obtenerDatos)="obtenerDatos($event)"></shared-form-personalizado>
   </div>
 `,
   styleUrls: ['./crear-editar-modal.component.scss']
@@ -21,8 +20,8 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class CrearEditarModalContent implements OnInit {
   @Input("titulo") public titulo: any;
   @Input("tipo") public tipo: any; // tipo agregar/modificar
-  /* @Input('importarDatos') public importarDatos: any;
-  @Input('armarForm') public armarForm: string; */
+  @Input('importarDatos') public importarDatos: any;
+  @Input('armarForm') public armarForm: any;
 
   constructor(
       /* private _mensajesService: MensajesService, */
@@ -51,9 +50,9 @@ export class CrearEditarModalContent implements OnInit {
 export class CrearEditarModalComponent {
   @Input("titulo") public titulo: any; // titulo de ser un string para el titulo representativo del modal
   @Input("tipo") public tipo: any; // tipo string agregar/editar
-  /* @Input("importarDatos") public importarDatos: any;
+  @Input("importarDatos") public importarDatos: any;
   @Input("armarForm") public armarForm: any;
-  @Output("obtenerDatos") public obtenerDatos = new EventEmitter(); */
+  @Output("obtenerDatos") public obtenerDatos = new EventEmitter();
 
 
   constructor(private modalService: NgbModal) { }
@@ -62,7 +61,7 @@ export class CrearEditarModalComponent {
       const modalRef = this.modalService.open(CrearEditarModalContent, { size: 'sm' });
       modalRef.componentInstance.titulo = this.titulo;
       modalRef.componentInstance.tipo = this.tipo;
-      /* modalRef.componentInstance.importarDatos = this.importarDatos;
+      modalRef.componentInstance.importarDatos = this.importarDatos;
       modalRef.componentInstance.armarForm = this.armarForm;
       modalRef.result.then(
         (result) => {
@@ -72,6 +71,6 @@ export class CrearEditarModalComponent {
             this.obtenerDatos.emit(result);
           }
         }
-      ) */
+      )
   }
 }

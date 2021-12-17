@@ -13,13 +13,13 @@ export class BusquedaAvanzadaComponent implements OnInit {
     public btnSeleccion: boolean = false;
     public mostrar: boolean = false;
     public busquedaAvanzada: FormGroup;
-  
+
     constructor( private _fb: FormBuilder, private _util: UtilService ) {
       this.busquedaAvanzada = _fb.group({
         global_param: ''
       });
     }
-  
+
     ngOnInit() {
     }
 

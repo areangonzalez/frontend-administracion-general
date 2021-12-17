@@ -40,6 +40,16 @@ export class TablaPersonalizadaComponent implements OnInit {
 
   editar(datos:any){
     if (datos !== false){
+      console.log("editar: ",datos);
+
+      //this.obtenerDatos.emit(datos);
+    }
+  }
+
+  agregar(datos:any){
+    if (datos !== false){
+      console.log("agregar: ",datos);
+
       //this.obtenerDatos.emit(datos);
     }
   }

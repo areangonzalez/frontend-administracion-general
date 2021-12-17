@@ -1,1 +1,19 @@
-<p>form-personalizado works!</p>
+<form [formGroup]="formulario">
+  <fieldset>
+    <div class="row">
+      <div class="form-group col-md-12" *ngFor="let f of crearInputs" >
+        <label for="{{f}}">{{f}}:</label>
+        <input type="text" id="{{f}}" placeholder="{{f}}" class="form-control" formControlName="{{f}}" [ngClass]="{'is-invalid': (formulario.get(f).invalid && submitted)}" >
+        <div *ngIf="(formulario.get(f).invalid && submitted)" class="text-danger">
+            <div *ngIf="formulario.get(f).hasError('required')">Este campo es requerido. </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</form>
+<hr class="pt-1" style="margin-left: -1rem!important; margin-right: -1rem!important;">
+
+<div class="d-flex justify-content-between pb-3">
+    <button type="button" class="btn btn-danger" (click)="cancelar()"><i class="fas fa-ban" title="Cancelar"></i> Cancelar</button>
+    <button type="button" class="btn btn-success" (click)="validarForm()" ><i class="fas fa-save" title="Guardar"></i> Guardar</button>
+</div>
