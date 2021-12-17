@@ -6,12 +6,14 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BusquedaAvanzadaComponent, TablaPersonalizadaComponent } from './componentes';
+import { CrearEditarModalComponent } from './componentes/modal/crear-editar-modal.component';
 
 
 @NgModule({
   declarations: [
     BusquedaAvanzadaComponent,
-    TablaPersonalizadaComponent
+    TablaPersonalizadaComponent,
+    CrearEditarModalComponent
   ],
   imports: [
     CommonModule, NgbPaginationModule,
