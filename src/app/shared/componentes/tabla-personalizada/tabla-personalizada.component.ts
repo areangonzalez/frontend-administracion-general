@@ -12,7 +12,7 @@ export class TablaPersonalizadaComponent implements OnInit {
   @Input("titulosArray") public titulosArray: any;
   @Input("listaDatos") public listaDatos: any;
   @Input("nombreAbm") public nombreAbm: any;
-  @Input("obtenerDatos") public obtenerDatos = new EventEmitter();
+  @Output("obtenerDatos") public obtenerDatos = new EventEmitter();
   @Output("bajarItem") public bajarItem = new EventEmitter();
   public tituloEditar = 'Editar ';
   public pagina: number = 1;
@@ -42,17 +42,13 @@ export class TablaPersonalizadaComponent implements OnInit {
 
   editar(datos:any){
     if (datos !== false){
-      console.log("editar: ",datos);
-
-      //this.obtenerDatos.emit(datos);
+      this.obtenerDatos.emit(datos);
     }
   }
 
   agregar(datos:any){
     if (datos !== false){
-      console.log("agregar: ",datos);
-
-      //this.obtenerDatos.emit(datos);
+      this.obtenerDatos.emit(datos);
     }
   }
 

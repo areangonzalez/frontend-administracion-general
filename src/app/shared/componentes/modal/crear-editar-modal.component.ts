@@ -5,7 +5,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   selector: 'shared-crear-editar-modal-content',
   template: `
   <div class="modal-header">
-    <h4 class="modal-title">{{titulo}}</h4>
+    <h4 class="modal-title">Agregar {{titulo}}</h4>
     <button type="button" class="close bg-light " aria-label="Close" (click)="cancelar(true)">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -24,7 +24,6 @@ export class CrearEditarModalContent implements OnInit {
   @Input('armarForm') public armarForm: any;
 
   constructor(
-      /* private _mensajesService: MensajesService, */
       public activeModal: NgbActiveModal
   ) {
 

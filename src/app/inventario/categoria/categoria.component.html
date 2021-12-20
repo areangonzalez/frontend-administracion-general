@@ -1,4 +1,4 @@
 <h2>Categoría</h2>
 
 <shared-busqueda-avanzada [placeholder]="'buscar por nombre de categoría'" (obtenerBusqueda)="realizarBusqueda($event)"></shared-busqueda-avanzada>
-<shared-tabla-personalizada [titulosArray]="titulos" [listaDatos]="listado" [nombreAbm]="'Categoría'"></shared-tabla-personalizada>
+<shared-tabla-personalizada [titulosArray]="titulos" [listaDatos]="listado" [nombreAbm]="'Categoría'" (bajarItem)="borrar($event)" (obtenerDatos)="guardar($event)"></shared-tabla-personalizada>

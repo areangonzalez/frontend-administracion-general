@@ -1,3 +1,4 @@
 <h2>Unidad de Medida</h2>
 
 <shared-busqueda-avanzada [placeholder]="'buscar por nombre de unidad de medida'" (obtenerBusqueda)="realizarBusqueda($event)"></shared-busqueda-avanzada>
+<shared-tabla-personalizada [titulosArray]="titulos" [listaDatos]="listado" [nombreAbm]="'Unidad de Medida'" (bajarItem)="borrar($event)" (obtenerDatos)="guardar($event)"></shared-tabla-personalizada>
