@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
   BusquedaAvanzadaComponent, TablaPersonalizadaComponent, CrearEditarModalContent, CrearEditarModalComponent,
-  FormPersonalizadoComponent
+  FormPersonalizadoComponent, BajaModalContent, BajaModalComponent
 } from './componentes';
 
 
@@ -16,7 +16,7 @@ import {
   declarations: [
     BusquedaAvanzadaComponent,
     TablaPersonalizadaComponent,
-    CrearEditarModalContent, CrearEditarModalComponent, FormPersonalizadoComponent
+    CrearEditarModalContent, CrearEditarModalComponent, FormPersonalizadoComponent, BajaModalContent, BajaModalComponent
   ],
   imports: [
     CommonModule, NgbPaginationModule,
@@ -26,7 +26,7 @@ import {
   exports: [
     NgbPaginationModule, RouterModule, FormsModule, ReactiveFormsModule,
     BusquedaAvanzadaComponent, TablaPersonalizadaComponent,
-    CrearEditarModalContent, CrearEditarModalComponent, FormPersonalizadoComponent
+    CrearEditarModalContent, CrearEditarModalComponent, FormPersonalizadoComponent, BajaModalContent, BajaModalComponent
   ]
 })
 export class SharedModule { }

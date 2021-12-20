@@ -32,7 +32,7 @@
         <td *ngFor="let col of titulosTabla">{{fila[col]}}</td>
         <td class="text-end w-25">
           <shared-crear-editar-modal [tipo]="'editar'" [titulo]="'Editar modal'" [armarForm]="titulosArray" [importarDatos]="fila" (obtenerDatos)="editar($event)"></shared-crear-editar-modal>
-          <button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+          <shared-baja-modal [nombreTabla]="'Categoría'" [importarId]="fila['id']"></shared-baja-modal>
         </td>
       </tr>
       </tbody>
