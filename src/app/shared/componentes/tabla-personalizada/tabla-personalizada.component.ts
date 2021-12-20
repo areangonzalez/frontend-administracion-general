@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfigurarPagina } from 'src/app/core/model';
 import { ConfiguracionParaPaginarService } from 'src/app/core/service';
@@ -12,6 +12,8 @@ export class TablaPersonalizadaComponent implements OnInit {
   @Input("titulosArray") public titulosArray: any;
   @Input("listaDatos") public listaDatos: any;
   @Input("nombreAbm") public nombreAbm: any;
+  @Input("obtenerDatos") public obtenerDatos = new EventEmitter();
+  @Output("bajarItem") public bajarItem = new EventEmitter();
   public tituloEditar = 'Editar ';
   public pagina: number = 1;
   public configPaginacion:ConfigurarPagina = new ConfigurarPagina();
@@ -25,8 +27,8 @@ export class TablaPersonalizadaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.tituloEditar += this.nombreAbm;
     this.eliminarElementoId(this.titulosArray);
-    //this.tituloEditar += this.nombreAbm;
     this.paginacion(this.listaDatos, this.pagina, this.pageSize);
   }
 
@@ -56,7 +58,7 @@ export class TablaPersonalizadaComponent implements OnInit {
 
   borrar(dato:any){
     if (dato !== false){
-      //this.borrarDato.emit(dato);
+      this.bajarItem.emit(dato);
     }
   }
 

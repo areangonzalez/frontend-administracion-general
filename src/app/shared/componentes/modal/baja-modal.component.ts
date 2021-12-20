@@ -5,13 +5,13 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   selector: 'shared-baja-modal-content',
   template: `
   <div class="modal-header">
-    <h4 class="modal-title">Borrar {{nombreTabla}}</h4>
+    <h4 class="modal-title">Dar baja {{nombreTabla}}</h4>
     <button type="button" class="close bg-light" aria-label="Close" (click)="activeModal.close('closed')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <h5 class="d-flex justify-content-center">¿Está seguro que desea borrar este {{nombreTabla}}?</h5>
+    <h5 class="d-flex justify-content-center">¿Está seguro que desea dar baja el/la {{nombreTabla}}?</h5>
   </div>
   <div class="modal-footer">
     <button class="btn btn-danger" type="button" (click)="activeModal.close('closed')">No</button>&nbsp;
