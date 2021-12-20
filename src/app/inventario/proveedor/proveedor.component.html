@@ -1,3 +1,4 @@
 <h2>Proveedor</h2>
 
 <shared-busqueda-avanzada [placeholder]="'buscar por nombre de proveedor'" (obtenerBusqueda)="realizarBusqueda($event)"></shared-busqueda-avanzada>
+<shared-tabla-personalizada [titulosArray]="titulos" [listaDatos]="listado" [nombreAbm]="'Proveedor'" (bajarItem)="borrar($event)" (obtenerDatos)="guardar($event)"></shared-tabla-personalizada>
