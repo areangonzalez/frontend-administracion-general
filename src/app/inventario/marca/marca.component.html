@@ -1,3 +1,4 @@
 <h2>Marca</h2>
 
 <shared-busqueda-avanzada [placeholder]="'Buscar por nombre de marca'" (obtenerBusqueda)="realizarBusqueda($event)"></shared-busqueda-avanzada>
+<shared-tabla-personalizada [titulosArray]="titulos" [listaDatos]="listado" [nombreAbm]="'Marca'" (bajarItem)="borrar($event)" (obtenerDatos)="guardar($event)"></shared-tabla-personalizada>
