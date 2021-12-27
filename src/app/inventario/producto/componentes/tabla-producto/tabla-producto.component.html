@@ -22,11 +22,11 @@
   <table class="table table-light table-sm table-hover">
     <thead>
       <tr>
-        <th scope="col">Codigo</th>
+        <th class="text-center" scope="col">Codigo</th>
         <th scope="col">Nombre</th>
-        <th scope="col">Marca</th>
-        <th scope="col">Unidad (Valor/Medida)</th>
-        <th scope="col">Categoría</th>
+        <th class="text-center" scope="col">Marca</th>
+        <th class="text-center" scope="col">Unidad (Valor/Medida)</th>
+        <th class="text-center" scope="col">Categoría</th>
         <th class="text-end w-25">
           Acción
           <!-- <shared-crear-editar-modal [tipo]="'agregar'" [titulo]="nombreAbm" [armarForm]="titulosArray" (obtenerDatos)="agregar($event)" ></shared-crear-editar-modal> -->
@@ -35,16 +35,16 @@
     </thead>
     <tbody *ngIf="(listado.length == 0)" >
       <tr scope="col">
-        <td scope="col" rowspan="1" colspan="6" ></td>
+        <td class="text-center table-warning" scope="col" rowspan="1" colspan="6" ><strong>NO SE HAN ENCONTRADO RESULTADOS</strong></td>
       </tr>
     </tbody>
     <tbody>
       <tr *ngFor="let item of listado" [ngClass]="{'table-danger': (item.activo === 0) }">
-        <td scope="col">{{item.codigo}}</td>
+        <td class="text-center" scope="col">{{item.codigo}}</td>
         <td scope="col">{{item.nombre}}</td>
-        <td scope="col">{{item.marca}}</td>
+        <td class="text-center" scope="col">{{item.marca}}</td>
         <td class="text-center" scope="col">{{item.unidad_valor}}&nbsp;{{item.unidad_medida}}</td>
-        <td scope="col">{{item.categoria}}</td>
+        <td class="text-center" scope="col">{{item.categoria}}</td>
         <td class="text-end">1</td>
       </tr>
       <!-- <tr *ngFor="let fila of listaDatos">

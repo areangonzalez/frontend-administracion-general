@@ -261,4 +261,13 @@
 [data-theme="dark"] .table-danger {
   --#{$variable-prefix}table-hover-bg: #58151c;
 }
+[data-theme="dark"] .table-warning,
+[data-theme="dark"] .table-warning > th,
+[data-theme="dark"] .table-warning > td {
+  background-color: #664d03 !important;
+  color: #fff !important;
+}
 
+[data-theme="dark"] .table-warning {
+  --#{$variable-prefix}table-hover-bg: #332701;
+}
