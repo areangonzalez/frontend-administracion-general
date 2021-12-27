@@ -2,15 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
 import { InventarioRoutingModule } from './inventario-routing.module';
 import { MarcaComponent } from './marca';
-import { ProductoComponent } from './producto';
+import { ProductoComponent, TablaProductoComponent } from './producto';
 import { UnidadMedidaComponent } from './unidad-medida';
 import { CategoriaComponent } from './categoria';
 import { ProveedorComponent } from './proveedor';
 import { SharedModule } from '../shared/shared.module';
-
 
 @NgModule({
   declarations: [
@@ -18,7 +16,8 @@ import { SharedModule } from '../shared/shared.module';
     ProductoComponent,
     UnidadMedidaComponent,
     CategoriaComponent,
-    ProveedorComponent
+    ProveedorComponent,
+    TablaProductoComponent
   ],
   imports: [
     CommonModule,

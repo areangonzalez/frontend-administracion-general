@@ -230,6 +230,7 @@
     -moz-box-shadow: 0px 7px 7px 0px rgba(0,0,0,0.75);
   }
 }
+/* Tablas */
 [data-theme="dark"] .table {
   color: #fff !important;
   background-color: #343a40 !important;
@@ -249,5 +250,15 @@
   --bs-table-hover-color: #fff;
   color: #fff;
   border-color: #373b3e;
+}
+[data-theme="dark"] .table-danger,
+[data-theme="dark"] .table-danger > th,
+[data-theme="dark"] .table-danger > td {
+  background-color: #3e0f13 !important;
+  color: #fff !important;
+}
+
+[data-theme="dark"] .table-danger {
+  --#{$variable-prefix}table-hover-bg: #58151c;
 }
 
