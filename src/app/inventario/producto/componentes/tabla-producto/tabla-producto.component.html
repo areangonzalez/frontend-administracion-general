@@ -1,4 +1,5 @@
 <div class="bg-light shadow-sm p-3 mt-3">
+  {{configPaginacion | json}}
   <!-- <div class="d-flex justify-content-between mb-2">
     <div class="d-flex align-items-center p-2 font-weight-bold">
       <span *ngIf="configPaginacion.totalRegistros > 0">{{nombreAbm}}: {{configPaginacion.cantRegistros}} - {{configPaginacion.totalRegistros}} de {{configPaginacion.colleccionSize}}</span>
@@ -33,13 +34,13 @@
         </th>
       </tr>
     </thead>
-    <tbody *ngIf="(listado.length == 0)" >
+    <tbody *ngIf="(listadosArray.productos.length == 0)" >
       <tr scope="col">
         <td class="text-center table-warning" scope="col" rowspan="1" colspan="6" ><strong>NO SE HAN ENCONTRADO RESULTADOS</strong></td>
       </tr>
     </tbody>
-    <tbody>
-      <tr *ngFor="let item of listado" [ngClass]="{'table-danger': (item.activo === 0) }">
+    <tbody *ngIf="(listadosArray.productos.length > 0)">
+      <tr *ngFor="let item of listadosArray.productos" [ngClass]="{'table-danger': (item.activo === 0) }">
         <td class="text-center" scope="col">{{item.codigo}}</td>
         <td scope="col">{{item.nombre}}</td>
         <td class="text-center" scope="col">{{item.marca}}</td>
@@ -57,8 +58,8 @@
       </tbody>
   </table>
 
-  <!-- <div class="d-flex justify-content-center">
-    <ngb-pagination [collectionSize]="configPaginacion.colleccionSize" [(page)]="pagina" [pageSize]="configPaginacion.pageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" [ellipses]="false" (pageChange)="cambiarPagina(pagina)"></ngb-pagination>
-  </div> -->
+  <div class="d-flex justify-content-center">
+    <ngb-pagination [collectionSize]="configPaginacion.colleccionSize" [(page)]="configPaginacion.page" [pageSize]="configPaginacion.pageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" [ellipses]="false" (pageChange)="cambiarPagina(configPaginacion.page)"></ngb-pagination>
+  </div>
 </div>
 
