@@ -1,24 +1,23 @@
 <div class="bg-light shadow-sm p-3 mt-3">
-  {{configPaginacion | json}}
-  <!-- <div class="d-flex justify-content-between mb-2">
+  <div class="d-flex justify-content-between mb-2">
     <div class="d-flex align-items-center p-2 font-weight-bold">
-      <span *ngIf="configPaginacion.totalRegistros > 0">{{nombreAbm}}: {{configPaginacion.cantRegistros}} - {{configPaginacion.totalRegistros}} de {{configPaginacion.colleccionSize}}</span>
-      <span *ngIf="configPaginacion.totalRegistros == 0">{{nombreAbm}}: {{configPaginacion.cantRegistros}}</span>
+      <span *ngIf="configPaginacion.totalRegistros > 0">Productos: {{configPaginacion.cantRegistros}} - {{configPaginacion.totalRegistros}} de {{configPaginacion.colleccionSize}}</span>
+      <span *ngIf="configPaginacion.totalRegistros == 0">Productos: {{configPaginacion.cantRegistros}}</span>
     </div>
     <div class="d-flex align-items-center">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 pr-0" >
         <div class="input-group">
           <span class="input-group-text"> Registros por página</span>
-          <select id="inputState" class="form-control" [(ngModel)]="pageSize" (change)="cambiarCantRegistros($event)">
+          <select id="inputState" class="form-control" [(ngModel)]="configPaginacion.pageSize" (change)="cambiarCantRegistros($event)">
             <option value="5" selected>5</option>
             <option value="10" selected>10</option>
-            <option value="25" selected>25</option>
+            <option value="20" selected>20</option>
             <option value="50" selected>50</option>
           </select>
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
   <table class="table table-light table-sm table-hover">
     <thead>
@@ -30,7 +29,6 @@
         <th class="text-center" scope="col">Categoría</th>
         <th class="text-end w-25">
           Acción
-          <!-- <shared-crear-editar-modal [tipo]="'agregar'" [titulo]="nombreAbm" [armarForm]="titulosArray" (obtenerDatos)="agregar($event)" ></shared-crear-editar-modal> -->
         </th>
       </tr>
     </thead>
@@ -48,18 +46,11 @@
         <td class="text-center" scope="col">{{item.categoria}}</td>
         <td class="text-end">1</td>
       </tr>
-      <!-- <tr *ngFor="let fila of listaDatos">
-        <td *ngFor="let col of titulosTabla">{{fila[col]}}</td>
-        <td class="text-end w-25">
-          <shared-crear-editar-modal [tipo]="'editar'" [titulo]="tituloEditar" [armarForm]="titulosArray" [importarDatos]="fila" (obtenerDatos)="editar($event)"></shared-crear-editar-modal>
-          <shared-baja-modal [nombreTabla]="nombreAbm" [importarId]="fila['id']" (obtenerConfirmacion)="borrar($event)"></shared-baja-modal>
-        </td>
-      </tr> -->
       </tbody>
   </table>
 
   <div class="d-flex justify-content-center">
-    <ngb-pagination [collectionSize]="configPaginacion.colleccionSize" [(page)]="configPaginacion.page" [pageSize]="configPaginacion.pageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" [ellipses]="false" (pageChange)="cambiarPagina(configPaginacion.page)"></ngb-pagination>
+    <ngb-pagination [collectionSize]="configPaginacion.colleccionSize" [(page)]="configPaginacion.page" [pageSize]="configPaginacion.pageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" [ellipses]="false" (pageChange)="cambiarPagina(configPaginacion.page, configPaginacion.pageSize)"></ngb-pagination>
   </div>
 </div>
 

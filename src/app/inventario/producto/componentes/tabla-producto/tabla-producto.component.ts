@@ -13,8 +13,13 @@ export class TablaProductoComponent {
 
   constructor() {}
 
-  cambiarPagina(pagina:number) {
-    this.cambioDePagina.emit(pagina);
+  cambiarPagina(pagina:number, pagesize: number) {
+    this.cambioDePagina.emit({page: pagina, pagesize: pagesize});
+  }
+
+  cambiarCantRegistros(cant:any) {
+    this.configPaginacion.pageSize = parseInt(cant.target.value);
+    this.cambiarPagina(this.configPaginacion.page, this.configPaginacion.pageSize);
   }
 
 }

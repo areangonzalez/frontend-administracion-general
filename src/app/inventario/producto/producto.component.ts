@@ -43,19 +43,18 @@ export class ProductoComponent implements OnInit {
    * Solicito el cambio de pagina respetando los parametros de busqueda
    * @param pagina numero de página
    */
-  cambiarPagina(pagina: number) {
-    console.log(pagina);
-    this.buscar(this.filtradoBusqueda, pagina)
+  cambiarPagina(datosPaginado: any) {
+    this.buscar(this.filtradoBusqueda, datosPaginado.page, datosPaginado.pagesize)
   }
   /**
    * Solicito la busqueda con parametros personalizados y número de página
    * @param params objeto que contiene los paramatros a buscar
    * @param page numero de pagina
    */
-  buscar(params:any, page:number) {
-    Object.assign(params, {page: page-1});
+  buscar(params:any, page:number, pagesize: number) {
+    Object.assign(params, {page: page-1, pagesize: pagesize});
     this.filtradoBusqueda = params;
-    console.log("Realizo la busqueda de productos con los parametros", params);
+    console.log("Realizo la busqueda de productos con los parametros", params); // log para borrar despues de confirmar el uso
 
     /* this._comprobanteService.buscar(params).subscribe(
       respuesta => {
