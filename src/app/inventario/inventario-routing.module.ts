@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoriaComponent, MarcaComponent, ProductoComponent, ProveedorComponent, UnidadMedidaComponent,  } from '.';
+import { ProductoService } from '../core/service';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'producto', component: ProductoComponent,
+    //resolve: { productos: ProductoService }
   }, {
     path: 'proovedor', component: ProveedorComponent,
   },{
@@ -23,6 +25,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [ProductoService]
 })
 export class InventarioRoutingModule { }

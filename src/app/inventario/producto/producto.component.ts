@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfiguracionParaPaginarService } from '../../core/service';
+import { ConfiguracionParaPaginarService, ProductoService } from '../../core/service';
 import { ConfigurarListas, ConfigurarPagina } from 'src/app/core/model';
 
 @Component({
@@ -12,6 +12,7 @@ export class ProductoComponent implements OnInit {
   public configPaginacion: ConfigurarPagina = new ConfigurarPagina();
   public filtradoBusqueda: any = {};
 
+  // BORRAR EL ARRAY CUANDO ESTE IMPLEMENTADO LA FUNCION DEL API
   public productos: any = {
     pagesize: 20, page: 0, total_filtrado: 3,
     resultado: [
@@ -24,7 +25,7 @@ export class ProductoComponent implements OnInit {
     ]};
 
   constructor(
-    private _configurarPaginacion: ConfiguracionParaPaginarService
+    private _configurarPaginacion: ConfiguracionParaPaginarService, private _productoService: ProductoService
   ) { }
 
   ngOnInit(): void {
@@ -56,9 +57,10 @@ export class ProductoComponent implements OnInit {
     this.filtradoBusqueda = params;
     console.log("Realizo la busqueda de productos con los parametros", params); // log para borrar despues de confirmar el uso
 
-    /* this._comprobanteService.buscar(params).subscribe(
+    // se descomenta la linea para poder utilizar el renderizado al api que da servicio
+    /* this._productoService.buscar(params).subscribe(
       respuesta => {
-        this.prepararListadoingreso(respuesta, page);
+        this.prepararListado(respuesta, page);
     }, error => { this._mensaje.cancelado(error); }); */
   }
 
