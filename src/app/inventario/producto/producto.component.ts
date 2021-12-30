@@ -23,13 +23,24 @@ export class ProductoComponent implements OnInit {
       { id: 3, nombre: "Aceite de girasol", codigo: "A300", unidad_valor: 1.5, unidad_medidaid: 3, marcaid: 1, categoriaid: 1, activo: 0,
       marca: "Arcor", unidad_medida: "lt", producto: "Aceite de girasol, 1.5lt (Arcor)", categoria: "Alimento" }
     ]};
+  public marca: any = [{ id: 230, nombre: "Arcor" },{ id: 338, nombre: "Ledesma" },{ id: 68, nombre: "3 arroyos" }];
+  public categoria: any = [{ id: 1, nombre: "alimento/s" },{ id: 2, nombre: "Bebida/s" },{ id: 3, nombre: "Otros" }];
+  public unidadMedida: any = [
+    { id: 1, nombre: "Kilogramo", simbolo: "kg" },{ id: 2, nombre: "Gramo", simbolo: "gr" },
+    { id: 3, nombre: "Litro", simbolo: "lt" },{ id: 4, nombre: "Mililitro", simbolo: "ml" },
+    { id: 5, nombre: "Unidad", simbolo: "un" },{ id: 6, nombre: "Centimetros cúbicos", simbolo: "cm3" }
+  ];
+
 
   constructor(
     private _configurarPaginacion: ConfiguracionParaPaginarService, private _productoService: ProductoService
   ) { }
 
   ngOnInit(): void {
-    this.prepararListado(this.productos, 1)
+    this.prepararListado(this.productos, 1);
+    this.configurarListas.categorias = this.categoria;
+    this.configurarListas.marcas = this.marca;
+    this.configurarListas.unidad_medida = this.unidadMedida;
   }
   /**
    * Prepara el listado y su paginación

@@ -22,6 +22,21 @@
                 <label class="form-label" for="categoriaid">Categoría</label>
                 <select class="form-select" id="categoriaid" formControlName="categoriaid">
                   <option value="">Seleccione Categoría</option>
+                  <option *ngFor="let cat of listas.categorias" value="{{cat.id}}">{{cat.nombre}}</option>
+                </select>
+              </div>
+              <div class="form-group col-md-4">
+                <label class="form-label" for="marcaid">Marca</label>
+                <select class="form-select" id="marcaid" formControlName="marcaid">
+                  <option value="">Seleccione Marca</option>
+                  <option *ngFor="let mark of listas.marcas" value="{{mark.id}}">{{mark.nombre}}</option>
+                </select>
+              </div>
+              <div class="form-group col-md-4">
+                <label class="form-label" for="unidad_medidaid">Unidad de Medida</label>
+                <select class="form-select" id="unidad_medidaid" formControlName="unidad_medidaid">
+                  <option value="">Seleccione Unidad Medida</option>
+                  <option *ngFor="let um of listas.unidad_medida" value="{{um.id}}">{{um.simbolo}} ({{um.nombre}})</option>
                 </select>
               </div>
             </div>
