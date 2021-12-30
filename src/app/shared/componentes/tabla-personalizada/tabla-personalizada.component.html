@@ -9,10 +9,10 @@
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 pr-0" >
         <div class="input-group">
           <span class="input-group-text"> Registros por página</span>
-          <select id="inputState" class="form-control" [(ngModel)]="pageSize" (change)="cambiarCantRegistros($event)">
+          <select id="inputState" class="form-select" [(ngModel)]="pageSize" (change)="cambiarCantRegistros($event)">
             <option value="5" selected>5</option>
             <option value="10" selected>10</option>
-            <option value="25" selected>25</option>
+            <option value="25" selected>20</option>
             <option value="50" selected>50</option>
           </select>
         </div>

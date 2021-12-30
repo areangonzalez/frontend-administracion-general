@@ -4,7 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { InventarioRoutingModule } from './inventario-routing.module';
 import { MarcaComponent } from './marca';
-import { ProductoComponent, TablaProductoComponent } from './producto';
+import { ProductoComponent, TablaProductoComponent, BuscarProductoComponent } from './producto';
 import { UnidadMedidaComponent } from './unidad-medida';
 import { CategoriaComponent } from './categoria';
 import { ProveedorComponent } from './proveedor';
@@ -13,11 +13,10 @@ import { SharedModule } from '../shared/shared.module';
 @NgModule({
   declarations: [
     MarcaComponent,
-    ProductoComponent,
+    ProductoComponent, TablaProductoComponent, BuscarProductoComponent,
     UnidadMedidaComponent,
     CategoriaComponent,
-    ProveedorComponent,
-    TablaProductoComponent
+    ProveedorComponent
   ],
   imports: [
     CommonModule,

@@ -7,8 +7,8 @@
     <div class="d-flex align-items-center">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 pr-0" >
         <div class="input-group">
-          <span class="input-group-text"> Registros por página</span>
-          <select id="inputState" class="form-control" [(ngModel)]="configPaginacion.pageSize" (change)="cambiarCantRegistros($event)">
+          <label class="input-group-text" for="registros"> Registros por página:</label>
+          <select id="registros" class="form-select" [(ngModel)]="configPaginacion.pageSize" (change)="cambiarCantRegistros($event)">
             <option value="5" selected>5</option>
             <option value="10" selected>10</option>
             <option value="20" selected>20</option>
