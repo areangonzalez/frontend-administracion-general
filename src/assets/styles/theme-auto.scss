@@ -189,7 +189,7 @@
 
 [data-theme="auto"] .form-control { color: #212529; background-color: #fff; border: 1px solid #ced4da; }
 
-[data-theme="auto"] .form-select { color: #212529; border-color: #ced4da !important; background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23ffffff' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px; border: 1px solid #ced4da; }
+[data-theme="auto"] .form-select { color: #212529; border-color: #ced4da !important; background: #fff; background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 16px 12px; border: 1px solid #ced4da; }
 
 [data-theme="auto"] .form-select:focus { border-color: #86b7fe; box-shadow: 0 0 0 0.2rem #86b7fe; background-color: #fff; }
 
