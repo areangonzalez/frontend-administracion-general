@@ -4,3 +4,6 @@ export * from './util.service';
 export * from './configuracion-para-paginar.service';
 export * from './producto.service';
 export * from './categoria.service';
+export * from './marca.service';
+export * from './unidad-medida.service';
+export * from './proovedor.service';
