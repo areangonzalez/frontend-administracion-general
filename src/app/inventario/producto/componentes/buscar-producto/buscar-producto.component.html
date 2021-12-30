@@ -14,27 +14,27 @@
       <i class="fas fa-caret-down" *ngIf="!mostrar" ></i>
       <i class="fas fa-caret-up" *ngIf="mostrar" ></i>
     </button>
-    <div class="card mt-1" *ngIf="!mostrar">
+    <div class="card mt-1" *ngIf="mostrar">
         <div class="card-body">
             <fieldset>
             <div class="row">
               <div class="form-group col-md-4">
                 <label class="form-label" for="categoriaid">Categoría</label>
-                <select class="form-select" id="categoriaid" formControlName="categoriaid">
+                <select class="form-select" id="categoriaid" formControlName="categoriaid" [ngClass]="{'campo-seleccionado': marcarCampo(busquedaAvanzada.controls.categoriaid.value)}">
                   <option value="">Seleccione Categoría</option>
                   <option *ngFor="let cat of listas.categorias" value="{{cat.id}}">{{cat.nombre}}</option>
                 </select>
               </div>
               <div class="form-group col-md-4">
                 <label class="form-label" for="marcaid">Marca</label>
-                <select class="form-select" id="marcaid" formControlName="marcaid">
+                <select class="form-select" id="marcaid" formControlName="marcaid" [ngClass]="{'campo-seleccionado': marcarCampo(busquedaAvanzada.controls.marcaid.value)}">
                   <option value="">Seleccione Marca</option>
                   <option *ngFor="let mark of listas.marcas" value="{{mark.id}}">{{mark.nombre}}</option>
                 </select>
               </div>
               <div class="form-group col-md-4">
                 <label class="form-label" for="unidad_medidaid">Unidad de Medida</label>
-                <select class="form-select" id="unidad_medidaid" formControlName="unidad_medidaid">
+                <select class="form-select" id="unidad_medidaid" formControlName="unidad_medidaid" [ngClass]="{'campo-seleccionado': marcarCampo(busquedaAvanzada.controls.unidad_medidaid.value)}">
                   <option value="">Seleccione Unidad Medida</option>
                   <option *ngFor="let um of listas.unidad_medida" value="{{um.id}}">{{um.simbolo}} ({{um.nombre}})</option>
                 </select>
