@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProveedorService } from 'src/app/core/service';
 
 @Component({
   selector: 'app-proveedor',
@@ -13,9 +15,10 @@ export class ProveedorComponent implements OnInit {
   ];
   public titulos: string[] = [];
 
-  constructor() { }
+  constructor(private _route: ActivatedRoute, private _proveedorService: ProveedorService) { }
 
   ngOnInit(): void {
+    // this.renderTabla(this._route.snapshot.data["proovedores"]);
     this.renderTabla(this.listado);
   }
 
@@ -35,14 +38,14 @@ export class ProveedorComponent implements OnInit {
    guardar(datos:any) {
     if (datos !== false){
       if (datos["id"] == 0){ // CREAR
-        /* this._oficioService.guardar(datos, 0).subscribe(
+        /* this._proveedorService.guardar(datos, 0).subscribe(
           respuesta => {
             this._toastrService.success('Se ha creado un nuevo oficio!!!');
             this.refrescarListado();
           }, error => { this._toastrService.error(error); }); */
       }else{ // EDITAR
 
-        /* this._oficioService.guardar(datos, datos["id"]).subscribe(
+        /* this._proveedorService.guardar(datos, datos["id"]).subscribe(
           respuesta => {
             this._toastrService.success('El oficio se ha editado correctamente!!!');
             this.refrescarListado();
@@ -54,7 +57,7 @@ export class ProveedorComponent implements OnInit {
    * refresca el listado con nuevos datos
    */
   refrescarListado() {
-    /* this._oficioService.listarOficios().subscribe(
+    /* this._proveedorService.listar().subscribe(
       respuesta => {
         this.listado = respuesta;
       }) */
@@ -64,7 +67,7 @@ export class ProveedorComponent implements OnInit {
    * @param id numero de identificador del elemento a borrar
    */
   borrar(id:number) {
-    /* this._oficioService.borrar(id).subscribe(
+    /* this._proveedorService.borrar(id).subscribe(
       respuesta => {
         this._toastrService.success("Se ha borrado el oficio correctamente.");
         this.refrescarListado();

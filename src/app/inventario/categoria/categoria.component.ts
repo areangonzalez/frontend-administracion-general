@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CategoriaService } from 'src/app/core/service';
 
 @Component({
   selector: 'app-categoria',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categoria.component.scss']
 })
 export class CategoriaComponent implements OnInit {
+  // borrar los datos de la variable y que quede un array solo
   public listado: any = [
     { "id": 1, "nombre": "alimento/s" },
     { "id": 2, "nombre": "Bebida/s" },
@@ -13,10 +16,12 @@ export class CategoriaComponent implements OnInit {
   ];
   public titulos: string[] = [];
 
-  constructor() { }
+  constructor(private _route: ActivatedRoute, private _categoriaService: CategoriaService) { }
 
   ngOnInit(): void {
-    this.renderTabla(this.listado);
+    /* Descomentar todo cuando el api funcione y borrar datos de prueba */
+    // this.renderTabla(this._route.snapshot.data["categorias"]);
+    this.renderTabla(this.listado); // este es necesario borrarlo
   }
 
   realizarBusqueda(params: any) {
@@ -35,14 +40,14 @@ export class CategoriaComponent implements OnInit {
    guardar(datos:any) {
     if (datos !== false){
       if (datos["id"] == 0){ // CREAR
-        /* this._oficioService.guardar(datos, 0).subscribe(
+        /* this._categoriaService.guardar(datos, 0).subscribe(
           respuesta => {
             this._toastrService.success('Se ha creado un nuevo oficio!!!');
             this.refrescarListado();
           }, error => { this._toastrService.error(error); }); */
       }else{ // EDITAR
 
-        /* this._oficioService.guardar(datos, datos["id"]).subscribe(
+        /* this._categoriaService.guardar(datos, datos["id"]).subscribe(
           respuesta => {
             this._toastrService.success('El oficio se ha editado correctamente!!!');
             this.refrescarListado();
@@ -54,7 +59,7 @@ export class CategoriaComponent implements OnInit {
    * refresca el listado con nuevos datos
    */
   refrescarListado() {
-    /* this._oficioService.listarOficios().subscribe(
+    /* this._categoriaService.listar().subscribe(
       respuesta => {
         this.listado = respuesta;
       }) */
@@ -64,7 +69,7 @@ export class CategoriaComponent implements OnInit {
    * @param id numero de identificador del elemento a borrar
    */
   borrar(id:number) {
-    /* this._oficioService.borrar(id).subscribe(
+    /* this._categoriaService.borrar(id).subscribe(
       respuesta => {
         this._toastrService.success("Se ha borrado el oficio correctamente.");
         this.refrescarListado();

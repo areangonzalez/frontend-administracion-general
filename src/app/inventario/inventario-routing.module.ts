@@ -1,31 +1,34 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoriaComponent, MarcaComponent, ProductoComponent, ProveedorComponent, UnidadMedidaComponent,  } from '.';
-import { ProductoService } from '../core/service';
+import { CategoriaService, MarcaService, ProductoService, ProveedorService, UnidadMedidaService } from '../core/service';
 
 const routes: Routes = [
   {
     path: 'categoria', component: CategoriaComponent,
     /* canActivate: [AuthGuard],
     data: { loading: true, breadcrumb: 'Stock', title: 'Stock' },
-    resolve: { inventario: InventarioService, categorias: CategoriaService, unidadMedida: UnidadMedidaService, marcas: MarcaService } */
+    resolve: { categorias: CategoriaService } */
   },
   {
     path: 'marca', component: MarcaComponent,
+    // resolve: { marcas: MarcaService }
   },
   {
     path: 'producto', component: ProductoComponent,
-    //resolve: { productos: ProductoService }
+    //resolve: { productos: ProductoService, categorias: CategoriaService, unidadMedidas: UnidadMedidaService, marcas: MarcaService }
   }, {
     path: 'proovedor', component: ProveedorComponent,
+    //resolve: { proovedores: ProveedorService }
   },{
     path: 'unidad-medida', component: UnidadMedidaComponent,
+    // resolve: { unidadMedidas: UnidadMedidaService }
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [ProductoService]
+  providers: [CategoriaService, MarcaService, ProductoService, ProveedorService, UnidadMedidaService]
 })
 export class InventarioRoutingModule { }

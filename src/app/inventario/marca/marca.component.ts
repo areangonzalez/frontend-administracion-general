@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MarcaService } from 'src/app/core/service';
 
 @Component({
   selector: 'app-marca',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./marca.component.scss']
 })
 export class MarcaComponent implements OnInit {
+  /* borrar los datos de la variable y dejar el array vacio */
   public listado: any = [
     { "id": 1, "nombre": "Ledesma" },
     { "id": 2, "nombre": "9 de oro" },
@@ -13,10 +16,11 @@ export class MarcaComponent implements OnInit {
   ];
   public titulos: string[] = [];
 
-  constructor() { }
+  constructor(private _route: ActivatedRoute, private _marcaService: MarcaService) { }
 
   ngOnInit(): void {
-    this.renderTabla(this.listado);
+    // this.renderTabla(this._route.snapshot.data["marcas"]);
+    this.renderTabla(this.listado); // borrar
   }
 
   realizarBusqueda(params: any) {
@@ -35,14 +39,14 @@ export class MarcaComponent implements OnInit {
    guardar(datos:any) {
     if (datos !== false){
       if (datos["id"] == 0){ // CREAR
-        /* this._oficioService.guardar(datos, 0).subscribe(
+        /* this._marcaService.guardar(datos, 0).subscribe(
           respuesta => {
             this._toastrService.success('Se ha creado un nuevo oficio!!!');
             this.refrescarListado();
           }, error => { this._toastrService.error(error); }); */
       }else{ // EDITAR
 
-        /* this._oficioService.guardar(datos, datos["id"]).subscribe(
+        /* this._marcaService.guardar(datos, datos["id"]).subscribe(
           respuesta => {
             this._toastrService.success('El oficio se ha editado correctamente!!!');
             this.refrescarListado();
@@ -54,7 +58,7 @@ export class MarcaComponent implements OnInit {
    * refresca el listado con nuevos datos
    */
   refrescarListado() {
-    /* this._oficioService.listarOficios().subscribe(
+    /* this._marcaService.listar().subscribe(
       respuesta => {
         this.listado = respuesta;
       }) */
@@ -64,7 +68,7 @@ export class MarcaComponent implements OnInit {
    * @param id numero de identificador del elemento a borrar
    */
   borrar(id:number) {
-    /* this._oficioService.borrar(id).subscribe(
+    /* this._marcaService.borrar(id).subscribe(
       respuesta => {
         this._toastrService.success("Se ha borrado el oficio correctamente.");
         this.refrescarListado();
