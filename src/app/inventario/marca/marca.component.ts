@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MarcaService } from 'src/app/core/service';
+import { ConfigurarPagina } from 'src/app/core/model';
+import { MarcaService, ConfiguracionParaPaginarService } from 'src/app/core/service';
 
 @Component({
   selector: 'app-marca',
@@ -8,30 +9,49 @@ import { MarcaService } from 'src/app/core/service';
   styleUrls: ['./marca.component.scss']
 })
 export class MarcaComponent implements OnInit {
+  public configPaginacion: ConfigurarPagina = new ConfigurarPagina();
+  public listado: any = [];
   /* borrar los datos de la variable y dejar el array vacio */
-  public listado: any = [
-    { "id": 1, "nombre": "Ledesma" },
-    { "id": 2, "nombre": "9 de oro" },
-    { "id": 3, "nombre": "Knorr" }
-  ];
+  public marcas: any = {
+    pagesize: 10, page: 0, total_filtrado: 3,
+    resultado:[
+    { id: 1, nombre: "Ledesma" }, { id: 2, nombre: "9 de oro" }, { id: 3, nombre: "Knorr" }
+  ]};
   public titulos: string[] = [];
 
-  constructor(private _route: ActivatedRoute, private _marcaService: MarcaService) { }
+  constructor(private _route: ActivatedRoute, private _marcaService: MarcaService, private _configurarPaginado: ConfiguracionParaPaginarService) { }
 
   ngOnInit(): void {
     // this.renderTabla(this._route.snapshot.data["marcas"]);
-    this.renderTabla(this.listado); // borrar
+    this.renderTabla(this.marcas); // borrar
   }
 
-  realizarBusqueda(params: any) {
+  realizarBusqueda(busqueda: any, pagina: number) {
+    let params = Object.assign(busqueda, { pagesize: this.configPaginacion.pageSize, page: pagina - 1 })
     console.log(params);
+    /* this._marcaService.buscar(params).subscribe(
+      resultado => {
+        this.prepararListado(resultado, this.configPaginacion.page);
+      }, error => { console.log(error); } // mensaje de error
+    ) */
   }
-
-  renderTabla(listado:any) {
-    this.titulos = Object.keys(listado[0]);
-    this.listado = listado;
+  /**
+   * Preparo el listado para separar los titulos de los datos
+   * @param listado Objeto que contiene los datos de una tabla
+   */
+   renderTabla(listado:any) {
+    this.titulos = Object.keys(listado.resultado[0]);
+    this.prepararListado(listado, 1);
   }
-
+  /**
+   * Preparo la configuracion del paginado y listado0
+   * @param listado Array de objetos que contiene los datos del api
+   * @param pagina numero de pagina donde debe inicializar el listado
+   */
+   prepararListado(listado: any, pagina: number) {
+    this.configPaginacion = this._configurarPaginado.config(listado, pagina);
+    this.listado = listado.resultado;
+  }
   /**
      * guardado de un elemento nuevo o editado.
      * @param datos datos a guardar
@@ -41,27 +61,18 @@ export class MarcaComponent implements OnInit {
       if (datos["id"] == 0){ // CREAR
         /* this._marcaService.guardar(datos, 0).subscribe(
           respuesta => {
-            this._toastrService.success('Se ha creado un nuevo oficio!!!');
-            this.refrescarListado();
+            this._toastrService.success('Se ha creado una nueva marca!!!');
+            this.prepararListado(respuesta, this.configPaginacion.page);
           }, error => { this._toastrService.error(error); }); */
       }else{ // EDITAR
 
         /* this._marcaService.guardar(datos, datos["id"]).subscribe(
           respuesta => {
-            this._toastrService.success('El oficio se ha editado correctamente!!!');
-            this.refrescarListado();
+            this._toastrService.success('La marca ha sido editada correctamente!!!');
+            this.prepararListado(respuesta, this.configPaginacion.page);
         }, error => { this._toastrService.error(error); }); */
       }
     }
-  }
-  /**
-   * refresca el listado con nuevos datos
-   */
-  refrescarListado() {
-    /* this._marcaService.listar().subscribe(
-      respuesta => {
-        this.listado = respuesta;
-      }) */
   }
   /**
    * borra un elemento del listado
@@ -70,8 +81,8 @@ export class MarcaComponent implements OnInit {
   borrar(id:number) {
     /* this._marcaService.borrar(id).subscribe(
       respuesta => {
-        this._toastrService.success("Se ha borrado el oficio correctamente.");
-        this.refrescarListado();
+        this._toastrService.success("Se ha dado de baja la marca correctamente.");
+        this.prepararListado(respuesta, this.configPaginacion.page);
       }, error => { this._toastrService.error(error); }); */
   }
 

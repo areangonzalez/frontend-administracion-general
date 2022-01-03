@@ -81,7 +81,6 @@ export class TablaPersonalizadaComponent implements OnInit {
    * @param pagina numero de pagina
    */
   cambiarPagina(pagina:number) {
-    console.log(pagina);
     this.cambioDePagina.emit(pagina);
   }
 
