@@ -37,11 +37,6 @@ export class UnidadMedidaComponent implements OnInit {
    realizarBusqueda(busqueda: any, pagina: number) {
     let params = Object.assign(busqueda, { pagesize: this.configPaginacion.pageSize, page: pagina - 1 })
     console.log(params);
-    let ejemplo = {
-      pagesize: 10, page: 0, total_filtrado: 0,
-      resultado:'' };
-      this.prepararListado(ejemplo, this.configPaginacion.page);
-
     /* this._categoriaService.buscar(params).subscribe(
       resultado => {
         this.prepararListado(resultado, this.configPaginacion.page);
