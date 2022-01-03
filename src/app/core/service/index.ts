@@ -7,3 +7,4 @@ export * from './categoria.service';
 export * from './marca.service';
 export * from './unidad-medida.service';
 export * from './proveedor.service';
+export * from './config-tabla.service';

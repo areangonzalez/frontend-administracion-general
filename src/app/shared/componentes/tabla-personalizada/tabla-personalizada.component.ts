@@ -12,12 +12,12 @@ export class TablaPersonalizadaComponent implements OnInit {
   @Input("titulosArray") public titulosArray: any;
   @Input("listaDatos") public listaDatos: any;
   @Input("nombreAbm") public nombreAbm: any;
+  @Input("configPaginacion") public configPaginacion: any;
   @Output("obtenerDatos") public obtenerDatos = new EventEmitter();
   @Output("bajarItem") public bajarItem = new EventEmitter();
+  @Output("cambioDePagina") public cambioDePagina = new EventEmitter();
   public tituloEditar = 'Editar ';
   public pagina: number = 1;
-  public configPaginacion:ConfigurarPagina = new ConfigurarPagina();
-  public pageSize = 10;
   public listadoRender: any[] = [];
   public titulosTabla: string[] =[];
 
@@ -29,9 +29,11 @@ export class TablaPersonalizadaComponent implements OnInit {
   ngOnInit() {
     this.tituloEditar += this.nombreAbm;
     this.eliminarElementoId(this.titulosArray);
-    this.paginacion(this.listaDatos, this.pagina, this.pageSize);
   }
-
+  /**
+   * saca el elemento id de los titulos
+   * @param listaTitulos agrega solo los campos de informacion relevantes
+   */
   eliminarElementoId(listaTitulos: any) {
     for (let i = 0; i < listaTitulos.length; i++) {
       if (listaTitulos[i] !== 'id') {
@@ -39,40 +41,48 @@ export class TablaPersonalizadaComponent implements OnInit {
       }
     }
   }
-
+  /**
+   * Envia los datos a editar
+   * @param datos datos que seran editados
+   */
   editar(datos:any){
     if (datos !== false){
       this.obtenerDatos.emit(datos);
     }
   }
-
+  /**
+   * Envia los datos a crear
+   * @param datos parametros para su creado
+   */
   agregar(datos:any){
     if (datos !== false){
       this.obtenerDatos.emit(datos);
     }
   }
-
+  /**
+   * Envia el dato a dar de baja
+   * @param dato dato en este caso iria el id del array
+   */
   borrar(dato:any){
     if (dato !== false){
       this.bajarItem.emit(dato);
     }
   }
-
-  paginacion(listadoArray: any, pagina: number, pagesize:number) {
-    let datos = {pagesize: pagesize, page: pagina, total_filtrado: listadoArray.length};
-    this.configPaginacion = this._configurarPagina.config(datos, pagina);
-    this.listadoRender = this._configurarPagina.paginarListado(pagina, pagesize, listadoArray);
-  }
-
+  /**
+   * realiza el cambio de paginacion
+   * @param cant Cantidad seleccionada del tamaño de pagina
+   */
   cambiarCantRegistros(cant:any) {
-    this.pageSize = cant.target.value;
-    this.paginacion(this.listaDatos, this.pagina, this.pageSize);
+    this.configPaginacion.pageSize = parseInt(cant.target.value);
+    this.cambiarPagina(this.configPaginacion.page);
   }
-
+  /**
+   * Cambia la pagina del listado
+   * @param pagina numero de pagina
+   */
   cambiarPagina(pagina:number) {
     console.log(pagina);
-
-    this.paginacion(this.listaDatos, pagina, this.pageSize);
+    this.cambioDePagina.emit(pagina);
   }
 
 }
