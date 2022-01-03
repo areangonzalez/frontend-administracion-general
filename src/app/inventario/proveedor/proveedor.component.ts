@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProveedorService } from 'src/app/core/service';
+import { ConfigurarPagina } from 'src/app/core/model';
+import { ProveedorService, ConfiguracionParaPaginarService } from 'src/app/core/service';
 
 @Component({
   selector: 'app-proveedor',
@@ -8,29 +9,54 @@ import { ProveedorService } from 'src/app/core/service';
   styleUrls: ['./proveedor.component.scss']
 })
 export class ProveedorComponent implements OnInit {
-  public listado: any = [
+  public configPaginacion: ConfigurarPagina = new ConfigurarPagina();
+  public listado: any = [];
+
+  public proveedores: any = {
+    pagesize: 10, page: 0, total_filtrado: 3,
+    resultado:[
     { "id": 1, "nombre": "Proovedor 1" },
     { "id": 2, "nombre": "Proovedor 2" },
     { "id": 3, "nombre": "Proovedor 3" }
-  ];
+  ]};
   public titulos: string[] = [];
 
-  constructor(private _route: ActivatedRoute, private _proveedorService: ProveedorService) { }
+  constructor(private _route: ActivatedRoute, private _proveedorService: ProveedorService, private _configurarPaginado: ConfiguracionParaPaginarService) { }
 
   ngOnInit(): void {
     // this.renderTabla(this._route.snapshot.data["proovedores"]);
-    this.renderTabla(this.listado);
+    this.renderTabla(this.proveedores);
   }
-
-  realizarBusqueda(params: any) {
+  /**
+   * Aplica una busqueda con los parametros a buscar
+   * @param params valores a buscar
+   */
+  realizarBusqueda(busqueda: any, pagina: number) {
+    let params = Object.assign(busqueda, { pagesize: this.configPaginacion.pageSize, page: pagina - 1 })
     console.log(params);
+    /* this._categoriaService.buscar(params).subscribe(
+      resultado => {
+        this.prepararListado(resultado, this.configPaginacion.page);
+      }, error => { console.log(error); } // mensaje de error
+    ) */
   }
-
+  /**
+   * Preparo el listado para separar los titulos de los datos
+   * @param listado Objeto que contiene los datos de una tabla
+   */
   renderTabla(listado:any) {
-    this.titulos = Object.keys(listado[0]);
-    this.listado = listado;
+    this.titulos = Object.keys(listado.resultado[0]);
+    this.prepararListado(listado, 1);
   }
-
+  /**
+     * Preparo la configuracion del paginado y listado0
+     * @param listado Array de objetos que contiene los datos del api
+     * @param pagina numero de pagina donde debe inicializar el listado
+     */
+  prepararListado(listado: any, pagina: number) {
+    this.configPaginacion = this._configurarPaginado.config(listado, pagina);
+    this.listado = listado.resultado;
+  }
   /**
      * guardado de un elemento nuevo o editado.
      * @param datos datos a guardar
@@ -52,15 +78,6 @@ export class ProveedorComponent implements OnInit {
         }, error => { this._toastrService.error(error); }); */
       }
     }
-  }
-  /**
-   * refresca el listado con nuevos datos
-   */
-  refrescarListado() {
-    /* this._proveedorService.listar().subscribe(
-      respuesta => {
-        this.listado = respuesta;
-      }) */
   }
   /**
    * borra un elemento del listado
