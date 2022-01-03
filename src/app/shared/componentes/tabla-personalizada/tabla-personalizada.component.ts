@@ -18,6 +18,7 @@ export class TablaPersonalizadaComponent implements OnInit {
   @Output("cambioDePagina") public cambioDePagina = new EventEmitter();
   public tituloEditar = 'Editar ';
   public pagina: number = 1;
+  public colspan: number = 0;
   public listadoRender: any[] = [];
   public titulosTabla: string[] =[];
 
@@ -40,6 +41,7 @@ export class TablaPersonalizadaComponent implements OnInit {
         this.titulosTabla.push(listaTitulos[i]);
       }
     }
+    this.colspan = this.titulosTabla.length + 1;
   }
   /**
    * Envia los datos a editar

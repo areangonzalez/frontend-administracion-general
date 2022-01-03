@@ -26,7 +26,12 @@
         <th class="text-end w-25"><shared-crear-editar-modal [tipo]="'agregar'" [titulo]="nombreAbm" [armarForm]="titulosArray" (obtenerDatos)="agregar($event)" ></shared-crear-editar-modal></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="(listaDatos.length == 0)">
+      <tr >
+        <td class="text-center bg-warning" rowspan="1" [attr.colspan]="colspan"><strong>NO SE HAN ENCONTRADO RESULTADOS</strong></td>
+      </tr>
+      </tbody>
+    <tbody *ngIf="(listaDatos.length > 0)">
       <tr *ngFor="let fila of listaDatos">
         <td *ngFor="let col of titulosTabla">{{fila[col]}}</td>
         <td class="text-end w-25">
