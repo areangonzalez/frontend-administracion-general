@@ -66,14 +66,14 @@ export class ProveedorComponent implements OnInit {
       if (datos["id"] == 0){ // CREAR
         /* this._proveedorService.guardar(datos, 0).subscribe(
           respuesta => {
-            this._toastrService.success('Se ha creado un nuevo oficio!!!');
+            this._toastrService.success('Se ha creado un nuevo proveedor!!!');
             this.refrescarListado();
           }, error => { this._toastrService.error(error); }); */
       }else{ // EDITAR
 
         /* this._proveedorService.guardar(datos, datos["id"]).subscribe(
           respuesta => {
-            this._toastrService.success('El oficio se ha editado correctamente!!!');
+            this._toastrService.success('El proveedor ha sido editado correctamente!!!');
             this.refrescarListado();
         }, error => { this._toastrService.error(error); }); */
       }
@@ -86,7 +86,7 @@ export class ProveedorComponent implements OnInit {
   borrar(id:number) {
     /* this._proveedorService.borrar(id).subscribe(
       respuesta => {
-        this._toastrService.success("Se ha borrado el oficio correctamente.");
+        this._toastrService.success("Se ha dado de baja al proveedor correctamente.");
         this.refrescarListado();
       }, error => { this._toastrService.error(error); }); */
   }
