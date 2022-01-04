@@ -1,0 +1,52 @@
+<fieldset [formGroup]="productoForm">
+  <div class="row">
+    <div class="form-group col-md-12" >
+      <label for="nombre-producto">Nombre <strong class="text-danger">*</strong>:</label>
+      <input type="text" id="nombre-producto" placeholder="Nombre" class="form-control" formControlName="nombre" [ngClass]="{'is-invalid': (productoForm.controls.nombre.invalid && submitted)}" >
+      <div *ngIf="(productoForm.controls.nombre.invalid && submitted)" class="text-danger">
+          <div *ngIf="productoForm.controls.nombre.hasError('required')">Este campo es requerido. </div>
+      </div>
+    </div>
+    <div class="form-group col-md-12" >
+      <label for="categoria-producto">Categoría <strong class="text-danger">*</strong>:</label>
+      <select class="form-select" id="categoria-producto" formControlName="categoriaid" [ngClass]="{'is-invalid': (productoForm.controls.categoriaid.invalid && submitted)}">
+        <option value="">Seleccione Categoría</option>
+        <!-- <option *ngFor="let cat of listas.categorias" value="{{cat.id}}">{{cat.nombre}}</option> -->
+      </select>
+      <div *ngIf="(productoForm.controls.categoriaid.invalid && submitted)" class="text-danger">
+          <div *ngIf="productoForm.controls.categoriaid.hasError('required')">Este campo es requerido. </div>
+      </div>
+    </div>
+    <div class="form-group col-md-12" >
+      <label for="marca-producto">Marca <strong class="text-danger">*</strong>:</label>
+      <select class="form-select" id="marca-producto" formControlName="marcaid" [ngClass]="{'is-invalid': (productoForm.controls.marcaid.invalid && submitted)}">
+        <option value="">Seleccione Categoría</option>
+        <!-- <option *ngFor="let cat of listas.categorias" value="{{cat.id}}">{{cat.marcaid}}</option> -->
+      </select>
+      <div *ngIf="(productoForm.controls.marcaid.invalid && submitted)" class="text-danger">
+          <div *ngIf="productoForm.controls.marcaid.hasError('required')">Este campo es requerido. </div>
+      </div>
+    </div>
+    <div class="form-group col-md-12" >
+      <div class="form-group">
+        <label for="unidad_medida">Unidad de Medida (<b class="text-danger">*</b>):</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="unidad" formControlName="unidad_valor" placeholder="Ej.: 500" (keyup)="validarUnidad($event.target)" [ngClass]="{'is-invalid': (productoForm.controls.unidad_valor.invalid && submitted)}">
+          <select class="form-control" id="medida" formControlName="unidad_medidaid" [ngClass]="{'is-invalid': (productoForm.controls.unidad_medidaid.invalid && submitted)}">
+            <option value="">Medida</option>
+            <!-- <option *ngFor="let medida of listados.unidad_medida" value="{{medida.id}}">{{medida.simbolo}}</option> -->
+          </select>
+        </div>
+        <div *ngIf="((productoForm.controls.unidad_valor.invalid || productoForm.controls.unidad_medidaid.invalid) && submitted)" class="text-danger">
+          <div *ngIf="productoForm.controls.unidad_valor.hasError('required')">Por favor ingrese una cantidad para la unidad de medida.</div>
+          <div *ngIf="productoForm.controls.unidad_medidaid.hasError('required')">Por favor seleccione una medida.</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-12" >
+      <label for="codigo-producto">Código:</label>
+      <input type="text" id="codigo-producto" placeholder="Código" class="form-control" formControlName="codigo" >
+    </div>
+  </div>
+</fieldset>
+
