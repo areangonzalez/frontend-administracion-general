@@ -1,0 +1,6 @@
+<button *ngIf="(tipo == 'agregar')" type="button" class="btn btn-outline-success" (click)="abrirModal()" ngbTooltip="Agregar {{titulo}}" placement="top-right" container="body">
+  <i class="fas fa-plus"></i>&nbsp;Agregar
+</button>
+<button *ngIf="(tipo == 'editar')" type="button" class="btn btn-sm btn-outline-secondary" (click)="abrirModal()" ngbTooltip="{{titulo}}" placement="top-right" container="body">
+  <span class="far fa-edit" ></span>
+</button>
