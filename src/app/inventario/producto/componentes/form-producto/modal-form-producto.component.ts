@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfigurarListas } from 'src/app/core/model';
 
 @Component({
   selector: 'content-modal-form-producto',
@@ -10,13 +11,14 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
     </button>
   </div>
   <div class="modal-body">
-    <componente-form-producto></componente-form-producto>
+    <componente-form-producto [listas]="listas" ></componente-form-producto>
   </div>
 `,
   styleUrls: ['./modal-form-producto.component.scss']
 })
 export class ModalFormProductoContent {
   @Input("titulo") public titulo!: string;
+  @Input("listas") public listas!: ConfigurarListas;
 
   constructor( public activeModal: NgbActiveModal ) { }
   /**
@@ -26,11 +28,13 @@ export class ModalFormProductoContent {
       this.activeModal.close('closed');
   }
   /**
-   * Obtiene el guardado del formulario
-   * @param datos
+   * Obtiene un valor que notifica si se guardo o no los datos del formulario
+   * @param exitoso boolean valor que notifica si tuvo exito el guardado
    */
-  obtenerDatos(datos:any){
-    this.activeModal.close(datos);
+  obtenerVerificacion(exitoso:boolean){
+    if (exitoso) {
+      this.activeModal.close('closed');
+    }
   }
 }
 
@@ -43,7 +47,7 @@ export class ModalFormProductoComponent {
   @Input("titulo") public titulo!: string; // titulo de ser un string para el titulo representativo del modal
   @Input("tipo") public tipo: any; // tipo string agregar/editar
   @Input("datosProducto") public datosProducto: any;
-  @Output("obtenerDatos") public obtenerDatos = new EventEmitter();
+  @Input("listas") public listas!: ConfigurarListas;
 
   constructor(private modalService: NgbModal) { }
 
@@ -51,16 +55,7 @@ export class ModalFormProductoComponent {
     const modalRef = this.modalService.open(ModalFormProductoContent);
     modalRef.componentInstance.titulo = this.titulo;
     modalRef.componentInstance.datosProducto = this.datosProducto;
-    modalRef.result.then(
-      (result) => {
-        if (result == 'closed') {
-          this.obtenerDatos.emit(false);
-        }else{
-          this.obtenerDatos.emit(result);
-        }
-      }
-    );
-
+    modalRef.componentInstance.listas = this.listas;
   }
 
 }

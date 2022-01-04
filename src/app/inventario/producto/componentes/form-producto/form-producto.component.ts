@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ConfigurarListas } from 'src/app/core/model';
 import { UtilService } from 'src/app/core/service';
 
 @Component({
@@ -8,12 +9,14 @@ import { UtilService } from 'src/app/core/service';
   styleUrls: ['./form-producto.component.scss']
 })
 export class FormProductoComponent implements OnInit {
+  @Input("listas") public listas!: ConfigurarListas;
+
   public productoForm!: FormGroup;
   public submitted: boolean = false;
 
   constructor( private _fb: FormBuilder, private _util: UtilService ) {
     this.productoForm = _fb.group({
-      id: '',
+      id: 0,
       codigo: '',
       nombre: ['', Validators.required],
       marcaid: ['', Validators.required],
@@ -33,6 +36,26 @@ export class FormProductoComponent implements OnInit {
         this.productoForm.controls.unidad.patchValue(numero.value);
       }
     }
+  }
+
+  validarFormulario() {
+    this.submitted = true;
+    if (this.productoForm.invalid) {
+      return;
+    }else{
+      let params: any = this.productoForm.value;
+      if (params["id"] == 0 ) {
+        delete(params["id"]);
+        this.guardarProducto(0, params);
+      }else{
+        this.guardarProducto(params["id"], params);
+      }
+    }
+  }
+
+  guardarProducto(id: number, params: any) {
+    console.log(params);
+
   }
 
 }
