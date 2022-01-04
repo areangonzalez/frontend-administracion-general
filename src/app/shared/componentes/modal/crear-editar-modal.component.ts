@@ -6,7 +6,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   template: `
   <div class="modal-header">
     <h4 class="modal-title">Agregar {{titulo}}</h4>
-    <button type="button" class="close bg-light " aria-label="Close" (click)="cancelar(true)">
+    <button type="button" class="btn-close" aria-label="Close" (click)="cancelar(true)">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -18,7 +18,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 @Injectable()
 export class CrearEditarModalContent implements OnInit {
-  @Input("titulo") public titulo: any;
+  @Input("titulo") public titulo!: string;
   @Input("tipo") public tipo: any; // tipo agregar/modificar
   @Input('importarDatos') public importarDatos: any;
   @Input('armarForm') public armarForm: any;
@@ -47,7 +47,7 @@ export class CrearEditarModalContent implements OnInit {
 })
 @Injectable()
 export class CrearEditarModalComponent {
-  @Input("titulo") public titulo: any; // titulo de ser un string para el titulo representativo del modal
+  @Input("titulo") public titulo!: string; // titulo de ser un string para el titulo representativo del modal
   @Input("tipo") public tipo: any; // tipo string agregar/editar
   @Input("importarDatos") public importarDatos: any;
   @Input("armarForm") public armarForm: any;

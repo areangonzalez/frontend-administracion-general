@@ -6,7 +6,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   template: `
   <div class="modal-header">
     <h4 class="modal-title">Dar baja {{nombreTabla}}</h4>
-    <button type="button" class="close bg-light" aria-label="Close" (click)="activeModal.close('closed')">
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('closed')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -21,7 +21,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./baja-modal.component.scss']
 })
 export class BajaModalContent {
-  @Input("nombreTabla") public nombreTabla: string; // nombre del abm Ej.; 'Marca'
+  @Input("nombreTabla") public nombreTabla!: string; // nombre del abm Ej.; 'Marca'
 
     constructor(
         //private _mensajesService: MensajesService,
@@ -39,7 +39,7 @@ export class BajaModalContent {
   styleUrls: ['./baja-modal.component.scss']
 })
 export class BajaModalComponent {
-  @Input("nombreTabla") public nombreTabla: string;
+  @Input("nombreTabla") public nombreTabla!: string;
   @Input("importarId") public importarId: any;
   @Output("obtenerConfirmacion") public obtenerConfirmacion = new EventEmitter();
 

@@ -17,6 +17,7 @@ export class FormProductoComponent implements OnInit {
       codigo: '',
       nombre: ['', Validators.required],
       marcaid: ['', Validators.required],
+      unidad_valor: ['', Validators.required],
       unidad_medidaid: ['', Validators.required],
       categoriaid: ['', Validators.required]
     });

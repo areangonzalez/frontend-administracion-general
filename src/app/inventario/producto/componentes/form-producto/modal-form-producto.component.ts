@@ -6,8 +6,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   template: `
   <div class="modal-header">
     <h4 class="modal-title">{{titulo}}</h4>
-    <button type="button" class="close bg-light " aria-label="Close" (click)="cancelar()">
-      <span aria-hidden="true">&times;</span>
+    <button type="button" class="btn-close" aria-label="Close" (click)="cancelar()">
     </button>
   </div>
   <div class="modal-body">
