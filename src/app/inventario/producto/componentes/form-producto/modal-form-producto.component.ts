@@ -34,6 +34,8 @@ export class ModalFormProductoContent {
    */
   obtenerVerificacion(exitoso:any){
     if (exitoso == true) {
+      this.activeModal.close(true);
+    } else {
       this.activeModal.close('closed');
     }
   }
@@ -49,6 +51,7 @@ export class ModalFormProductoComponent {
   @Input("tipo") public tipo: any; // tipo string agregar/editar
   @Input("datosProducto") public datosProducto: any;
   @Input("listas") public listas!: ConfigurarListas;
+  @Output("confirmarGuardado") public confirmarGuardado = new EventEmitter();
 
   constructor(private modalService: NgbModal) { }
   /**
@@ -59,6 +62,12 @@ export class ModalFormProductoComponent {
     modalRef.componentInstance.titulo = this.titulo;
     modalRef.componentInstance.datosProducto = this.datosProducto;
     modalRef.componentInstance.listas = this.listas;
+    modalRef.result.then(
+      (result) => {
+        if (result !== 'closed') {
+          this.confirmarGuardado.emit(true);
+        }
+      }, error => { console.log(error); });
   }
 
 }

@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
-import { ConfigurarListas, ConfigurarPagina } from 'src/app/core/model';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ConfigurarListas } from 'src/app/core/model';
+import { ProductoService } from 'src/app/core/service';
 
 @Component({
   selector: 'componente-tabla-producto',
@@ -11,7 +12,7 @@ export class TablaProductoComponent {
   @Input("listadosArray") public listadosArray!: ConfigurarListas;
   @Output("cambioDePagina") public cambioDePagina = new EventEmitter();
 
-  constructor() {}
+  constructor( private _productoService: ProductoService ) {}
 
   cambiarPagina(pagina:number, pagesize: number) {
     this.cambioDePagina.emit({page: pagina, pagesize: pagesize});
@@ -22,4 +23,19 @@ export class TablaProductoComponent {
     this.cambiarPagina(this.configPaginacion.page, this.configPaginacion.pageSize);
   }
 
+  bajaProducto(confirma: boolean, id: number) {
+    if (confirma) {
+      this.actualizarListado(true); // borrar esta linea y descomentar la de abajo
+      /* this._productoService.baja(id).subscribe(
+        resultado => { // se confirma la baja del producto
+          this.actualizarListado(true);
+        }, error => { console.log(error); }); */
+    }
+  }
+
+  actualizarListado(confirmar: boolean) {
+    if (confirmar) {
+      this.cambiarPagina(this.configPaginacion.page, this.configPaginacion.pageSize);
+    }
+  }
 }

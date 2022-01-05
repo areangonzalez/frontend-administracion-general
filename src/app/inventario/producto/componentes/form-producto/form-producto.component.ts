@@ -86,10 +86,11 @@ export class FormProductoComponent implements OnInit {
         resultado => {
           this.confirmacionGuardado.emit(true);
         }, error => { console.log(error); }) */
-
-
     }
+  }
 
+  cancelar() {
+    this.confirmacionGuardado.emit(false);
   }
 
 }

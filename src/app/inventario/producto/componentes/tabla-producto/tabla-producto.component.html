@@ -28,7 +28,7 @@
         <th class="text-center" scope="col">Unidad (Valor/Medida)</th>
         <th class="text-center" scope="col">Categoría</th>
         <th class="text-end w-25">
-          <componente-modal-form-producto [tipo]="'agregar'" [titulo]="'Agregar Producto'" [listas]="listadosArray"></componente-modal-form-producto>
+          <componente-modal-form-producto [tipo]="'agregar'" [titulo]="'Agregar Producto'" [listas]="listadosArray" (confirmarGuardado)="actualizarListado($event)" ></componente-modal-form-producto>
         </th>
       </tr>
     </thead>
@@ -45,8 +45,8 @@
         <td class="text-center" scope="col">{{item.unidad_valor}}&nbsp;{{item.unidad_medida}}</td>
         <td class="text-center" scope="col">{{item.categoria}}</td>
         <td class="text-end">
-          <componente-modal-form-producto [tipo]="'editar'" [titulo]="'Editar Producto'" [listas]="listadosArray" [datosProducto]="item"></componente-modal-form-producto>
-          <componente-baja-poducto [idProducto]="item.id" ></componente-baja-poducto>
+          <componente-modal-form-producto [tipo]="'editar'" [titulo]="'Editar Producto'" [listas]="listadosArray" [datosProducto]="item" (confirmarGuardado)="actualizarListado($event)"></componente-modal-form-producto>
+          <componente-baja-poducto (obtenerConfirmacion)="bajaProducto($event, item.id)" ></componente-baja-poducto>
         </td>
       </tr>
       </tbody>
