@@ -10,6 +10,7 @@ import { UtilService, ProductoService } from 'src/app/core/service';
 })
 export class FormProductoComponent implements OnInit {
   @Input("listas") public listas!: ConfigurarListas;
+  @Input("datosProducto") public datosProducto: any;
   @Output("confirmacionGuardado") public confirmacionGuardado = new EventEmitter();
 
   public productoForm!: FormGroup;
@@ -28,8 +29,16 @@ export class FormProductoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.datosProducto) {
+      if (this.datosProducto.id !== undefined) {
+        this.productoForm.patchValue(this.datosProducto);
+      }
+    }
   }
-
+  /**
+   * Validad que sea un número entero o decimal
+   * @param numero {number} valor númerico
+   */
   validarUnidad(numero: any) {
     if (!this._util.validarNumeroDecimal(numero.value)) {
       numero.value = numero.value.substring(0, numero.value.length -1);
@@ -38,7 +47,10 @@ export class FormProductoComponent implements OnInit {
       }
     }
   }
-
+  /**
+   * Valida el formulario mediante los campos requeridos
+   * Si es valido aplica el guardado de producto
+   */
   validarFormulario() {
     this.submitted = true;
     if (this.productoForm.invalid) {
@@ -62,6 +74,11 @@ export class FormProductoComponent implements OnInit {
   guardarProducto(params: any, id?: number ) {
     if (id) {// editar producto
       console.log("Se ha editado un producto");
+      this.confirmacionGuardado.emit(true);
+      /* this._productoService.guardar(params, id).subscribe(
+        resultado => {
+          this.confirmacionGuardado.emit(true);
+        }, error => { console.log(error); }) */
     } else { // Crear producto
       console.log("Se ha creado un producto");
       this.confirmacionGuardado.emit(true);

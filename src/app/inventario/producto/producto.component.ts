@@ -24,7 +24,7 @@ export class ProductoComponent implements OnInit {
       { id: 3, nombre: "Aceite de girasol", codigo: "A300", unidad_valor: 1.5, unidad_medidaid: 3, marcaid: 1, categoriaid: 1, activo: 0,
       marca: "Arcor", unidad_medida: "lt", producto: "Aceite de girasol, 1.5lt (Arcor)", categoria: "Alimento" }
     ]};
-  public marca: any = [{ id: 230, nombre: "Arcor" },{ id: 338, nombre: "Ledesma" },{ id: 68, nombre: "3 arroyos" }];
+  public marca: any = [{ id: 1, nombre: "Arcor" },{ id: 2, nombre: "Ledesma" },{ id: 3, nombre: "3 arroyos" }];
   public categoria: any = [{ id: 1, nombre: "alimento/s" },{ id: 2, nombre: "Bebida/s" },{ id: 3, nombre: "Otros" }];
   public unidadMedida: any = [
     { id: 1, nombre: "Kilogramo", simbolo: "kg" },{ id: 2, nombre: "Gramo", simbolo: "gr" },

@@ -11,7 +11,7 @@ import { ConfigurarListas } from 'src/app/core/model';
     </button>
   </div>
   <div class="modal-body">
-    <componente-form-producto [listas]="listas" (confirmacionGuardado)="obtenerVerificacion($event)" ></componente-form-producto>
+    <componente-form-producto [listas]="listas" [datosProducto]="datosProducto" (confirmacionGuardado)="obtenerVerificacion($event)" ></componente-form-producto>
   </div>
 `,
   styleUrls: ['./modal-form-producto.component.scss']
@@ -19,6 +19,7 @@ import { ConfigurarListas } from 'src/app/core/model';
 export class ModalFormProductoContent {
   @Input("titulo") public titulo!: string;
   @Input("listas") public listas!: ConfigurarListas;
+  @Input("datosProducto") public datosProducto: any;
 
   constructor( public activeModal: NgbActiveModal ) { }
   /**
@@ -50,7 +51,9 @@ export class ModalFormProductoComponent {
   @Input("listas") public listas!: ConfigurarListas;
 
   constructor(private modalService: NgbModal) { }
-
+  /**
+   * Abre el modal con los siguientes datos especificos
+   */
   abrirModal() {
     const modalRef = this.modalService.open(ModalFormProductoContent);
     modalRef.componentInstance.titulo = this.titulo;
