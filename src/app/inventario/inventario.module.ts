@@ -6,7 +6,10 @@ import { InventarioRoutingModule } from './inventario-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
 import { MarcaComponent } from './marca';
-import { ProductoComponent, TablaProductoComponent, BuscarProductoComponent, FormProductoComponent, ModalFormProductoContent, ModalFormProductoComponent } from './producto';
+import {
+  ProductoComponent, TablaProductoComponent, BuscarProductoComponent, FormProductoComponent,
+  ModalFormProductoContent, ModalFormProductoComponent, BajaPoductoContent, BajaPoductoComponent
+} from './producto';
 import { UnidadMedidaComponent } from './unidad-medida';
 import { CategoriaComponent } from './categoria';
 import { ProveedorComponent } from './proveedor';
@@ -19,7 +22,8 @@ import { ProveedorComponent } from './proveedor';
     CategoriaComponent,
     ProveedorComponent,
     FormProductoComponent,
-    ModalFormProductoContent, ModalFormProductoComponent
+    ModalFormProductoContent, ModalFormProductoComponent,
+    BajaPoductoContent, BajaPoductoComponent
   ],
   imports: [
     CommonModule,

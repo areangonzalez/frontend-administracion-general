@@ -46,6 +46,7 @@
         <td class="text-center" scope="col">{{item.categoria}}</td>
         <td class="text-end">
           <componente-modal-form-producto [tipo]="'editar'" [titulo]="'Editar Producto'" [listas]="listadosArray" [datosProducto]="item"></componente-modal-form-producto>
+          <componente-baja-poducto [idProducto]="item.id" ></componente-baja-poducto>
         </td>
       </tr>
       </tbody>

@@ -31,6 +31,10 @@ export class ProductoService implements Resolve<any> {
     return this._api.get('/productos', httpParams);
   }
 
+  baja(id: number) {
+    return this._api.delete('/productos/' + id);
+  }
+
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
