@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfigurarListas } from 'src/app/core/model';
-import { UtilService } from 'src/app/core/service';
+import { UtilService, ProductoService } from 'src/app/core/service';
 
 @Component({
   selector: 'componente-form-producto',
@@ -10,11 +10,12 @@ import { UtilService } from 'src/app/core/service';
 })
 export class FormProductoComponent implements OnInit {
   @Input("listas") public listas!: ConfigurarListas;
+  @Output("confirmacionGuardado") public confirmacionGuardado = new EventEmitter();
 
   public productoForm!: FormGroup;
   public submitted: boolean = false;
 
-  constructor( private _fb: FormBuilder, private _util: UtilService ) {
+  constructor( private _fb: FormBuilder, private _util: UtilService, private _productoService: ProductoService ) {
     this.productoForm = _fb.group({
       id: 0,
       codigo: '',
@@ -46,15 +47,31 @@ export class FormProductoComponent implements OnInit {
       let params: any = this.productoForm.value;
       if (params["id"] == 0 ) {
         delete(params["id"]);
-        this.guardarProducto(0, params);
+        this.guardarProducto(params);
       }else{
-        this.guardarProducto(params["id"], params);
+        this.guardarProducto(params, params["id"]);
       }
     }
   }
+  /**
+   *
+   * @param params {objeto} datos que contiene un producto
+   * @param id {number} identificidaor del producto que se va a editar,
+   *                    (?) opcional para el creado no se necesita el parametro id
+   */
+  guardarProducto(params: any, id?: number ) {
+    if (id) {// editar producto
+      console.log("Se ha editado un producto");
+    } else { // Crear producto
+      console.log("Se ha creado un producto");
+      this.confirmacionGuardado.emit(true);
+      /* this._productoService.guardar(params).subscribe(
+        resultado => {
+          this.confirmacionGuardado.emit(true);
+        }, error => { console.log(error); }) */
 
-  guardarProducto(id: number, params: any) {
-    console.log(params);
+
+    }
 
   }
 

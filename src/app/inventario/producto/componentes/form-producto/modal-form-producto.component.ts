@@ -11,7 +11,7 @@ import { ConfigurarListas } from 'src/app/core/model';
     </button>
   </div>
   <div class="modal-body">
-    <componente-form-producto [listas]="listas" ></componente-form-producto>
+    <componente-form-producto [listas]="listas" (confirmacionGuardado)="obtenerVerificacion($event)" ></componente-form-producto>
   </div>
 `,
   styleUrls: ['./modal-form-producto.component.scss']
@@ -31,8 +31,8 @@ export class ModalFormProductoContent {
    * Obtiene un valor que notifica si se guardo o no los datos del formulario
    * @param exitoso boolean valor que notifica si tuvo exito el guardado
    */
-  obtenerVerificacion(exitoso:boolean){
-    if (exitoso) {
+  obtenerVerificacion(exitoso:any){
+    if (exitoso == true) {
       this.activeModal.close('closed');
     }
   }
