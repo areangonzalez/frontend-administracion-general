@@ -8,9 +8,9 @@ import {
   LocalidadComponent,
   LocalidadListaComponent, LocalidadExtraListaComponent,
   LocalidadBusquedaComponent, LocalidadFormComponent,
-  LocalidadModalContent, LocalidadModalComponent
+  LocalidadModalContent, LocalidadModalComponent,
+  LocalidadExtraBorrarModalContent, LocalidadExtraBorrarModalComponent
 } from './localidad';
-import { LocalidadBajaModalComponent } from './localidad/componentes/modal/localidad-baja-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { LocalidadBajaModalComponent } from './localidad/componentes/modal/local
     LocalidadExtraListaComponent,
     LocalidadBusquedaComponent,
     LocalidadFormComponent,
-    LocalidadModalContent, LocalidadModalComponent, LocalidadBajaModalComponent
+    LocalidadModalContent, LocalidadModalComponent,
+    LocalidadExtraBorrarModalContent, LocalidadExtraBorrarModalComponent
   ],
   imports: [
     CommonModule,
