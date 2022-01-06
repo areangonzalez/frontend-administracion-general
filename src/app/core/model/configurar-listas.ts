@@ -7,4 +7,7 @@ export interface ConfigurarListas {
   permisos?: any;
   usuarios?: any;
   tamanioPagina?: any;
+  backendLocalidades?: any;
+  localidadesExtras?: any;
+  provincias?: any;
 }
