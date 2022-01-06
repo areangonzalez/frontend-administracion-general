@@ -9,6 +9,7 @@ import {
   LocalidadListaComponent, LocalidadExtraListaComponent,
   LocalidadBusquedaComponent, LocalidadFormComponent
 } from './localidad';
+import { LocalidadModalComponent } from './localidad/componentes/modal/localidad-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {
     LocalidadListaComponent,
     LocalidadExtraListaComponent,
     LocalidadBusquedaComponent,
-    LocalidadFormComponent
+    LocalidadFormComponent,
+    LocalidadModalComponent
   ],
   imports: [
     CommonModule,

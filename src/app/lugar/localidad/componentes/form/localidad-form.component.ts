@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UtilService } from 'src/app/core/service';
 
 @Component({
-  selector: 'app-localidad-form',
+  selector: 'componente-localidad-form',
   templateUrl: './localidad-form.component.html',
   styleUrls: ['./localidad-form.component.scss']
 })
