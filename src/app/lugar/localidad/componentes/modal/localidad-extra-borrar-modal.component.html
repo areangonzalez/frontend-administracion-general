@@ -1,1 +1,2 @@
-<p>localidad-baja-modal works!</p>
+<button *ngIf="(esBorrar)" type="button" class="btn btn-sm btn-outline-danger" ngbTooltip="Borrar Extra" container="body" placement="top" (click)="abrirModal()"><i class="far fa-trash-alt"></i></button>
+<button *ngIf="(!esBorrar)" type="button" class="btn btn-sm btn-outline-info" ngbTooltip="Agregar Extra" container="body" placement="top" (click)="abrirModal()"><i class="fas fa-exchange-alt"></i></button>

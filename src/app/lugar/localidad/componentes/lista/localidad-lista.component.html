@@ -7,9 +7,6 @@
       <span *ngIf="configPaginacion.totalRegistros > 0">Localidades: {{configPaginacion.cantRegistros}} - {{configPaginacion.totalRegistros}} de {{configPaginacion.colleccionSize}}</span>
       <span *ngIf="configPaginacion.totalRegistros == 0">Localidades: 0</span>
     </div>
-    <!-- <div class="d-flex align-items-center p-2 font-weight-bold">
-      <ngb-pagination *ngIf="(configPaginacion.colleccionSize > 0)"  [collectionSize]="configPaginacion.colleccionSize" [(page)]="configPaginacion.page" [pageSize]="configPaginacion.pageSize" [maxSize]="10" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" (pageChange)="cambiarPagina(configPaginacion.page)" aria-label="Default pagination" style="margin-bottom: -15px;" ></ngb-pagination>
-    </div> -->
     <div class="d-flex align-items-center">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 pr-0" >
         <div class="input-group">
@@ -48,7 +45,7 @@
         <td class="text-center">{{loc.departamento}}</td>
         <td class="text-center">
           <componente-localidad-modal [provincias]="listados.provincias" [localidad]="loc" [titulo]="'Editar'" (confirmarRegistro)="actualizarRegistro($event)" ></componente-localidad-modal>
-          <!-- <admin-borrar-localidad-extra-modal *ngIf="(!loc.extra)" [esBorrar]="false" [nombreLocalidad]="loc.nombre" (confirmarBorrado)="agregarLocalidadExtra($event, loc.id)"></admin-borrar-localidad-extra-modal> -->
+          <componente-localidad-extra-borrar-modal *ngIf="(!loc.extra)" [esBorrar]="false" [nombreLocalidad]="loc.nombre" (confirmarBorrado)="agregarLocalidadExtra($event, loc.id)"></componente-localidad-extra-borrar-modal>
         </td>
       </tr>
     </tbody>
