@@ -1,0 +1,19 @@
+<h2>Gestión de Localidades</h2>
+
+<div class="mb-3">
+  <ul ngbNav #nav="ngbNav" class="nav-pills nav-fill">
+    <li ngbNavItem>
+      <a ngbNavLink>Localidades</a>
+      <ng-template ngbNavContent>
+        <!-- <admin-localidad-lista [listados]="listas"></admin-localidad-lista> -->
+      </ng-template>
+    </li>
+    <li ngbNavItem>
+      <a ngbNavLink>Extras</a>
+      <ng-template ngbNavContent>
+        <!-- <admin-localidad-extra-lista [listados]="listas"></admin-localidad-extra-lista> -->
+      </ng-template>
+    </li>
+  </ul>
+  <div  class="p-3" [ngbNavOutlet]="nav"></div>
+</div>
