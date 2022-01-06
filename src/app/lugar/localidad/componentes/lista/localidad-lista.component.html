@@ -14,7 +14,7 @@
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 pr-0" >
         <div class="input-group">
           <label class="input-group-text" for="registros"> Registros por página:</label>
-          <select class="form-select form-select-sm" id="page_size" [(ngModel)]="tamanioPagina" (change)="cambiarPagina($event)">
+          <select class="form-select form-select-sm" id="page_size" [(ngModel)]="configPaginacion.pageSize" (change)="cambiarPagina($event)">
             <option *ngFor="let tamanio of tamanioPaginaLista" value="{{tamanio.size}}">{{tamanio.size}}</option>
           </select>
         </div>
@@ -53,7 +53,6 @@
       </tr>
     </tbody>
   </table>
-  {{configPaginacion | json}}
   <div class="d-flex justify-content-center">
     <ngb-pagination [collectionSize]="configPaginacion.colleccionSize" [(page)]="configPaginacion.page" [pageSize]="configPaginacion.pageSize" [maxSize]="10" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" (pageChange)="cambiarPagina(configPaginacion.page)" aria-label="Default pagination" style="margin-bottom: -15px;" ></ngb-pagination>
   </div>

@@ -1,15 +1,15 @@
 <h2>Gestión de Localidades</h2>
 
 <div class="mb-3">
-  <ul ngbNav #nav="ngbNav" class="nav-pills nav-fill">
-    <li ngbNavItem>
+  <ul ngbNav #nav="ngbNav" [activeId]="2" class="nav-pills nav-fill">
+    <li [ngbNavItem]="1">
       <a ngbNavLink>Localidades</a>
       <ng-template ngbNavContent>
         <componente-localidad-lista [listados]="listas"></componente-localidad-lista>
         <!-- <admin-localidad-lista [listados]="listas"></admin-localidad-lista> -->
       </ng-template>
     </li>
-    <li ngbNavItem>
+    <li [ngbNavItem]="2">
       <a ngbNavLink>Extras</a>
       <ng-template ngbNavContent>
         <componente-localidad-extra-lista [listados]="listas"></componente-localidad-extra-lista>
