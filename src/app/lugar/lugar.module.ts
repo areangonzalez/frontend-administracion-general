@@ -7,7 +7,7 @@ import { LugarRoutingModule } from './lugar-routing.module';
 import {
   LocalidadComponent,
   LocalidadListaComponent, LocalidadExtraListaComponent,
-  LocalidadBusquedaComponent, LocalidadExtraBusquedaComponent
+  LocalidadBusquedaComponent
 } from './localidad';
 
 @NgModule({
@@ -15,8 +15,7 @@ import {
     LocalidadComponent,
     LocalidadListaComponent,
     LocalidadExtraListaComponent,
-    LocalidadBusquedaComponent,
-    LocalidadExtraBusquedaComponent
+    LocalidadBusquedaComponent
   ],
   imports: [
     CommonModule,
