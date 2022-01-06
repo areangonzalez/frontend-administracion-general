@@ -7,9 +7,8 @@ import { LugarRoutingModule } from './lugar-routing.module';
 import {
   LocalidadComponent,
   LocalidadListaComponent, LocalidadExtraListaComponent,
-  LocalidadBusquedaComponent
+  LocalidadBusquedaComponent, LocalidadFormComponent
 } from './localidad';
-import { LocalidadFormComponent } from './localidad/componentes/form/localidad-form.component';
 
 @NgModule({
   declarations: [
