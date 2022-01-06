@@ -4,14 +4,14 @@
       <label for="provinciaid" class="prioridad">Provincia:</label>
       <select class="form-control" id="provinciaid" formControlName="provinciaid" (change)="departamentoPorProvincia($event)" [ngClass]="{'is-invalid': (localidadForm.controls.provinciaid.invalid && submitted)}">
         <option value="">Seleccione una Provincia</option>
-        <!-- <option *ngFor="let prov of provincias" value="{{prov.id}}">{{prov.nombre}}</option> -->
+        <option *ngFor="let prov of provincias" value="{{prov.id}}">{{prov.nombre}}</option>
       </select>
     </div>
     <div class="form-group col-md-12">
       <label for="departamentoid" class="prioridad">Departamento (<span>*</span>):</label>
       <select class="form-control" id="departamentoid" formControlName="departamentoid" [ngClass]="{'is-invalid': (localidadForm.controls.departamentoid.invalid && submitted)}">
         <option value="">Seleccione un Departamento</option>
-        <!-- <option *ngFor="let depto of departamentos" value="{{depto.id}}">{{depto.nombre}}</option> -->
+        <option *ngFor="let depto of departamentos" value="{{depto.id}}">{{depto.nombre}}</option>
       </select>
       <div *ngIf="(localidadForm.controls.departamentoid.invalid && submitted)" class="text-danger">
           <div *ngIf="localidadForm.controls.departamentoid.hasError('required')">Este campo es requerido. </div>
@@ -33,9 +33,9 @@
       </div>
     </div>
   </div>
-  <!-- <hr class="pt1">
-  <div class="float-right">
+  <hr class="pt1">
+  <div class="d-flex justify-content-between">
       <button type="button" class="btn btn-danger" (click)="cancelar()"><span class="oi oi-ban" title="Cancelar" aria-hidden="true"></span> Cancelar</button>&nbsp;
       <button type="button" class="btn btn-success" (click)="validarForm()" ><span class="fas fa-save" title="Guardar" aria-hidden="true"></span> Guardar</button>
-  </div> -->
+  </div>
 </fieldset>

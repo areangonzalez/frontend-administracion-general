@@ -7,9 +7,9 @@ import { LugarRoutingModule } from './lugar-routing.module';
 import {
   LocalidadComponent,
   LocalidadListaComponent, LocalidadExtraListaComponent,
-  LocalidadBusquedaComponent, LocalidadFormComponent
+  LocalidadBusquedaComponent, LocalidadFormComponent,
+  LocalidadModalContent, LocalidadModalComponent
 } from './localidad';
-import { LocalidadModalComponent } from './localidad/componentes/modal/localidad-modal.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { LocalidadModalComponent } from './localidad/componentes/modal/localidad
     LocalidadExtraListaComponent,
     LocalidadBusquedaComponent,
     LocalidadFormComponent,
-    LocalidadModalComponent
+    LocalidadModalContent, LocalidadModalComponent
   ],
   imports: [
     CommonModule,

@@ -30,6 +30,7 @@
         <th class="text-center" scope="col">Provincia</th>
         <th class="text-center" scope="col">Departamento</th>
         <th class="text-center" scope="col">
+          <componente-localidad-modal [provincias]="listados.provincias" [titulo]="'Agregar'" (confirmarRegistro)="actualizarRegistro($event)"></componente-localidad-modal>
           <!-- <admin-registrar-localidad-modal [provincias]="listados.provincias" [titulo]="'Agregar'" (confirmarRegistro)="actualizarRegistro($event)"></admin-registrar-localidad-modal> -->
         </th>
       </tr>
