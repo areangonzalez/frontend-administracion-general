@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-localidad',
+  selector: 'lugar-localidad',
   templateUrl: './localidad.component.html',
   styleUrls: ['./localidad.component.scss']
 })
