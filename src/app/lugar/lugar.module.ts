@@ -9,13 +9,15 @@ import {
   LocalidadListaComponent, LocalidadExtraListaComponent,
   LocalidadBusquedaComponent
 } from './localidad';
+import { LocalidadFormComponent } from './localidad/componentes/form/localidad-form.component';
 
 @NgModule({
   declarations: [
     LocalidadComponent,
     LocalidadListaComponent,
     LocalidadExtraListaComponent,
-    LocalidadBusquedaComponent
+    LocalidadBusquedaComponent,
+    LocalidadFormComponent
   ],
   imports: [
     CommonModule,
