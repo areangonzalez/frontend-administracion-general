@@ -10,7 +10,6 @@ import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-boots
     </div>
     <div class="modal-body">
       <componente-localidad-form [localidad]="localidad" [provincias]="provincias" (cancelarForm)="confirmar($event)"></componente-localidad-form>
-      <!-- <admin-localidad-form [localidad]="localidad" [provincias]="provincias" (cancelarForm)="confirmar($event)"></admin-localidad-form> -->
     </div>
   `,
   styleUrls: ['./localidad-modal.component.scss']

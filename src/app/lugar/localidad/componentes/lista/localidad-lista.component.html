@@ -1,6 +1,5 @@
 <div class="shadow-sm bg-white mb-3 rounded p-3">
   <componente-localidad-busqueda [provincias]="listados.provincias" (obtenerBusqueda)="realizarBusqueda($event, 1)" ></componente-localidad-busqueda>
-  <!-- <admin-busqueda-avanzada-localidad [provincias]="listados.provincias" (obtenerBusqueda)="realizarBusqueda($event, 1)" ></admin-busqueda-avanzada-localidad> -->
 </div>
 <div class="shadow-sm bg-white rounded p-3">
   <div class="d-flex justify-content-between">
@@ -31,7 +30,6 @@
         <th class="text-center" scope="col">Departamento</th>
         <th class="text-center" scope="col">
           <componente-localidad-modal [provincias]="listados.provincias" [titulo]="'Agregar'" (confirmarRegistro)="actualizarRegistro($event)"></componente-localidad-modal>
-          <!-- <admin-registrar-localidad-modal [provincias]="listados.provincias" [titulo]="'Agregar'" (confirmarRegistro)="actualizarRegistro($event)"></admin-registrar-localidad-modal> -->
         </th>
       </tr>
     </thead>
@@ -49,8 +47,8 @@
         <td class="text-center">{{loc.provincia}}</td>
         <td class="text-center">{{loc.departamento}}</td>
         <td class="text-center">
-          <!-- <admin-registrar-localidad-modal [provincias]="listados.provincias" [localidad]="loc" [titulo]="'Editar'" (confirmarRegistro)="actualizarRegistro($event)"></admin-registrar-localidad-modal>
-          <admin-borrar-localidad-extra-modal *ngIf="(!loc.extra)" [esBorrar]="false" [nombreLocalidad]="loc.nombre" (confirmarBorrado)="agregarLocalidadExtra($event, loc.id)"></admin-borrar-localidad-extra-modal> -->
+          <componente-localidad-modal [provincias]="listados.provincias" [localidad]="loc" [titulo]="'Editar'" (confirmarRegistro)="actualizarRegistro($event)" ></componente-localidad-modal>
+          <!-- <admin-borrar-localidad-extra-modal *ngIf="(!loc.extra)" [esBorrar]="false" [nombreLocalidad]="loc.nombre" (confirmarBorrado)="agregarLocalidadExtra($event, loc.id)"></admin-borrar-localidad-extra-modal> -->
         </td>
       </tr>
     </tbody>
