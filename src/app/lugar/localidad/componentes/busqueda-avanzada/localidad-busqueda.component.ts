@@ -12,7 +12,13 @@ export class LocalidadBusquedaComponent implements OnInit {
   public btnSeleccion: boolean = false;
   public mostrar: boolean = false;
   public busquedaAvanzada: FormGroup;
-  public departamentos: any = [];
+  //public departamentos: any = [];
+
+  /* Borrar esta variable */
+  public departamentos: any = [
+    { id: 5, nombre: "Alberti", provinciaid: 2 },{ id: 6, nombre: "Avellaneda", provinciaid: 2 },
+    { id: 7, nombre: "Ayacucho", provinciaid: 2 },{ id: 8, nombre: "Azul", provinciaid: 2 },
+  ];
 
   constructor(private _fb: FormBuilder, /* private _mensajeService: NotificacionService, private _util: UtilService, private _departamentoService: DepartamentoService, private _msj: NotificacionService */) {
     this.busquedaAvanzada = _fb.group({
