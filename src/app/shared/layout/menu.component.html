@@ -33,7 +33,7 @@
         </button>
         <div class="collapse" #lugCollapse="ngbCollapse" [(ngbCollapse)]="isCollapsedLug" >
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">Localidad</a></li>
+            <li [routerLinkActive]="['active']"><a [routerLink]="['/lugar/localidad']" class="link-dark rounded">Localidad</a></li>
           </ul>
         </div>
       </li>
