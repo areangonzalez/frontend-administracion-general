@@ -6,15 +6,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LugarRoutingModule } from './lugar-routing.module';
 import {
   LocalidadComponent,
-  LocalidadListaComponent, LocalidadExtraListaComponent
+  LocalidadListaComponent, LocalidadExtraListaComponent,
+  LocalidadBusquedaComponent, LocalidadExtraBusquedaComponent
 } from './localidad';
-
 
 @NgModule({
   declarations: [
     LocalidadComponent,
     LocalidadListaComponent,
-    LocalidadExtraListaComponent
+    LocalidadExtraListaComponent,
+    LocalidadBusquedaComponent,
+    LocalidadExtraBusquedaComponent
   ],
   imports: [
     CommonModule,
