@@ -4,7 +4,7 @@ import { ConfigurarPagina } from 'src/app/core/model';
 import { CategoriaService, ConfiguracionParaPaginarService } from 'src/app/core/service';
 
 @Component({
-  selector: 'app-categoria',
+  selector: 'inventario-categoria',
   templateUrl: './categoria.component.html',
   styleUrls: ['./categoria.component.scss']
 })

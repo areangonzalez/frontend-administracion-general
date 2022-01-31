@@ -4,7 +4,7 @@ import { ConfigurarPagina } from 'src/app/core/model';
 import { UnidadMedidaService, ConfiguracionParaPaginarService } from 'src/app/core/service';
 
 @Component({
-  selector: 'app-unidad-medida',
+  selector: 'inventario-unidad-medida',
   templateUrl: './unidad-medida.component.html',
   styleUrls: ['./unidad-medida.component.scss']
 })

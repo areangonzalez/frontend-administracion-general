@@ -4,7 +4,7 @@ import { ConfigurarPagina } from 'src/app/core/model';
 import { MarcaService, ConfiguracionParaPaginarService } from 'src/app/core/service';
 
 @Component({
-  selector: 'app-marca',
+  selector: 'inventario-marca',
   templateUrl: './marca.component.html',
   styleUrls: ['./marca.component.scss']
 })

@@ -4,7 +4,7 @@ import { ConfigurarListas, ConfigurarPagina } from 'src/app/core/model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-producto',
+  selector: 'inventario-producto',
   templateUrl: './producto.component.html',
   styleUrls: ['./producto.component.scss']
 })
