@@ -1,3 +1,5 @@
+export * from './jwt.service';
+export * from './autenticacion.service';
 export * from './api.service';
 export * from './tema-sistema.service';
 export * from './util.service';
