@@ -39,14 +39,15 @@ export class ProductoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.prepararListado(this._route.snapshot.data["productos"], 1);
     // DESCOMENTAR CUANDO EL API ESTE FUCNIONANDO
-    /* this.prepararListado(this._route.snapshot.data["productos"], 1);
+    /*
     this.configurarListas.categorias = this._route.snapshot.data["categorias"];
     this.configurarListas.marcas = this._route.snapshot.data["marcas"];
     this.configurarListas.unidad_medida = this._route.snapshot.data["unidadMedidas"]; */
 
     // BORRAR LOS DATOS DE PRUEBA NO SON NECESARIOS
-    this.prepararListado(this.productos, 1);
+    /* this.prepararListado(this.productos, 1); */
     this.configurarListas.categorias = this.categoria;
     this.configurarListas.marcas = this.marca;
     this.configurarListas.unidad_medida = this.unidadMedida;

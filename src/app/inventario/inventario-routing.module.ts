@@ -16,6 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'producto', component: ProductoComponent,
+    resolve: { productos: ProductoService }
     //resolve: { productos: ProductoService, categorias: CategoriaService, unidadMedidas: UnidadMedidaService, marcas: MarcaService }
   }, {
     path: 'proovedor', component: ProveedorComponent,

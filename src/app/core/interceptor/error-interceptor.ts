@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpEventType } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, finalize } from 'rxjs/operators';
-/* import { AutenticacionService, NotificacionService, LoaderService } from '../services'; */
+import { AutenticacionService, /* NotificacionService, */ LoaderService } from '../service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
   private service_count = 0;
-  /* constructor(private _auth: AutenticacionService, private _loading: LoaderService, private _router: Router, private _msj: NotificacionService) { } */
+  constructor(private _auth: AutenticacionService, private _loading: LoaderService, private _router: Router, /* private _msj: NotificacionService */) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       /* this._loading.show(); */

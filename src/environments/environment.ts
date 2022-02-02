@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'UrlApi' // http://url.com
+  baseUrl: '/apimock' // http://url.com
 };
 
 /*

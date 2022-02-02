@@ -1,1 +1,7 @@
-<p>loader works!</p>
+<div [class.loader-hidden]="!show" class="loading">
+  <app-trinity-rings-spinner
+      [animationDuration]="2000"
+      [size]="66"
+      [color]="'#ccff99'"
+  ></app-trinity-rings-spinner>
+</div>
