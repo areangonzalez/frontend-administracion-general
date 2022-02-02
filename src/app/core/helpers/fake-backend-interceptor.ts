@@ -50,6 +50,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                         return deleteUser(); */
                 case url.endsWith('/apimock/productos') && method === 'GET':
                     return getProductos();
+                case url.endsWith('/apimock/categorias') && method === 'GET':
+                    return getProductos();
+                case url.endsWith('/apimock/marcas') && method === 'GET':
+                    return getProductos();
+                case url.endsWith('/apimock/unidad-medidas') && method === 'GET':
+                    return getProductos();
+
                 default:
                     // pass through any requests not handled above
                     return next.handle(request);
@@ -86,8 +93,19 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         function getProductos() {
             //if (!isLoggedIn()) return unauthorized();
-
             return ok(productos);
+        }
+        function getCategorias() {
+          //if (!isLoggedIn()) return unauthorized();
+          return ok(categoria);
+        }
+        function getMarcas() {
+          //if (!isLoggedIn()) return unauthorized();
+          return ok(marca);
+        }
+        function getUnidadMedida() {
+          //if (!isLoggedIn()) return unauthorized();
+          return ok(unidadMedida);
         }
 
         /* function getUserById() {

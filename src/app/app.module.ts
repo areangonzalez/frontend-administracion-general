@@ -5,25 +5,27 @@ import es from "@angular/common/locales/es";
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgBootstrapDarkmodeModule } from 'ng-bootstrap-darkmode';
+import { TrinityRingsSpinnerModule } from 'angular-epic-spinners';
 
 import { fakeBackendProvider } from './core/helpers';
 
 import { RoutingModule } from './routing.module';
 
-import { CabeceraComponent, MenuComponent } from "./shared";
+import { CabeceraComponent, MenuComponent, LoaderComponent } from "./shared";
 import { AppComponent } from './app.component';
 import { ErrorInterceptor, JwtInterceptor } from './core/interceptor';
 
 @NgModule({
   declarations: [
     CabeceraComponent, MenuComponent,
-    AppComponent
+    AppComponent, LoaderComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     HttpClientModule,
     NgBootstrapDarkmodeModule,
+    TrinityRingsSpinnerModule,
     RoutingModule
   ],
   providers: [

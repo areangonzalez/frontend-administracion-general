@@ -13,7 +13,7 @@ export class ErrorInterceptor implements HttpInterceptor {
   constructor(private _auth: AutenticacionService, private _loading: LoaderService, private _router: Router, /* private _msj: NotificacionService */) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-      /* this._loading.show(); */
+      this._loading.show();
       this.service_count++;
         return next.handle(request).pipe(
           catchError(err => {
@@ -40,7 +40,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         }), finalize(() => {
           this.service_count--;
           if ( this.service_count === 0 ) {
-            /* this._loading.hide(); */
+            this._loading.hide();
           }
         }))
     }

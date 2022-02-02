@@ -1,8 +1,9 @@
-  <div class="d-flex flex-nowrap">
-    <layout-menu class="start" [ngClass]="{'ocultar': mostrar}"></layout-menu>
-    <div class="main">
-      <layout-cabecera (ocultarMenu)="ocultarMenu($event)" ></layout-cabecera>
-      <main class="contenedor-principal" >
+<div class="d-flex flex-nowrap">
+  <layout-menu class="start" [ngClass]="{'ocultar': mostrar}"></layout-menu>
+  <angular-loader></angular-loader>
+  <div class="main">
+    <layout-cabecera (ocultarMenu)="ocultarMenu($event)" ></layout-cabecera>
+    <main class="contenedor-principal" >
         <router-outlet></router-outlet>
       </main>
     </div>
