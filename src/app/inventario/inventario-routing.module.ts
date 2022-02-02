@@ -22,7 +22,7 @@ const routes: Routes = [
     //resolve: { proovedores: ProveedorService }
   },{
     path: 'unidad-medida', component: UnidadMedidaComponent,
-    // resolve: { unidadMedidas: UnidadMedidaService }
+    resolve: { unidadMedidas: UnidadMedidaService }
   }
 ];
 

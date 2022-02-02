@@ -11,24 +11,12 @@ import { UnidadMedidaService, ConfiguracionParaPaginarService } from 'src/app/co
 export class UnidadMedidaComponent implements OnInit {
   public configPaginacion: ConfigurarPagina = new ConfigurarPagina();
   public listado: any = [];
-  // borrar los datos de la variable y que quede un array solo
-  public unidadMedida: any = {
-    pagesize: 10, page: 0, total_filtrado: 3,
-    resultado:[
-    { "id": 1, "nombre": "Kilogramo", "simbolo": "kg" },
-    { "id": 2, "nombre": "Gramo", "simbolo": "gr" },
-    { "id": 3, "nombre": "Litro", "simbolo": "lt" },
-    { "id": 4, "nombre": "Mililitro", "simbolo": "ml" },
-    { "id": 5, "nombre": "Unidad", "simbolo": "un" },
-    { "id": 6, "nombre": "Centimetros cúbicos", "simbolo": "cm3" }
-  ]};
   public titulos: string[] = [];
 
   constructor(private _route: ActivatedRoute, private _unidadMedidaService: UnidadMedidaService, private _configurarPaginado: ConfiguracionParaPaginarService) { }
 
   ngOnInit(): void {
-    // this.renderTabla(this._route.snapshot.data["unidadMedidas"]);
-    this.renderTabla(this.unidadMedida);
+    this.renderTabla(this._route.snapshot.data["unidadMedidas"]);
   }
   /**
    * Aplica una busqueda con los parametros a buscar
