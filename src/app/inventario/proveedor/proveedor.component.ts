@@ -11,21 +11,12 @@ import { ProveedorService, ConfiguracionParaPaginarService } from 'src/app/core/
 export class ProveedorComponent implements OnInit {
   public configPaginacion: ConfigurarPagina = new ConfigurarPagina();
   public listado: any = [];
-
-  public proveedores: any = {
-    pagesize: 10, page: 0, total_filtrado: 3,
-    resultado:[
-    { "id": 1, "nombre": "Proovedor 1" },
-    { "id": 2, "nombre": "Proovedor 2" },
-    { "id": 3, "nombre": "Proovedor 3" }
-  ]};
   public titulos: string[] = [];
 
   constructor(private _route: ActivatedRoute, private _proveedorService: ProveedorService, private _configurarPaginado: ConfiguracionParaPaginarService) { }
 
   ngOnInit(): void {
-    // this.renderTabla(this._route.snapshot.data["proovedores"]);
-    this.renderTabla(this.proveedores);
+    this.renderTabla(this._route.snapshot.data["proovedores"]);
   }
   /**
    * Aplica una busqueda con los parametros a buscar

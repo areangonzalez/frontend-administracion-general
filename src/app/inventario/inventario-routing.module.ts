@@ -18,8 +18,8 @@ const routes: Routes = [
     path: 'producto', component: ProductoComponent,
     resolve: { productos: ProductoService, categorias: CategoriaService, unidadMedidas: UnidadMedidaService, marcas: MarcaService }
   }, {
-    path: 'proovedor', component: ProveedorComponent,
-    //resolve: { proovedores: ProveedorService }
+    path: 'proveedor', component: ProveedorComponent,
+    resolve: { proovedores: ProveedorService }
   },{
     path: 'unidad-medida', component: UnidadMedidaComponent,
     resolve: { unidadMedidas: UnidadMedidaService }
