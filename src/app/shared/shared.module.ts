@@ -9,6 +9,7 @@ import {
   BusquedaAvanzadaComponent, TablaPersonalizadaComponent, CrearEditarModalContent, CrearEditarModalComponent,
   FormPersonalizadoComponent, BajaModalContent, BajaModalComponent
 } from './componentes';
+import { LoaderComponent } from './loader';
 
 
 
@@ -16,7 +17,8 @@ import {
   declarations: [
     BusquedaAvanzadaComponent,
     TablaPersonalizadaComponent,
-    CrearEditarModalContent, CrearEditarModalComponent, FormPersonalizadoComponent, BajaModalContent, BajaModalComponent
+    CrearEditarModalContent, CrearEditarModalComponent, FormPersonalizadoComponent, BajaModalContent, BajaModalComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule, NgbPaginationModule, NgbTooltipModule,
@@ -26,7 +28,8 @@ import {
   exports: [
     NgbPaginationModule, RouterModule, FormsModule, ReactiveFormsModule,
     BusquedaAvanzadaComponent, TablaPersonalizadaComponent,
-    CrearEditarModalContent, CrearEditarModalComponent, FormPersonalizadoComponent, BajaModalContent, BajaModalComponent
+    CrearEditarModalContent, CrearEditarModalComponent, FormPersonalizadoComponent, BajaModalContent, BajaModalComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule { }
