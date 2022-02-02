@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'marca', component: MarcaComponent,
-    // resolve: { marcas: MarcaService }
+    resolve: { marcas: MarcaService }
   },
   {
     path: 'producto', component: ProductoComponent,

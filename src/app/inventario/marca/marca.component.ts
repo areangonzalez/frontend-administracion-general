@@ -11,19 +11,12 @@ import { MarcaService, ConfiguracionParaPaginarService } from 'src/app/core/serv
 export class MarcaComponent implements OnInit {
   public configPaginacion: ConfigurarPagina = new ConfigurarPagina();
   public listado: any = [];
-  /* borrar los datos de la variable y dejar el array vacio */
-  public marcas: any = {
-    pagesize: 10, page: 0, total_filtrado: 3,
-    resultado:[
-    { id: 1, nombre: "Ledesma" }, { id: 2, nombre: "9 de oro" }, { id: 3, nombre: "Knorr" }
-  ]};
   public titulos: string[] = [];
 
   constructor(private _route: ActivatedRoute, private _marcaService: MarcaService, private _configurarPaginado: ConfiguracionParaPaginarService) { }
 
   ngOnInit(): void {
-    // this.renderTabla(this._route.snapshot.data["marcas"]);
-    this.renderTabla(this.marcas); // borrar
+    this.renderTabla(this._route.snapshot.data["marcas"]);
   }
 
   realizarBusqueda(busqueda: any, pagina: number) {

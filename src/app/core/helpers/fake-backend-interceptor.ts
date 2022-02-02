@@ -16,11 +16,8 @@ const productos: any = {
     { id: 3, nombre: "Aceite de girasol", codigo: "A300", unidad_valor: 1.5, unidad_medidaid: 3, marcaid: 1, categoriaid: 1, activo: 0,
     marca: "Arcor", unidad_medida: "lt", producto: "Aceite de girasol, 1.5lt (Arcor)", categoria: "Alimento" }
   ]};
-const marca: any = {
-  pagesize: 10, page: 0, total_filtrado: 3,
-  resultado:[ { "id": 1, "nombre": "Kilogramo", "simbolo": "kg" }, { "id": 2, "nombre": "Gramo", "simbolo": "gr" },
-  { "id": 3, "nombre": "Litro", "simbolo": "lt" }, { "id": 4, "nombre": "Mililitro", "simbolo": "ml" }, { "id": 5, "nombre": "Unidad", "simbolo": "un" },
-  { "id": 6, "nombre": "Centimetros cúbicos", "simbolo": "cm3" } ]};
+const marca: any = { pagesize: 10, page: 0, total_filtrado: 3,
+  resultado:[ { id: 1, nombre: "Ledesma" }, { id: 2, nombre: "9 de oro" }, { id: 3, nombre: "Knorr" } ]};
 const categoria: any = [{ id: 1, nombre: "alimento/s" },{ id: 2, nombre: "Bebida/s" },{ id: 3, nombre: "Otros" }];
 const unidadMedida: any = {
   pagesize: 10, page: 0, total_filtrado: 3,
