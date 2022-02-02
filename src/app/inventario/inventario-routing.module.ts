@@ -6,9 +6,10 @@ import { CategoriaService, MarcaService, ProductoService, ProveedorService, Unid
 const routes: Routes = [
   {
     path: 'categoria', component: CategoriaComponent,
+    resolve: { categorias: CategoriaService }
     /* canActivate: [AuthGuard],
     data: { loading: true, breadcrumb: 'Stock', title: 'Stock' },
-    resolve: { categorias: CategoriaService } */
+     */
   },
   {
     path: 'marca', component: MarcaComponent,

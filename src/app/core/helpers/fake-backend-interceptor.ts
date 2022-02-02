@@ -6,19 +6,17 @@ import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 // array in local storage for registered users
 // let users = JSON.parse(localStorage.getItem('users')) || [];
 
-const productos: any = {
-  pagesize: 20, page: 0, total_filtrado: 3,
-  resultado: [
+const productos: any = { pagesize: 20, page: 0, total_filtrado: 3, resultado: [
     { id: 1, nombre: "Aceite de girasol", codigo: "A300", unidad_valor: 1.5, unidad_medidaid: 3, marcaid: 1, categoriaid: 1, activo: 1,
     marca: "Arcor", unidad_medida: "lt", producto: "Aceite de girasol, 1.5lt (Arcor)", categoria: "Alimento" },
     { id: 2, nombre: "Aceite de girasol", codigo: "A300", unidad_valor: 1.5, unidad_medidaid: 3, marcaid: 1, categoriaid: 1, activo: 1,
     marca: "Arcor", unidad_medida: "lt", producto: "Aceite de girasol, 1.5lt (Arcor)", categoria: "Alimento" },
     { id: 3, nombre: "Aceite de girasol", codigo: "A300", unidad_valor: 1.5, unidad_medidaid: 3, marcaid: 1, categoriaid: 1, activo: 0,
-    marca: "Arcor", unidad_medida: "lt", producto: "Aceite de girasol, 1.5lt (Arcor)", categoria: "Alimento" }
-  ]};
+    marca: "Arcor", unidad_medida: "lt", producto: "Aceite de girasol, 1.5lt (Arcor)", categoria: "Alimento" } ]};
 const marca: any = { pagesize: 10, page: 0, total_filtrado: 3,
   resultado:[ { id: 1, nombre: "Ledesma" }, { id: 2, nombre: "9 de oro" }, { id: 3, nombre: "Knorr" } ]};
-const categoria: any = [{ id: 1, nombre: "alimento/s" },{ id: 2, nombre: "Bebida/s" },{ id: 3, nombre: "Otros" }];
+const categoria: any = { pagesize: 10, page: 0, total_filtrado: 3, resultado:[
+  { id: 1, nombre: "alimento/s" },{ id: 2, nombre: "Bebida/s" },{ id: 3, nombre: "Otros" } ]};
 const unidadMedida: any = {
   pagesize: 10, page: 0, total_filtrado: 3,
   resultado:[ { "id": 1, "nombre": "Kilogramo", "simbolo": "kg" }, { "id": 2, "nombre": "Gramo", "simbolo": "gr" },

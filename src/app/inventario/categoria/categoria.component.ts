@@ -11,20 +11,12 @@ import { CategoriaService, ConfiguracionParaPaginarService } from 'src/app/core/
 export class CategoriaComponent implements OnInit {
   public configPaginacion: ConfigurarPagina = new ConfigurarPagina();
   public listado: any = [];
-  // borrar los datos de la variable y que quede un array solo
-  public categoria: any = {
-    pagesize: 10, page: 0, total_filtrado: 3,
-    resultado:[
-    { id: 1, nombre: "alimento/s" },{ id: 2, nombre: "Bebida/s" },{ id: 3, nombre: "Otros" }
-  ]};
   public titulos: string[] = [];
 
   constructor(private _route: ActivatedRoute, private _categoriaService: CategoriaService, private _configurarPaginado: ConfiguracionParaPaginarService) { }
 
   ngOnInit(): void {
-    /* Descomentar todo cuando el api funcione y borrar datos de prueba */
-    // this.renderTabla(this._route.snapshot.data["categorias"]);
-    this.renderTabla(this.categoria); // este es necesario borrarlo
+    this.renderTabla(this._route.snapshot.data["categorias"]);
   }
   /**
    * Aplica una busqueda con los parametros a buscar
