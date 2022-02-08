@@ -1,0 +1,27 @@
+.form-signin {
+  width: 340px;
+  top: auto !important;
+  /* background: #8cc63f !important; */
+  padding: 10px;
+  /* border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  box-shadow: 0px 2px 20px rgba(50, 50, 50, 0.95); */
+}
+.miclase {
+  position: absolute;
+  transform: translate(-50%, 220% );
+  /* -o-transform: translate(-140%, 175% );
+  -moz-transform: translate(-140%, 175% );
+  -ms-transform: translate(-140%, 175% ); */
+  -webkit-transform: translate(-50%, 220% );
+}
+
+.miclase_dos {
+  position: absolute;
+  transform: translate(110%, 200% );
+  /* -o-transform: translate(110%, 200% );
+  -moz-transform: translate(110%, 200% );
+  -ms-transform: translate(110%, 200% ); */
+  -webkit-transform: translate(110%, 200% );
+}

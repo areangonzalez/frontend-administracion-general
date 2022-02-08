@@ -1,1 +1,35 @@
-<p>login works!</p>
+<div class="d-flex justify-content-around">
+  <div class="miclase align-self-center" >
+    <!-- <h1 class="h3 mb-3 font-weight-normal text-white text-center ">Administración General</h1> -->
+    <h1 class="display-4 fw-bolder text-white">Administración General</h1>
+    <div class="d-flex justify-content-center mt-2">
+      <div class="d-flex align-items-center">
+        <img src="../../../assets/img/logoRN.svg" width="60" height="40" alt="Ministerio desarrollo social">
+      </div>
+      <div class="d-flex align-items-center mr-4">
+        <p class="text-center text-muted pt-4">
+          <span class="text-uppercase text-white">Desarrollo Humano y Articulación Solidaria</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="miclase_dos align-self-center">
+    <form [formGroup]="loginForm" class="form-signin">
+      <!-- <h1 class="h3 mb-3 font-weight-normal text-white text-center">Gestor Cuenta Bancaria</h1> -->
+
+      <label for="nombre_usuario" class="sr-only">Usuario</label>
+      <input type="text" id="nombre_usuario" class="form-control" placeholder="Usuario" formControlName="username">
+
+      <label for="pass_usuario" class="sr-only">Contraseña</label>
+      <input type="password" id="pass_usuario" class="form-control" placeholder="Contraseña" formControlName="password" (keyup.enter)="ingresar()">
+
+      <div class="mb-3">
+        <div id="login-mensaje" class="text-danger text-center mt-2" *ngIf="huboError"><b>{{mensaje}}</b></div>
+      </div>
+      <div class="row ps-3 pe-3">
+        <button id="ingresar-login" class="btn btn-lg btn-primary btn-block" type="button" (click)="ingresar()">Ingresar</button>
+      </div>
+    </form>
+  </div>
+</div>
+

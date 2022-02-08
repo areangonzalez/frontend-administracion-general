@@ -1,24 +1,33 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SistemaComponent, LayoutLoginComponent } from './shared';
 
 const routes: Routes = [
-  /* {
+  {
     path: 'login',
+    component: LayoutLoginComponent,
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
-  }, */
-  {
-    path: 'inicio',
-    loadChildren: () => import('./inicio/inicio.module').then(m => m.InicioModule)
   },
   {
-    path: 'inventario',
-    loadChildren: () => import('./inventario/inventario.module').then(m => m.InventarioModule)
+    path: '',
+    component: SistemaComponent,
+    children: [
+
+      {
+        path: 'inicio',
+        loadChildren: () => import('./inicio/inicio.module').then(m => m.InicioModule)
+      },
+      {
+        path: 'inventario',
+        loadChildren: () => import('./inventario/inventario.module').then(m => m.InventarioModule)
+      },
+      {
+        path: 'lugar',
+        loadChildren: () => import('./lugar/lugar.module').then(m => m.LugarModule)
+      },
+    ]
   },
-  {
-    path: 'lugar',
-    loadChildren: () => import('./lugar/lugar.module').then(m => m.LugarModule)
-  },
-  { path: '**', redirectTo: 'inicio', pathMatch: 'full' }
+  { path: '**', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 @NgModule({

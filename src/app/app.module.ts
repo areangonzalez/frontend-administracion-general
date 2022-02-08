@@ -11,14 +11,15 @@ import { fakeBackendProvider } from './core/helpers';
 
 import { RoutingModule } from './routing.module';
 
-import { CabeceraComponent, MenuComponent, LoaderComponent } from "./shared";
+import { CabeceraComponent, MenuComponent, LoaderComponent, LayoutLoginComponent, SistemaComponent } from "./shared";
 import { AppComponent } from './app.component';
 import { ErrorInterceptor, JwtInterceptor } from './core/interceptor';
 
 @NgModule({
   declarations: [
     CabeceraComponent, MenuComponent,
-    AppComponent, LoaderComponent
+    AppComponent, LoaderComponent,
+    LayoutLoginComponent, SistemaComponent
   ],
   imports: [
     BrowserModule,

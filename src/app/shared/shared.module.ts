@@ -9,13 +9,12 @@ import {
   BusquedaAvanzadaComponent, TablaPersonalizadaComponent, CrearEditarModalContent, CrearEditarModalComponent,
   FormPersonalizadoComponent, BajaModalContent, BajaModalComponent
 } from './componentes';
-import { LayoutLoginComponent } from './layout-login/layout-login.component';
 
 @NgModule({
   declarations: [
     BusquedaAvanzadaComponent,
     TablaPersonalizadaComponent,
-    CrearEditarModalContent, CrearEditarModalComponent, FormPersonalizadoComponent, BajaModalContent, BajaModalComponent, LayoutLoginComponent,
+    CrearEditarModalContent, CrearEditarModalComponent, FormPersonalizadoComponent, BajaModalContent, BajaModalComponent
   ],
   imports: [
     CommonModule, NgbPaginationModule, NgbTooltipModule,
