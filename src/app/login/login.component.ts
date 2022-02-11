@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     .pipe(first())
     .subscribe(
       user => {
-        this.redirigirUsuario(user.rol);
+        this._router.navigate(['./inicio']);
       },
       error => {
         this.huboError = true;
@@ -45,19 +45,9 @@ export class LoginComponent implements OnInit {
 
   estaLogueado() {
     if (this._autenticacion.loggedIn) {
-      this._autenticacion.loggedIn.rol;
+      this._autenticacion.loggedIn;
     }else{
       this._router.navigate(['./login']);
-    }
-  }
-
-  redirigirUsuario(userRol: string) {
-    for (const rol of userRol) {
-      if ( rol === 'soporte') {
-        this._router.navigate(['./admin']);
-      } else {
-        this._router.navigate(['./cuentas']);
-      }
     }
   }
 

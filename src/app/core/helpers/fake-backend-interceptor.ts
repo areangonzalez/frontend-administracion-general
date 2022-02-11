@@ -24,6 +24,7 @@ const unidadMedida: any = {
   { "id": 6, "nombre": "Centimetros cúbicos", "simbolo": "cm3" } ]};
 const proveedores: any = { pagesize: 10, page: 0, total_filtrado: 3,
     resultado:[ { "id": 1, "nombre": "Proovedor 1" }, { "id": 2, "nombre": "Proovedor 2" }, { "id": 3, "nombre": "Proovedor 3" } ]};
+  const usuarios: any = [{username: "admin", password: "admins"}];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -39,8 +40,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         function handleRoute() {
             switch (true) {
-                /* case url.endsWith('/users/authenticate') && method === 'POST':
-                    return authenticate(); */
+                case url.endsWith('/usuarios/login') && method === 'POST':
+                    return login();
                 /* case url.endsWith('/users/register') && method === 'POST':
                     return register(); */
                     /* case url.match(/\/users\/\d+$/) && method === 'GET':
@@ -68,31 +69,15 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         // route functions
 
-        /* function authenticate() {
-            const { username, password } = body;
-            const user = users.find(x => x.username === username && x.password === password);
+        function login() {
+            const { username, password_hash } = body;
+            const user = usuarios.find((x:any) => x.username === username && x.password === password_hash);
             if (!user) return error('Username or password is incorrect');
             return ok({
-                id: user.id,
                 username: user.username,
-                firstName: user.firstName,
-                lastName: user.lastName,
                 token: 'fake-jwt-token'
             })
         }
-
-        function register() {
-            const user = body
-
-            if (users.find(x => x.username === user.username)) {
-                return error('Username "' + user.username + '" is already taken')
-            }
-
-            user.id = users.length ? Math.max(...users.map(x => x.id)) + 1 : 1;
-            users.push(user);
-            localStorage.setItem('users', JSON.stringify(users));
-            return ok();
-        } */
 
         function getProductos() {
             //if (!isLoggedIn()) return unauthorized();
