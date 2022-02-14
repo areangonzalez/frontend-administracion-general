@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ThemeService } from 'ng-bootstrap-darkmode';
+import { AutenticacionService } from 'src/app/core/service';
 
 @Component({
   selector: 'layout-menu',
@@ -11,7 +13,7 @@ export class MenuComponent implements OnInit {
   public isCollapsedInv:boolean = true;
   public isCollapsedLug:boolean = true;
 
-  constructor(private _themeService: ThemeService ) {
+  constructor(private _themeService: ThemeService, private _auth: AutenticacionService, private _router: Router ) {
     _themeService.theme$.subscribe(theme => this.getTheme(theme));
   }
 
@@ -25,6 +27,11 @@ export class MenuComponent implements OnInit {
     }else{
       this.tema = theme;
     }
+  }
+
+  cerrarSesion() {
+    this._auth.logout();
+    this._router.navigate(['./login']);
   }
 
 }
