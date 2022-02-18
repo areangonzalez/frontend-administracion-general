@@ -25,6 +25,10 @@ const routes: Routes = [
         path: 'lugar',
         loadChildren: () => import('./lugar/lugar.module').then(m => m.LugarModule)
       },
+      {
+        path: 'usuarios',
+        loadChildren: () => import('./usuario/usuario.module').then(m => m.UsuarioModule)
+      },
     ]
   },
   { path: '**', redirectTo: 'login', pathMatch: 'full' }
