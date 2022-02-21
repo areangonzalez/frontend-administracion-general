@@ -1,3 +1,3 @@
-export * from './lista-usuario.component';
-export * from './form-usuario.component';
-export * from './modal-agregar-usuario.component';
+export * from './form';
+export * from './lista';
+export * from './modal';
