@@ -8,12 +8,11 @@ import { ConfiguracionListados } from './../../../core/model'; */
   template: `
     <div class="modal-header">
       <h4 class="modal-title">Agregar Usuario</h4>
-      <button type="button" class="close" aria-label="Close" (click)="activeModal.close('closed')">
-        <span aria-hidden="true">&times;</span>
+      <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('closed')">
       </button>
     </div>
     <div class="modal-body">
-      <!-- <admin-datos-persona-form [localidades]="localidades" [roles]="roles" (cancelarForm)="cancelarModal($event)"></admin-datos-persona-form> -->
+      <componente-form-persona-usuario [localidades]="localidades" [roles]="roles" (cancelarForm)="cancelarModal($event)" ></componente-form-persona-usuario>
     </div>
   `,
   styleUrls: ['./modal-agregar-usuario.component.scss']
