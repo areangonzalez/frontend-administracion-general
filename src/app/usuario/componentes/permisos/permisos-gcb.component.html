@@ -1,0 +1,40 @@
+
+<div class="row m-1">
+  <form [formGroup]="datos">
+    <div class="form-group col-md-12" >
+      <label for="rol" class="prioridad">Convenio:</label>
+      <select class="form-select" id="convenio" formControlName="tipo_convenioid">
+        <option value="">Seleccione un Convenio</option>
+        <option *ngFor="let convenio of listaConvenio" value="{{convenio.id}}">{{convenio.nombre}}</option>
+      </select>
+      <div *ngIf="(datos.get('tipo_convenioid')?.invalid && submitted)"
+          class="text-danger">
+          <div *ngIf="datos.get('tipo_convenioid')?.hasError('required')">Este campo es requerido. </div>
+      </div>
+    </div>
+  </form>
+  <div class="col-md-12">
+    <div class="form-group">
+      <label for="permisos">Permiso/s:</label>
+      <ng-select [items]="listaPermisos"
+        bindLabel="name"
+        placeholder="Seleccione uno o varios permiso/s."
+        appendTo="body"
+        multiple="true"
+        [(ngModel)]="permisosSeleccionados">
+      </ng-select>
+    </div>
+  </div>
+  <div *ngIf="!baja" class="col-md-12">
+    <button type="button" class="btn btn-success btn-block" (click)="validarDatos()"><i class="far fa-save"></i> Guardar</button>
+  </div>
+  <div *ngIf="!baja" class="col-md-12 mt-1 mb-2">
+    <admin-usuario-permiso-lista [listaConvenioPermisos]="listaConvenioPermisos" (editarPermisoUsuario)="editarPermisos($event)"></admin-usuario-permiso-lista>
+  </div>
+  <div *ngIf="baja" class="col-md-12">
+    <div class="alert alert-danger text-center" role="alert">
+      El usuario ha sido dado de baja. En estos momentos no se le pueden asignar Permisos.
+    </div>
+  </div>
+</div>
+
