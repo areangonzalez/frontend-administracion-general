@@ -1,7 +1,9 @@
+import { NgSelectModule } from '@ng-select/ng-select';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { UsuarioRoutingModule } from './usuario-routing.module';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UsuarioComponent } from './usuario.component';
@@ -23,12 +25,13 @@ import {  } from './componentes/modal/seleccionar-modulo.component';
   ],
   imports: [
     CommonModule,
+    NgSelectModule,
     UsuarioRoutingModule,
     FormsModule, ReactiveFormsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
-    ModalAgregarUsuarioContent, ModalAgregarUsuarioComponent, SeleccionarModuloContent, SeleccionarModuloComponent
+    ModalAgregarUsuarioContent, ModalAgregarUsuarioComponent, PermisosGcbComponent, SeleccionarModuloContent, SeleccionarModuloComponent
   ]
 
 })

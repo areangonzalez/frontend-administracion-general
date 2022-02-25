@@ -7,8 +7,13 @@
   $font-family-base: 'Montserrat';
 
   @import '~bootstrap/scss/bootstrap';
+
   @import '~bootstrap-darkmode/css/darktheme';
   @import './assets/styles/theme-light.scss';
   @import './assets/styles/theme-auto.scss';
   @import './assets/styles/theme-dark.scss';
+  @import "~@ng-select/ng-select/themes/default.theme.css";
 
+  .ng-dropdown-panel {
+    z-index: 2000 !important;
+  }

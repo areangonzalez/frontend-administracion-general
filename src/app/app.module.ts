@@ -1,11 +1,12 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import es from "@angular/common/locales/es";
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgBootstrapDarkmodeModule } from 'ng-bootstrap-darkmode';
 import { TrinityRingsSpinnerModule } from 'angular-epic-spinners';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { fakeBackendProvider } from './core/helpers';
 
@@ -24,6 +25,7 @@ import { ErrorInterceptor, JwtInterceptor } from './core/interceptor';
   imports: [
     BrowserModule,
     NgbModule,
+    NgSelectModule,
     HttpClientModule,
     NgBootstrapDarkmodeModule,
     TrinityRingsSpinnerModule,

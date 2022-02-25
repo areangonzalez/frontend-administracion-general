@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'componente-permisos-gcb',
@@ -10,19 +10,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class PermisosGcbComponent implements OnInit {
   @Input("idUsuario") private idUsuario: number | any;
   @Input("listaConvenio") public listaConvenio: any;
-  @Input("listaPermisos") public listaPermisos: any;
+  /* @Input("listaPermisos")  */public listaPermisos: any = [
+    { "name": "persona_crear" },{ "name": "persona_modificar" },{ "name": "prestacion_acreditar" },
+    { "name": "prestacion_baja" },{ "name": "prestacion_crear" },{ "name": "prestacion_ver" }
+  ];
   @Input("baja") public baja: boolean | any;
   public listaConvenioPermisos: any = [{ lista_coonvenio: { lista_permiso: [] }}];
-  public permisosSeleccionados: any = [];
-  public permisosSeleccionadosEdit: any = [];
+  public permisosSeleccionados:any = [];
+  public permisosSeleccionadosEdit: any;
   public datos: FormGroup;
   public submitted: boolean = false;
   public editado: boolean = false;
+  public control?: NgControl;
 
   constructor(private _fb: FormBuilder) {
   //constructor(private _msj: NotificacionService, private _usuarioService: UsuarioService, private _fb: FormBuilder) {
     this.datos = _fb.group({
-      tipo_convenioid: ['', [Validators.required]]
+      tipo_convenioid: ['', [Validators.required]], value: ''
     });
   }
 

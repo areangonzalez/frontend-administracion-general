@@ -1,4 +1,3 @@
-
 <div class="row m-1">
   <form [formGroup]="datos">
     <div class="form-group col-md-12" >
@@ -13,15 +12,14 @@
       </div>
     </div>
   </form>
-  <div class="col-md-12">
-    <div class="form-group">
-      <label for="permisos">Permiso/s:</label>
-      <ng-select [items]="listaPermisos"
+
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="permisos">Permiso/s:</label>
+        <ng-select  [items]="listaPermisos"
         bindLabel="name"
-        placeholder="Seleccione uno o varios permiso/s."
-        appendTo="body"
-        multiple="true"
-        [(ngModel)]="permisosSeleccionados">
+        placeholder="Seleccione uno o varios permiso/s." [multiple]="true"
+        appendTo="body" [(ngModel)]="permisosSeleccionados" >
       </ng-select>
     </div>
   </div>
