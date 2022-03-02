@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, NgControl, Validators } from '@angular/forms';
 
 @Component({
@@ -8,18 +8,20 @@ import { FormBuilder, FormGroup, NgControl, Validators } from '@angular/forms';
   providers: [FormBuilder]
 })
 export class PermisosGcbComponent implements OnInit {
-  @Input("idUsuario") private idUsuario: number | any;
-  @Input("listaConvenio") public listaConvenio: any;
+  @Input("idUsuario") public idUsuario: number | any;
+  @Input("submitted") public submitted: boolean = false;
+  /* @Input("listaConvenio") public listaConvenio: any; */ public listaConvenio: any = [{ "id": 1, "nombre": "8180" },{ "id": 2, "nombre": "8277" }];
   /* @Input("listaPermisos")  */public listaPermisos: any = [
     { "name": "persona_crear" },{ "name": "persona_modificar" },{ "name": "prestacion_acreditar" },
     { "name": "prestacion_baja" },{ "name": "prestacion_crear" },{ "name": "prestacion_ver" }
   ];
   @Input("baja") public baja: boolean | any;
-  public listaConvenioPermisos: any = [{ lista_coonvenio: { lista_permiso: [] }}];
+  @Output("obtenerPermisos") public obtenerPermisos = new EventEmitter();
+  @Output("cancelarForm") public cancelarForm = new EventEmitter();
+  public listaConvenioPermisos: any = [{ lista_convenio: { lista_permiso: [] }}];
   public permisosSeleccionados:any = [];
   public permisosSeleccionadosEdit: any;
   public datos: FormGroup;
-  public submitted: boolean = false;
   public editado: boolean = false;
   public control?: NgControl;
 
@@ -31,7 +33,9 @@ export class PermisosGcbComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.obtenerListaPermisos(this.idUsuario);
+    if (this.idUsuario) {
+      this.obtenerListaPermisos(this.idUsuario);
+    }
   }
   /**
    * Obtiene el listado de roles con sus permisos del usuario
@@ -82,6 +86,9 @@ export class PermisosGcbComponent implements OnInit {
    * @param params listado de permisos con el id del usuario
    */
   guardar(params: object) {
+
+    this.obtenerPermisos.emit(params);
+
     /* this._usuarioService.asignarPermisos(params).subscribe(
       respuesta => {
         this._msj.exitoso("Se han agregado correctamente el convenio y los permisos al usuario.");
@@ -107,6 +114,11 @@ export class PermisosGcbComponent implements OnInit {
     this.datos.reset();
     this.permisosSeleccionados = [];
     this.datos.patchValue({tipo_convenioid: ""});
+  }
+
+  cancelar() {
+    this.cancelarForm.emit(true);
+    // cancelar formulario
   }
 
 }

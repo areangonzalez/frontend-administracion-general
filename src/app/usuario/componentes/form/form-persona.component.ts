@@ -28,7 +28,6 @@ export class FormPersonaComponent implements OnInit {
     cuil_fin: ['', [Validators.required, Validators.minLength(1)]],
     usuario: _fb.group({
       personaid: '',
-      rol: ['', [Validators.required]],
       username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
       localidadid: '',

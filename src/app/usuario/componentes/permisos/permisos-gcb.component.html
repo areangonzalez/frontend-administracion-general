@@ -1,5 +1,5 @@
 <div class="row m-1">
-  <form [formGroup]="datos">
+  <fieldset [formGroup]="datos">
     <div class="form-group col-md-12" >
       <label for="rol" class="prioridad">Convenio:</label>
       <select class="form-select" id="convenio" formControlName="tipo_convenioid">
@@ -11,9 +11,9 @@
           <div *ngIf="datos.get('tipo_convenioid')?.hasError('required')">Este campo es requerido. </div>
       </div>
     </div>
-  </form>
+  </fieldset>
 
-    <div class="col-md-12">
+    <div class="col-md-12 pb-2">
       <div class="form-group">
         <label for="permisos">Permiso/s:</label>
         <ng-select  [items]="listaPermisos"
@@ -23,8 +23,9 @@
       </ng-select>
     </div>
   </div>
-  <div *ngIf="!baja" class="col-md-12">
-    <button type="button" class="btn btn-success btn-block" (click)="validarDatos()"><i class="far fa-save"></i> Guardar</button>
+  <div *ngIf="!baja" class="col-md-12 d-flex justify-content-between">
+    <button type="button" class="btn btn-danger" (click)="cancelar()"><i class="far fa-save"></i> Cancelar</button>
+    <button type="button" class="btn btn-success" (click)="validarDatos()"><i class="far fa-save"></i> Guardar</button>
   </div>
   <div *ngIf="!baja" class="col-md-12 mt-1 mb-2">
     <admin-usuario-permiso-lista [listaConvenioPermisos]="listaConvenioPermisos" (editarPermisoUsuario)="editarPermisos($event)"></admin-usuario-permiso-lista>
