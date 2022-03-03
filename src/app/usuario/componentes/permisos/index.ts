@@ -1,2 +1,3 @@
-export * from './permisos-gcb.component';
-export * from './permisos-inventario.component';
+export * from './gestor-bancario';
+export * from './inventario';
+//export * from './prestaciones-sociales';

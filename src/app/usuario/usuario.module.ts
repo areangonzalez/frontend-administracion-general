@@ -8,10 +8,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UsuarioComponent } from './usuario.component';
 import {
-  ListaUsuarioComponent, FormPersonaComponent, FormUsuarioComponent, PermisosGcbComponent, PermisosInventarioComponent,
+  ListaUsuarioComponent, FormPersonaComponent, FormUsuarioComponent,
   ModalAgregarUsuarioContent, ModalAgregarUsuarioComponent,
   SeleccionarModuloContent, SeleccionarModuloComponent,
-  ListaPermisosGcbComponent
+  PermisosGcbComponent, ListaPermisosGcbComponent,
+  PermisosInventarioComponent, ListaPermisosInventarioComponent
 } from './componentes';
 
 @NgModule({
@@ -19,8 +20,10 @@ import {
     UsuarioComponent,
     ListaUsuarioComponent,
     ModalAgregarUsuarioContent, ModalAgregarUsuarioComponent,
-    FormPersonaComponent, FormUsuarioComponent, PermisosGcbComponent,
-    SeleccionarModuloContent, SeleccionarModuloComponent, ListaPermisosGcbComponent, PermisosInventarioComponent
+    FormPersonaComponent, FormUsuarioComponent,
+    SeleccionarModuloContent, SeleccionarModuloComponent,
+    PermisosGcbComponent, ListaPermisosGcbComponent,
+    PermisosInventarioComponent, ListaPermisosInventarioComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +34,8 @@ import {
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
     ModalAgregarUsuarioContent, ModalAgregarUsuarioComponent, SeleccionarModuloContent, SeleccionarModuloComponent,
-    PermisosGcbComponent, PermisosInventarioComponent
+    PermisosGcbComponent, ListaPermisosGcbComponent,
+    PermisosInventarioComponent, ListaPermisosInventarioComponent
   ]
 
 })
