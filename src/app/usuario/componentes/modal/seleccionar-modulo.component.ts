@@ -6,7 +6,7 @@ import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-boots
   selector: 'content-seleccionar-modulo-modal',
   template: `
     <div class="modal-header">
-      <h4 class="modal-title">Agregar Usuario</h4>
+      <h4 class="modal-title">Selección de Permisos del Usuario</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('closed')">
       </button>
     </div>
