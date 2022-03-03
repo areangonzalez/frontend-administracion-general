@@ -13,7 +13,7 @@ import {
   SeleccionarModuloContent, SeleccionarModuloComponent,
   PermisosGcbComponent, ListaPermisosGcbComponent,
   PermisosInventarioComponent, ListaPermisosInventarioComponent,
-  PermisosPrestacionesSocialesComponent
+  PermisosPrestacionesSocialesComponent, ListaPermisosPrestacionesSocialesComponent
 } from './componentes';
 
 @NgModule({
@@ -25,7 +25,7 @@ import {
     SeleccionarModuloContent, SeleccionarModuloComponent,
     PermisosGcbComponent, ListaPermisosGcbComponent,
     PermisosInventarioComponent, ListaPermisosInventarioComponent,
-    PermisosPrestacionesSocialesComponent
+    PermisosPrestacionesSocialesComponent, ListaPermisosPrestacionesSocialesComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +38,7 @@ import {
     ModalAgregarUsuarioContent, ModalAgregarUsuarioComponent, SeleccionarModuloContent, SeleccionarModuloComponent,
     PermisosGcbComponent, ListaPermisosGcbComponent,
     PermisosInventarioComponent, ListaPermisosInventarioComponent,
-    PermisosPrestacionesSocialesComponent
+    PermisosPrestacionesSocialesComponent, ListaPermisosPrestacionesSocialesComponent
   ]
 
 })

@@ -32,6 +32,7 @@
   </div>
   <div *ngIf="!baja" class="col-md-12 mt-1 mb-2">
     <!-- <admin-programa-permiso-tabla [listaProgramaPermisos]="listaProgramaPermisos"></admin-programa-permiso-tabla> -->
+    <componente-lista-permisos-prestaciones-sociales [listaProgramaPermisos]="listaProgramaPermisos"></componente-lista-permisos-prestaciones-sociales>
   </div>
   <div *ngIf="baja" class="col-md-12">
     <div class="alert alert-danger text-center" role="alert">
