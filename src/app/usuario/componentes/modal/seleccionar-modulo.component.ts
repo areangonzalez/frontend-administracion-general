@@ -37,7 +37,8 @@ import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-boots
           </div>
         </fieldset>
       </div>
-      <componente-permisos-gcb [submitted]="submitted" [idUsuario]="idUsuario" (cancelarForm)="cancelar()" (obtenerPermisos)="validarDatos($event)" ></componente-permisos-gcb>
+      <!-- <componente-permisos-gcb [submitted]="submitted" [idUsuario]="idUsuario" (cancelarForm)="cancelar()" (obtenerPermisos)="validarDatos($event)" ></componente-permisos-gcb> -->
+      <componente-permisos-inventario [idUsuario]="idUsuario" ></componente-permisos-inventario>
     </div>
   `,
   styleUrls: ['./seleccionar-modulo.component.scss'],
