@@ -1,5 +1,20 @@
 <div class="row m-1">
-  <div *ngIf="!baja" class="col-md-12 pb-2">
+  <fieldset [formGroup]="permisosForm">
+    <div class="row" >
+      <div class="form-group col-md-12">
+        <label for="rol" class="prioridad">Programa/s:</label>
+        <select class="form-control" id="programaid" formControlName="programaid" (change)="setPermisosDefault($event.target)">
+          <option value="">Seleccione un Programa</option>
+          <option *ngFor="let programa of listaProgramas" value="{{programa.id}}">{{programa.nombre}}</option>
+        </select>
+        <div *ngIf="(permisosForm?.get('programaid')?.invalid && submitted)"
+          class="text-danger">
+          <div *ngIf="permisosForm?.get('programaid')?.hasError('required')">Seleccione un Programa. </div>
+      </div>
+      </div>
+    </div>
+  </fieldset>
+  <div class="col-md-12 pb-2">
     <div class="form-group">
       <label for="permisos">Permiso/s:</label>
       <ng-select [items]="listaPermisos"
@@ -16,7 +31,7 @@
     <button type="button" class="btn btn-success btn-block" (click)="validarDatos()"><i class="far fa-save"></i> Guardar</button>
   </div>
   <div *ngIf="!baja" class="col-md-12 mt-1 mb-2">
-    <componente-lista-permisos-inventario [listaUsuarioPermisos]="listaUsuarioPermisos" (editarPermisoUsuario)="editarPermisos($event)" ></componente-lista-permisos-inventario>
+    <!-- <admin-programa-permiso-tabla [listaProgramaPermisos]="listaProgramaPermisos"></admin-programa-permiso-tabla> -->
   </div>
   <div *ngIf="baja" class="col-md-12">
     <div class="alert alert-danger text-center" role="alert">
@@ -24,4 +39,3 @@
     </div>
   </div>
 </div>
-

@@ -37,8 +37,9 @@ import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-boots
           </div>
         </fieldset>
       </div>
-      <!-- <componente-permisos-gcb [submitted]="submitted" [idUsuario]="idUsuario" (cancelarForm)="cancelar()" (obtenerPermisos)="validarDatos($event)" ></componente-permisos-gcb> -->
-      <componente-permisos-inventario [idUsuario]="idUsuario" ></componente-permisos-inventario>
+      <!-- <componente-permisos-gcb [submitted]="submitted" [idUsuario]="idUsuario" (cancelarForm)="cancelar($event)" (obtenerPermisos)="validarDatos($event)" ></componente-permisos-gcb> -->
+      <!-- <componente-permisos-inventario [idUsuario]="idUsuario" (cancelarForm)="cancelar($event)" (obtenerPermisos)="validarDatos($event)"></componente-permisos-inventario> -->
+      <componente-permisos-prestaciones-sociales [idUsuario]="idUsuario" (cancelarForm)="cancelar($event)" (obtenerPermisos)="validarDatos($event)"></componente-permisos-prestaciones-sociales>
     </div>
   `,
   styleUrls: ['./seleccionar-modulo.component.scss'],
@@ -63,7 +64,7 @@ export class SeleccionarModuloContent implements OnInit {
   ngOnInit(): void {
   }
 
-  cancelar() {
+  cancelar(cancelo: any) {
     this.activeModal.close('closed');
   }
 
