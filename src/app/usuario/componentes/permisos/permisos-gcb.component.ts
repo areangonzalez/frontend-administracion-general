@@ -18,7 +18,7 @@ export class PermisosGcbComponent implements OnInit {
   @Input("baja") public baja: boolean | any;
   @Output("obtenerPermisos") public obtenerPermisos = new EventEmitter();
   @Output("cancelarForm") public cancelarForm = new EventEmitter();
-  public listaConvenioPermisos: any = [{ lista_convenio: { lista_permiso: [] }}];
+  public listaConvenioPermisos: any = [];
   public permisosSeleccionados:any = [];
   public permisosSeleccionadosEdit: any;
   public datos: FormGroup;

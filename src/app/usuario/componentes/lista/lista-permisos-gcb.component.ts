@@ -1,0 +1,47 @@
+import { Component, Input, Output, EventEmitter} from '@angular/core';
+
+@Component({
+  selector: 'lista-permisos-gcb-componente',
+  templateUrl: './lista-permisos-gcb.component.html',
+  styleUrls: ['./lista-permisos-gcb.component.scss']
+})
+export class ListaPermisosGcbComponent {
+  @Input("listaConvenioPermisos") public listaConvenioPermisos: any;
+  @Output("editarPermisoUsuario") public editarPermisoUsuario = new EventEmitter();
+
+  /* constructor(private _usuarioService: UsuarioService, private _msj: NotificacionService) { } */
+  constructor() {}
+
+  /**
+   * borra los permisos del programa que le pertenecen al usuario
+   * @param datos objeto que contiene los datos del programa con sus permisos
+   * @param confirmacion confirmacion de parte del usuario para dar o no acceso al borrado
+   */
+  borrarDato(datos: any, confirmacion: boolean | any) {
+    /* if (confirmacion) {
+      let idUsuario = datos.usuarioid;
+      this._usuarioService.borrarAsignacion(datos).subscribe(
+        repsuesta => {
+          this._msj.exitoso("Se han borrado los permisos.");
+          this.actualizarListado(idUsuario);
+        }, error => { this._msj.cancelado(error); }
+      );
+    } */
+  }
+  /**
+   * Actuliza el listado de los permisos por programa
+   * @param idUsuario identificador del usuario que sirve para obtener el listado del mismo
+   */
+  actualizarListado(idUsuario: number) {
+    /* this._usuarioService.listarAsignacion(idUsuario).subscribe(
+      listado => { this.listaConvenioPermisos = listado; },
+      error => { this._msj.cancelado(error); }
+    ); */
+  }
+
+  editarPermiso(convenioPermiso:any){
+    this.editarPermisoUsuario.emit(convenioPermiso);
+  }
+
+}
+

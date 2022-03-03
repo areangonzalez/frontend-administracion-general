@@ -28,7 +28,7 @@
     <button type="button" class="btn btn-success" (click)="validarDatos()"><i class="far fa-save"></i> Guardar</button>
   </div>
   <div *ngIf="!baja" class="col-md-12 mt-1 mb-2">
-    <admin-usuario-permiso-lista [listaConvenioPermisos]="listaConvenioPermisos" (editarPermisoUsuario)="editarPermisos($event)"></admin-usuario-permiso-lista>
+    <lista-permisos-gcb-componente [listaConvenioPermisos]="listaConvenioPermisos" (editarPermisoUsuario)="editarPermisos($event)"></lista-permisos-gcb-componente>
   </div>
   <div *ngIf="baja" class="col-md-12">
     <div class="alert alert-danger text-center" role="alert">

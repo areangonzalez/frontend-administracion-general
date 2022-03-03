@@ -10,10 +10,9 @@ import { UsuarioComponent } from './usuario.component';
 import {
   ListaUsuarioComponent, FormPersonaComponent, FormUsuarioComponent, PermisosGcbComponent,
   ModalAgregarUsuarioContent, ModalAgregarUsuarioComponent,
-  SeleccionarModuloContent, SeleccionarModuloComponent
-
+  SeleccionarModuloContent, SeleccionarModuloComponent,
+  ListaPermisosGcbComponent
 } from './componentes';
-import {  } from './componentes/modal/seleccionar-modulo.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,7 @@ import {  } from './componentes/modal/seleccionar-modulo.component';
     ListaUsuarioComponent,
     ModalAgregarUsuarioContent, ModalAgregarUsuarioComponent,
     FormPersonaComponent, FormUsuarioComponent, PermisosGcbComponent,
-    SeleccionarModuloContent, SeleccionarModuloComponent
+    SeleccionarModuloContent, SeleccionarModuloComponent, ListaPermisosGcbComponent
   ],
   imports: [
     CommonModule,
