@@ -8,6 +8,7 @@ import { Component, Input, Output, EventEmitter} from '@angular/core';
 export class ListaPermisosGcbComponent {
   @Input("listaConvenioPermisos") public listaConvenioPermisos: any;
   @Output("editarPermisoUsuario") public editarPermisoUsuario = new EventEmitter();
+  public mensaje: string = 'el convenio con sus permisos';
 
   /* constructor(private _usuarioService: UsuarioService, private _msj: NotificacionService) { } */
   constructor() {}
@@ -41,6 +42,12 @@ export class ListaPermisosGcbComponent {
 
   editarPermiso(convenioPermiso:any){
     this.editarPermisoUsuario.emit(convenioPermiso);
+  }
+
+  confirmacion(permiso: any, confirmacion: boolean) {
+    if (confirmacion) {
+      // borro los permisos del usuario
+    }
   }
 
 }

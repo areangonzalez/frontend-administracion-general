@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ListaPermisosPrestacionesSocialesComponent implements OnInit {
   @Input("listaProgramaPermisos") public listaProgramaPermisos: any;
+  public mensaje: string = 'el programa con sus permisos';
 
   constructor(){}
   /* constructor(private _msj: MensajesService, private _soporteService: SoporteService) { } */
@@ -38,5 +39,11 @@ export class ListaPermisosPrestacionesSocialesComponent implements OnInit {
       listado => { this.listaProgramaPermisos = listado; },
       error => { this._msj.cancelado(error, [{name: ""}]); }
     ) */
+  }
+
+  confirmacion(permiso: any, confirmacion: boolean) {
+    if (confirmacion) {
+      // borro los permisos del usuario
+    }
   }
 }

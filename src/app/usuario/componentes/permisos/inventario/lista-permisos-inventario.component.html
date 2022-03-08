@@ -13,7 +13,7 @@
       </td>
       <td class="text-right">
         <button type="button" class="btn btn-sm btn-outline-secondary" ngbTooltip="Editar permisos y convenio" container="body" placement="top" (click)="editarPermiso(listaUsuarioPermisos.lista_permiso)"><i class="far fa-edit"></i></button>
-        <!-- <admin-confirmar-borrar-permiso-usuario-modal (confirmarBorrado)="borrarDato(listaUsuarioPermisos, $event)"></admin-confirmar-borrar-permiso-usuario-modal> -->
+        <componente-confirmar-borrar-permiso-modal [texto]="mensaje" (confirmarBorrado)="confirmacion(listaUsuarioPermisos, $event)" ></componente-confirmar-borrar-permiso-modal>
       </td>
     </tr>
   </tbody>

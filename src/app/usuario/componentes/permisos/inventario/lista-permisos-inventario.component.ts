@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ListaPermisosInventarioComponent implements OnInit {
   @Input("listaUsuarioPermisos") public listaUsuarioPermisos: any;
   @Output("editarPermisoUsuario") public editarPermisoUsuario = new EventEmitter();
+  public mensaje: string = 'los permisos del usuario';
 
   constructor() {}
   /* constructor(private _usuarioService: UsuarioService, private _msj: AlertService) { } */
@@ -43,6 +44,12 @@ export class ListaPermisosInventarioComponent implements OnInit {
 
   editarPermiso(permisos:any){
     this.editarPermisoUsuario.emit(permisos);
+  }
+
+  confirmacion(permiso: any, confirmacion: boolean) {
+    if (confirmacion) {
+      // borro los permisos del usuario
+    }
   }
 
 }
