@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ConfigurarPagina } from 'src/app/core/model';
 import { ProveedorService, ConfiguracionParaPaginarService } from 'src/app/core/service';
@@ -9,11 +10,19 @@ import { ProveedorService, ConfiguracionParaPaginarService } from 'src/app/core/
   styleUrls: ['./proveedor.component.scss']
 })
 export class ProveedorComponent implements OnInit {
+  public busquedaForm: FormGroup;
   public configPaginacion: ConfigurarPagina = new ConfigurarPagina();
   public listado: any = [];
   public titulos: string[] = [];
 
-  constructor(private _route: ActivatedRoute, private _proveedorService: ProveedorService, private _configurarPaginado: ConfiguracionParaPaginarService) { }
+  constructor(
+    private _route: ActivatedRoute, private _proveedorService: ProveedorService, private _configurarPaginado: ConfiguracionParaPaginarService,
+    private _fb: FormBuilder
+    ) {
+      this.busquedaForm = _fb.group({
+        global_param: ''
+      });
+    }
 
   ngOnInit(): void {
     this.renderTabla(this._route.snapshot.data["proovedores"]);
@@ -25,11 +34,11 @@ export class ProveedorComponent implements OnInit {
   realizarBusqueda(busqueda: any, pagina: number) {
     let params = Object.assign(busqueda, { pagesize: this.configPaginacion.pageSize, page: pagina - 1 })
     console.log(params);
-    /* this._categoriaService.buscar(params).subscribe(
+    this._proveedorService.buscar(params).subscribe(
       resultado => {
         this.prepararListado(resultado, this.configPaginacion.page);
       }, error => { console.log(error); } // mensaje de error
-    ) */
+    )
   }
   /**
    * Preparo el listado para separar los titulos de los datos
@@ -55,18 +64,19 @@ export class ProveedorComponent implements OnInit {
    guardar(datos:any) {
     if (datos !== false){
       if (datos["id"] == 0){ // CREAR
-        /* this._proveedorService.guardar(datos, 0).subscribe(
+        this._proveedorService.guardar(datos, 0).subscribe(
           respuesta => {
-            this._toastrService.success('Se ha creado un nuevo proveedor!!!');
-            this.refrescarListado();
-          }, error => { this._toastrService.error(error); }); */
+            // this._toastrService.success('Se ha creado un nuevo proveedor!!!');
+            this.busquedaForm.patchValue({global_param: datos["nombre"]});
+            this.realizarBusqueda(this.busquedaForm.value, this.configPaginacion.page);
+          }, error => { /* this._toastrService.error(error); */ });
       }else{ // EDITAR
-
-        /* this._proveedorService.guardar(datos, datos["id"]).subscribe(
+        this._proveedorService.guardar(datos, datos["id"]).subscribe(
           respuesta => {
-            this._toastrService.success('El proveedor ha sido editado correctamente!!!');
-            this.refrescarListado();
-        }, error => { this._toastrService.error(error); }); */
+            // this._toastrService.success('El proveedor ha sido editado correctamente!!!');
+            this.busquedaForm.patchValue({global_param: datos["nombre"]});
+            this.realizarBusqueda(this.busquedaForm.value, this.configPaginacion.page);
+        }, error => { /* this._toastrService.error(error); */ });
       }
     }
   }
@@ -75,11 +85,12 @@ export class ProveedorComponent implements OnInit {
    * @param id numero de identificador del elemento a borrar
    */
   borrar(id:number) {
-    /* this._proveedorService.borrar(id).subscribe(
+    this._proveedorService.borrar(id).subscribe(
       respuesta => {
-        this._toastrService.success("Se ha dado de baja al proveedor correctamente.");
-        this.refrescarListado();
-      }, error => { this._toastrService.error(error); }); */
+        // this._toastrService.success("Se ha dado de baja al proveedor correctamente.");
+        this.busquedaForm.patchValue({global_param: ''});
+        this.realizarBusqueda({}, this.configPaginacion.page);
+      }, error => { /* this._toastrService.error(error); */ });
   }
 
 }

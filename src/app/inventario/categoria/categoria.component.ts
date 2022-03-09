@@ -87,6 +87,7 @@ export class CategoriaComponent implements OnInit {
     this._categoriaService.borrar(id).subscribe(
       respuesta => {
         // this._toastrService.success("Se ha dado de baja la categoría correctamente.");
+        this.busquedaForm.patchValue({global_param: ''});
         this.realizarBusqueda({}, this.configPaginacion.page);
       }, error => { /* this._toastrService.error(error);  */});
   }

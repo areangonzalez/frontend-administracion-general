@@ -13,28 +13,32 @@ export class ProveedorService implements Resolve<any> {
 
   guardar(params: Object, id?: number) {
     if (id !== undefined) {
-      return this._api.post('/proveedors', params);
+      return this._api.post('/inventario-proveedors', params);
     }else{
-      return this._api.put('/proveedors/' + id, params);
+      return this._api.put('/inventario-proveedors/' + id, params);
     }
   }
 
   listar() {
-    return this._api.get('/proveedors');
+    return this._api.get('/inventario-proveedors');
+  }
+
+  borrar(id: number) {
+    return this._api.get('/inventario-proveedors/' + id);
   }
 
   buscar(params:any) {
     let httpParams = new HttpParams();
     httpParams = this._api.formatParams(httpParams, params);
 
-    return this._api.get('/proveedors', httpParams);
+    return this._api.get('/inventario-proveedors', httpParams);
   }
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
     ): Observable<any>|Promise<any>|any {
-    return this._api.get('/proveedors');
+    return this._api.get('/inventario-proveedors');
   }
 
 }

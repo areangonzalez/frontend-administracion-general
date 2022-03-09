@@ -84,6 +84,7 @@ export class MarcaComponent implements OnInit {
     this._marcaService.borrar(id).subscribe(
       respuesta => {
         //this._toastrService.success("Se ha dado de baja la marca correctamente.");
+        this.busquedaForm.patchValue({global_param: ''});
         this.realizarBusqueda({}, this.configPaginacion.page);
       }, error => { /* this._toastrService.error(error); */ });
   }
