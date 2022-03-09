@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: '/apimock' // http://url.com
+  baseUrl: 'http://nucleo.local/api' // http://url.com
 };
 
 /*

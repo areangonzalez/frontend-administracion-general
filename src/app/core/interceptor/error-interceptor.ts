@@ -22,7 +22,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                 // auto logout if 401 response returned from api
                 /* this._auth.logout(); */
                 /* this._router.navigate(['./login']); */
-                window.location.reload();
+                // window.location.reload();
             }
             if (err.status === 403) {
               // auto logout if 401 response returned from api

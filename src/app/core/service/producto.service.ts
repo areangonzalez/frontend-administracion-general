@@ -14,25 +14,25 @@ export class ProductoService implements Resolve<any> {
 
   guardar(params: Object, id?: number) {
     if (id !== undefined) {
-      return this._api.post('/productos', params);
+      return this._api.post('/inventario-productos', params);
     }else{
-      return this._api.put('/productos/' + id, params);
+      return this._api.put('/inventario-productos/' + id, params);
     }
   }
 
   listar() {
-    return this._api.get('/productos');
+    return this._api.get('/inventario-productos');
   }
 
   buscar(params:any) {
     let httpParams = new HttpParams();
     httpParams = this._api.formatParams(httpParams, params);
 
-    return this._api.get('/productos', httpParams);
+    return this._api.get('/inventario-productos', httpParams);
   }
 
   baja(id: number) {
-    return this._api.delete('/productos/' + id);
+    return this._api.delete('/inventario-productos/' + id);
   }
 
   resolve(

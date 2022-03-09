@@ -13,28 +13,28 @@ export class CategoriaService implements Resolve<any> {
 
   guardar(params: Object, id?: number) {
     if (id !== undefined) {
-      return this._api.post('/categorias', params);
+      return this._api.post('/inventario-categorias', params);
     }else{
-      return this._api.put('/categorias/' + id, params);
+      return this._api.put('/inventario-categorias/' + id, params);
     }
   }
 
   listar() {
-    return this._api.get('/categorias');
+    return this._api.get('/inventario-categorias');
   }
 
   buscar(params:any) {
     let httpParams = new HttpParams();
     httpParams = this._api.formatParams(httpParams, params);
 
-    return this._api.get('/categorias', httpParams);
+    return this._api.get('/inventario-categorias', httpParams);
   }
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
     ): Observable<any>|Promise<any>|any {
-    return this._api.get('/categorias');
+    return this._api.get('/inventario-categorias');
   }
 
 }

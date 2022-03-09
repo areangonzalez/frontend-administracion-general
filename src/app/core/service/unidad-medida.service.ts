@@ -13,28 +13,30 @@ export class UnidadMedidaService implements Resolve<any> {
 
   guardar(params: Object, id?: number) {
     if (id !== undefined) {
-      return this._api.post('/unidad-medidas', params);
+      return this._api.post('/inventario-unidad-medidas', params);
     }else{
-      return this._api.put('/unidad-medidas/' + id, params);
+      return this._api.put('/inventario-unidad-medidas/' + id, params);
     }
   }
 
   listar() {
-    return this._api.get('/unidad-medidas');
+    return this._api.get('/inventario-unidad-medidas');
   }
 
   buscar(params:any) {
     let httpParams = new HttpParams();
     httpParams = this._api.formatParams(httpParams, params);
 
-    return this._api.get('/unidad-medidas', httpParams);
+    return this._api.get('/inventario-unidad-medidas', httpParams);
   }
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
     ): Observable<any>|Promise<any>|any {
-    return this._api.get('/unidad-medidas');
+    let httpParams = new HttpParams();
+    httpParams = this._api.formatParams(httpParams, { pagesize: 20 });
+    return this._api.get('/inventario-unidad-medidas', httpParams);
   }
 
 }

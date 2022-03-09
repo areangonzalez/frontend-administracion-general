@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
 //import { AutenticacionService } from '../services';
+import { AutenticacionService } from '../service';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
-//    constructor(private _auth: AutenticacionService) { }
+    constructor(private _auth: AutenticacionService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add authorization header with jwt token if available
-  /*       let currentUser = this._auth.loggedIn;
+        let currentUser = this._auth.loggedIn;
         // verifico autenticacion del usuario
         // Y seteo el headers con el token
         if (currentUser && currentUser.access_token) {
@@ -18,7 +19,7 @@ export class JwtInterceptor implements HttpInterceptor {
                     Authorization: `Bearer ${currentUser.access_token}`
                 }
             });
-        } */
+        }
         return next.handle(request);
     }
 }

@@ -37,7 +37,7 @@ import { ErrorInterceptor, JwtInterceptor } from './core/interceptor';
     { provide: LOCALE_ID, useValue: 'es-AR' },
 
     // fake bakend
-    fakeBackendProvider
+    //fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })
