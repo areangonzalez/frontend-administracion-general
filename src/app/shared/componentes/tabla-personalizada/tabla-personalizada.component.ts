@@ -12,20 +12,19 @@ export class TablaPersonalizadaComponent implements OnInit {
   @Input("titulosArray") public titulosArray: any;
   @Input("listaDatos") public listaDatos: any;
   @Input("nombreAbm") public nombreAbm: any;
-  @Input("configPaginacion") public configPaginacion: any;
+  @Input("configPaginacion") public configPaginacion: ConfigurarPagina = new ConfigurarPagina();;
   @Output("obtenerDatos") public obtenerDatos = new EventEmitter();
   @Output("bajarItem") public bajarItem = new EventEmitter();
   @Output("cambioDePagina") public cambioDePagina = new EventEmitter();
   public tituloEditar = 'Editar ';
-  public pagina: number = 1;
   public colspan: number = 0;
   public listadoRender: any[] = [];
   public titulosTabla: string[] =[];
 
   constructor(
       private _router: Router, private _configurarPagina: ConfiguracionParaPaginarService
-    ) {
-  }
+    ) { console.log(this.configPaginacion);
+     }
 
   ngOnInit() {
     this.tituloEditar += this.nombreAbm;

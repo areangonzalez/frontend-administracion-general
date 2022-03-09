@@ -12,7 +12,7 @@ export class MarcaService implements Resolve<any> {
   constructor(private _api: ApiService) { }
 
   guardar(params: Object, id?: number) {
-    if (id !== undefined) {
+    if (id == undefined) {
       return this._api.post('/inventario-marcas', params);
     }else{
       return this._api.put('/inventario-marcas/' + id, params);
@@ -21,6 +21,10 @@ export class MarcaService implements Resolve<any> {
 
   listar() {
     return this._api.get('/inventario-marcas');
+  }
+
+  borrar(id: number) {
+    return this._api.delete('/inventario-marcas/' + id);
   }
 
   buscar(params:any) {

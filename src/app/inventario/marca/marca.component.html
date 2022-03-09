@@ -1,4 +1,4 @@
 <h2>Marca</h2>
 
-<shared-busqueda-avanzada [placeholder]="'Buscar por nombre de marca'" (obtenerBusqueda)="realizarBusqueda($event, configPaginacion.page)"></shared-busqueda-avanzada>
+<shared-busqueda-avanzada [busquedaForm]="busquedaForm" [placeholder]="'Buscar por nombre de marca'" (obtenerBusqueda)="realizarBusqueda($event, configPaginacion.page)"></shared-busqueda-avanzada>
 <shared-tabla-personalizada [titulosArray]="titulos" [listaDatos]="listado" [configPaginacion]="configPaginacion" [nombreAbm]="'Marca'" (bajarItem)="borrar($event)" (obtenerDatos)="guardar($event)" (cambioDePagina)="realizarBusqueda({}, $event)"></shared-tabla-personalizada>

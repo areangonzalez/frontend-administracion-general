@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ConfigurarPagina } from 'src/app/core/model';
@@ -9,11 +10,19 @@ import { MarcaService, ConfiguracionParaPaginarService } from 'src/app/core/serv
   styleUrls: ['./marca.component.scss']
 })
 export class MarcaComponent implements OnInit {
+  public busquedaForm: FormGroup;
   public configPaginacion: ConfigurarPagina = new ConfigurarPagina();
   public listado: any = [];
   public titulos: string[] = [];
 
-  constructor(private _route: ActivatedRoute, private _marcaService: MarcaService, private _configurarPaginado: ConfiguracionParaPaginarService) { }
+  constructor(
+    private _route: ActivatedRoute, private _marcaService: MarcaService, private _configurarPaginado: ConfiguracionParaPaginarService,
+    private _fb: FormBuilder
+  ) {
+    this.busquedaForm = _fb.group({
+      global_param: ''
+    });
+  }
 
   ngOnInit(): void {
     this.renderTabla(this._route.snapshot.data["marcas"]);
@@ -21,12 +30,11 @@ export class MarcaComponent implements OnInit {
 
   realizarBusqueda(busqueda: any, pagina: number) {
     let params = Object.assign(busqueda, { pagesize: this.configPaginacion.pageSize, page: pagina - 1 })
-    console.log(params);
-    /* this._marcaService.buscar(params).subscribe(
+    this._marcaService.buscar(params).subscribe(
       resultado => {
         this.prepararListado(resultado, this.configPaginacion.page);
       }, error => { console.log(error); } // mensaje de error
-    ) */
+    )
   }
   /**
    * Preparo el listado para separar los titulos de los datos
@@ -52,18 +60,21 @@ export class MarcaComponent implements OnInit {
    guardar(datos:any) {
     if (datos !== false){
       if (datos["id"] == 0){ // CREAR
-        /* this._marcaService.guardar(datos, 0).subscribe(
+        this._marcaService.guardar(datos, 0).subscribe(
           respuesta => {
-            this._toastrService.success('Se ha creado una nueva marca!!!');
-            this.prepararListado(respuesta, this.configPaginacion.page);
-          }, error => { this._toastrService.error(error); }); */
+            //this._toastrService.success('Se ha creado una nueva marca!!!');
+            this.busquedaForm.patchValue({global_param: datos["nombre"]});
+            this.realizarBusqueda(this.busquedaForm.value, this.configPaginacion.page);
+          }, error => { /* this._toastrService.error(error);  */});
       }else{ // EDITAR
+        console.log(datos);
 
-        /* this._marcaService.guardar(datos, datos["id"]).subscribe(
+        this._marcaService.guardar(datos, datos["id"]).subscribe(
           respuesta => {
-            this._toastrService.success('La marca ha sido editada correctamente!!!');
-            this.prepararListado(respuesta, this.configPaginacion.page);
-        }, error => { this._toastrService.error(error); }); */
+            //this._toastrService.success('La marca ha sido editada correctamente!!!');
+            this.busquedaForm.patchValue({global_param: datos["nombre"]});
+            this.realizarBusqueda(this.busquedaForm.value, this.configPaginacion.page);
+        }, error => { /* this._toastrService.error(error); */ });
       }
     }
   }
@@ -72,11 +83,11 @@ export class MarcaComponent implements OnInit {
    * @param id numero de identificador del elemento a borrar
    */
   borrar(id:number) {
-    /* this._marcaService.borrar(id).subscribe(
+    this._marcaService.borrar(id).subscribe(
       respuesta => {
-        this._toastrService.success("Se ha dado de baja la marca correctamente.");
-        this.prepararListado(respuesta, this.configPaginacion.page);
-      }, error => { this._toastrService.error(error); }); */
+        //this._toastrService.success("Se ha dado de baja la marca correctamente.");
+        this.realizarBusqueda({}, this.configPaginacion.page);
+      }, error => { /* this._toastrService.error(error); */ });
   }
 
 }

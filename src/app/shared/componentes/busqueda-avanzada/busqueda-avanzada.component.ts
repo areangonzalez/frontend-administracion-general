@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { UtilService } from 'src/app/core/service';
 
 @Component({
@@ -8,17 +8,14 @@ import { UtilService } from 'src/app/core/service';
   styleUrls: ['./busqueda-avanzada.component.scss']
 })
 export class BusquedaAvanzadaComponent implements OnInit {
+    @Input("busquedaForm") public busquedaAvanzada?: FormGroup;
     @Input("placeholder") public placeholder: any;
     @Output("obtenerBusqueda") public obtenerBusqueda = new EventEmitter();
     public btnSeleccion: boolean = false;
     public mostrar: boolean = false;
-    public busquedaAvanzada: FormGroup;
+    // public busquedaAvanzada: FormGroup;
 
-    constructor( private _fb: FormBuilder, private _util: UtilService ) {
-      this.busquedaAvanzada = _fb.group({
-        global_param: ''
-      });
-    }
+    constructor( private _util: UtilService ) {}
 
     ngOnInit() {
     }
@@ -28,7 +25,7 @@ export class BusquedaAvanzadaComponent implements OnInit {
      */
     public buscar() {
       // busqueda avanzada de los valores del formulario
-      let busquedaAvanzada = this.busquedaAvanzada.value;
+      let busquedaAvanzada = this.busquedaAvanzada?.value;
       let apiBusqueda:any = {};
       // busco dentro del objeto segun la clave
       for (const clave in busquedaAvanzada) {
@@ -42,11 +39,11 @@ export class BusquedaAvanzadaComponent implements OnInit {
      * limpiador de los campos del formulario
      */
     public limpiarCampos(){
-      let busqueda: any = this.busquedaAvanzada.value;
+      let busqueda: any = this.busquedaAvanzada?.value;
       for (const key in busqueda) {
           busqueda[key] = '';
       }
-      this.busquedaAvanzada.patchValue(busqueda);
+      this.busquedaAvanzada?.patchValue(busqueda);
       this.buscar();
     }
 }
