@@ -67,8 +67,6 @@ export class MarcaComponent implements OnInit {
             this.realizarBusqueda(this.busquedaForm.value, this.configPaginacion.page);
           }, error => { /* this._toastrService.error(error);  */});
       }else{ // EDITAR
-        console.log(datos);
-
         this._marcaService.guardar(datos, datos["id"]).subscribe(
           respuesta => {
             //this._toastrService.success('La marca ha sido editada correctamente!!!');
