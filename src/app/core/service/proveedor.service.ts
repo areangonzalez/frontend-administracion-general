@@ -24,7 +24,7 @@ export class ProveedorService implements Resolve<any> {
   }
 
   borrar(id: number) {
-    return this._api.get('/inventario-proveedors/' + id);
+    return this._api.delete('/inventario-proveedors/' + id);
   }
 
   buscar(params:any) {

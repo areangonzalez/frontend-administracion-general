@@ -23,6 +23,10 @@ export class UnidadMedidaService implements Resolve<any> {
     return this._api.get('/inventario-unidad-medidas');
   }
 
+  borrar(id: number) {
+    return this._api.delete('/inventario-unidad-medidas/' + id);
+  }
+
   buscar(params:any) {
     let httpParams = new HttpParams();
     httpParams = this._api.formatParams(httpParams, params);
