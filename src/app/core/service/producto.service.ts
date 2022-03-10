@@ -32,7 +32,7 @@ export class ProductoService implements Resolve<any> {
   }
 
   baja(id: number) {
-    return this._api.delete('/inventario-productos/' + id);
+    return this._api.delete('/inventario-productos/baja/' + id);
   }
 
   resolve(

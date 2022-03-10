@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoriaComponent, MarcaComponent, ProductoComponent, ProveedorComponent, UnidadMedidaComponent,  } from '.';
-import { CategoriaService, MarcaService, ProductoService, ProveedorService, UnidadMedidaService } from '../core/service';
+import { CategoriaService, ListarCategoriaService, ListarMarcaService, ListarUnidadMedidaService, MarcaService, ProductoService, ProveedorService, UnidadMedidaService } from '../core/service';
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'producto', component: ProductoComponent,
-    resolve: { productos: ProductoService, categorias: CategoriaService, unidadMedidas: UnidadMedidaService, marcas: MarcaService }
+    resolve: { productos: ProductoService, categorias: ListarCategoriaService, unidadMedidas: ListarUnidadMedidaService, marcas: ListarMarcaService }
   }, {
     path: 'proveedor', component: ProveedorComponent,
     resolve: { proovedores: ProveedorService }
@@ -30,6 +30,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [CategoriaService, MarcaService, ProductoService, ProveedorService, UnidadMedidaService]
+  providers: [CategoriaService, MarcaService, ProductoService, ProveedorService, UnidadMedidaService, ListarCategoriaService, ListarMarcaService, ListarUnidadMedidaService]
 })
 export class InventarioRoutingModule { }

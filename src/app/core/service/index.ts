@@ -1,3 +1,4 @@
+export * from './listas';
 export * from './loader.service';
 export * from './jwt.service';
 export * from './autenticacion.service';
