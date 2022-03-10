@@ -12,14 +12,14 @@ export class ProvinciaService implements Resolve<any> {
   constructor(private _api: ApiService) { }
 
   public buscar() {
-    return this._api.get("/provincias");
+    return this._api.get("/lugar-provincias");
   }
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
     ): Observable<any>|Promise<any>|any {
-    return this._api.get("/provincias");
+    return this._api.get("/lugar-provincias");
   }
 
 }
