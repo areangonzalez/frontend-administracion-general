@@ -23,13 +23,12 @@ export class TablaProductoComponent {
     this.cambiarPagina(this.configPaginacion.page, this.configPaginacion.pageSize);
   }
 
-  bajaProducto(confirma: boolean, id: number) {
-    if (confirma) {
-      this.actualizarListado(true); // borrar esta linea y descomentar la de abajo
-      /* this._productoService.baja(id).subscribe(
+  bajaProducto(esActivo: any, id: number) {
+    if (esActivo !== 2) {
+      this._productoService.baja(id, {activo: esActivo}).subscribe(
         resultado => { // se confirma la baja del producto
           this.actualizarListado(true);
-        }, error => { console.log(error); }); */
+        }, error => { console.log(error); });
     }
   }
 

@@ -31,8 +31,8 @@ export class ProductoService implements Resolve<any> {
     return this._api.get('/inventario-productos', httpParams);
   }
 
-  baja(id: number) {
-    return this._api.delete('/inventario-productos/baja/' + id);
+  baja(id: number, params: any) {
+    return this._api.put('/inventario-productos/baja/' + id, params);
   }
 
   resolve(

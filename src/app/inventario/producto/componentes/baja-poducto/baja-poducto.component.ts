@@ -63,7 +63,7 @@ export class BajaPoductoComponent {
     modalRef.result.then(
       (result) => {
         if (result !== 'closed') {
-          this.obtenerConfirmacion.emit(true);
+          this.obtenerConfirmacion.emit(2);
         } else {
           this.obtenerConfirmacion.emit(result);
         }

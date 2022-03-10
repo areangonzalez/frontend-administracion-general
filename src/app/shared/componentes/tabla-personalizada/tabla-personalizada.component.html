@@ -36,7 +36,7 @@
         <td *ngFor="let col of titulosTabla">{{fila[col]}}</td>
         <td class="text-end w-25">
           <shared-crear-editar-modal [tipo]="'editar'" [titulo]="tituloEditar" [armarForm]="titulosArray" [importarDatos]="fila" (obtenerDatos)="editar($event)"></shared-crear-editar-modal>
-          <shared-baja-modal [nombreTabla]="nombreAbm" [importarId]="fila['id']" (obtenerConfirmacion)="borrar($event)"></shared-baja-modal>
+          <shared-baja-modal [nombreTabla]="nombreAbm" [importarId]="fila['id']" [esActivo]="fila['activo']" (obtenerConfirmacion)="borrar($event)"></shared-baja-modal>
         </td>
       </tr>
       </tbody>
