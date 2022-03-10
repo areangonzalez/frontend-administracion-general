@@ -23,8 +23,8 @@ export class MarcaService implements Resolve<any> {
     return this._api.get('/inventario-marcas');
   }
 
-  borrar(id: number) {
-    return this._api.delete('/inventario-marcas/baja/' + id);
+  borrar(id: number, params: any) {
+    return this._api.put('/inventario-marcas/baja/' + id, params);
   }
 
   buscar(params:any) {

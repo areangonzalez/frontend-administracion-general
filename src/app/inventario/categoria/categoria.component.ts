@@ -83,8 +83,8 @@ export class CategoriaComponent implements OnInit {
    * borra un elemento del listado
    * @param id numero de identificador del elemento a borrar
    */
-  borrar(id:number) {
-    this._categoriaService.borrar(id).subscribe(
+  borrar(datos: any) {
+    this._categoriaService.borrar(datos['id'], datos).subscribe(
       respuesta => {
         // this._toastrService.success("Se ha dado de baja la categoría correctamente.");
         this.busquedaForm.patchValue({global_param: ''});

@@ -23,8 +23,8 @@ export class CategoriaService implements Resolve<any> {
     return this._api.get('/inventario-categorias');
   }
 
-  borrar(id: number) {
-    return this._api.delete('/inventario-categorias/baja/' + id);
+  borrar(id: number, params: any) {
+    return this._api.put('/inventario-categorias/baja/' + id, params);
   }
 
   buscar(params:any) {

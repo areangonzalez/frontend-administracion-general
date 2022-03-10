@@ -83,8 +83,8 @@ export class UnidadMedidaComponent implements OnInit {
    * borra un elemento del listado
    * @param id numero de identificador del elemento a borrar
    */
-  borrar(id:number) {
-    this._unidadMedidaService.borrar(id).subscribe(
+  borrar(datos: any) {
+    this._unidadMedidaService.borrar(datos['id'], datos).subscribe(
       respuesta => {
         // this._toastrService.success("Se ha dado de baja la unidad de medida correctamente.");
         this.busquedaForm.patchValue({global_param: ''});

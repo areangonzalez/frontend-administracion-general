@@ -23,8 +23,8 @@ export class ProveedorService implements Resolve<any> {
     return this._api.get('/inventario-proveedors');
   }
 
-  borrar(id: number) {
-    return this._api.delete('/inventario-proveedors/baja/' + id);
+  borrar(id: number, params: any) {
+    return this._api.put('/inventario-proveedors/baja/' + id, params);
   }
 
   buscar(params:any) {

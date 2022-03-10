@@ -23,8 +23,8 @@ export class UnidadMedidaService implements Resolve<any> {
     return this._api.get('/inventario-unidad-medidas');
   }
 
-  borrar(id: number) {
-    return this._api.delete('/inventario-unidad-medidas/baja/' + id);
+  borrar(id: number, params:any) {
+    return this._api.put('/inventario-unidad-medidas/baja/' + id, params);
   }
 
   buscar(params:any) {

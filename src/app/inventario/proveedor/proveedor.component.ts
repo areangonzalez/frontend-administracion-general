@@ -84,8 +84,8 @@ export class ProveedorComponent implements OnInit {
    * borra un elemento del listado
    * @param id numero de identificador del elemento a borrar
    */
-  borrar(id:number) {
-    this._proveedorService.borrar(id).subscribe(
+  borrar(datos:any) {
+    this._proveedorService.borrar(datos['id'], datos).subscribe(
       respuesta => {
         // this._toastrService.success("Se ha dado de baja al proveedor correctamente.");
         this.busquedaForm.patchValue({global_param: ''});

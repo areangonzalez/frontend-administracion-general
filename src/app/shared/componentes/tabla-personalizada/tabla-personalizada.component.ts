@@ -21,10 +21,7 @@ export class TablaPersonalizadaComponent implements OnInit {
   public listadoRender: any[] = [];
   public titulosTabla: string[] =[];
 
-  constructor(
-      private _router: Router, private _configurarPagina: ConfiguracionParaPaginarService
-    ) { console.log(this.configPaginacion);
-     }
+  constructor( private _router: Router, private _configurarPagina: ConfiguracionParaPaginarService ) {}
 
   ngOnInit() {
     this.tituloEditar += this.nombreAbm;
