@@ -1,1 +1,2 @@
-<button type="button" class="btn btn-sm btn-outline-danger" (click)="abrirModal()" ngbTooltip="Dar baja Producto" placement="top-right" container="body"><i class="fas fa-trash-alt"></i></button>
+<button *ngIf="(esActivo == 1)" type="button" class="btn btn-sm btn-outline-danger" (click)="abrirModal()" ngbTooltip="Dar baja Producto" placement="top-right" container="body"><i class="fa-solid fa-arrow-down"></i></button>
+<button *ngIf="(esActivo == 0)" type="button" class="btn btn-sm btn-outline-danger" (click)="abrirModal()" ngbTooltip="Dar alta Producto" placement="top-right" container="body"><i class="fa-solid fa-arrow-up"></i></button>

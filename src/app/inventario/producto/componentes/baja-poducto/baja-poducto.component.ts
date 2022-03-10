@@ -6,35 +6,41 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   template: `
   <div class="modal-header">
     <h4 class="modal-title">Dar baja Producto</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="confirmar(false)">
+    <button type="button" class="btn-close" aria-label="Close" (click)="cancelar()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <h5 class="d-flex justify-content-center">¿Está seguro que desea dar baja el producto?</h5>
+    <h5 *ngIf="(esActivo == 1)" class="d-flex justify-content-center">¿Está seguro que desea dar baja el producto?</h5>
+    <h5 *ngIf="(esActivo == 0)" class="d-flex justify-content-center">¿Está seguro que desea dar alta el producto?</h5>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-danger" type="button" (click)="confirmar(false)">No</button>&nbsp;
-    <button class="btn btn-success" type="button" (click)="confirmar(true)">Si</button>
+    <button class="btn btn-danger" type="button" (click)="cancelar()">No</button>&nbsp;
+    <button *ngIf="(esActivo == 1)" class="btn btn-success" type="button" (click)="darBaja(true)">Si</button>
+    <button *ngIf="(esActivo == 0)" class="btn btn-success" type="button" (click)="darBaja(false)">Si</button>
   </div>
   `,
   styleUrls: ['./baja-poducto.component.scss']
 })
 export class BajaPoductoContent {
+  @Input("esActivo") public esActivo: number = 1;
 
   constructor( public _activeModal: NgbActiveModal ) { }
+
+  darBaja(baja: boolean) {
+    if (baja) { // TRUE
+      this._activeModal.close(0);
+    }else{ // FALSE
+      this._activeModal.close(1);
+    }
+  }
 
   /**
    * Se da de baja el producto con el id
    */
-  confirmar(estado: boolean) {
-    if (estado) {
-      console.log("se ha dado de baja correctamente");
-      this._activeModal.close(true);
-    } else {
-      console.log("se ha cancelado la baja");
-      this._activeModal.close('closed');
-    }
+  cancelar() {
+    console.log("se ha cancelado la baja");
+    this._activeModal.close('closed');
   }
 }
 
@@ -44,6 +50,7 @@ export class BajaPoductoContent {
   styleUrls: ['./baja-poducto.component.scss']
 })
 export class BajaPoductoComponent {
+  @Input("esActivo") public esActivo: number = 1;
   @Output("obtenerConfirmacion") public obtenerConfirmacion = new EventEmitter();
 
   constructor( private _modalService: NgbModal ) { }
@@ -52,12 +59,13 @@ export class BajaPoductoComponent {
    */
   abrirModal() {
     const modalRef = this._modalService.open(BajaPoductoContent);
+    modalRef.componentInstance.esActivo = this.esActivo;
     modalRef.result.then(
       (result) => {
         if (result !== 'closed') {
           this.obtenerConfirmacion.emit(true);
         } else {
-          this.obtenerConfirmacion.emit(false);
+          this.obtenerConfirmacion.emit(result);
         }
       }
     )
