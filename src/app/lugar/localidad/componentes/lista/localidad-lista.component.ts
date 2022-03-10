@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ConfigurarPagina } from 'src/app/core/model';
-import { ConfiguracionParaPaginarService } from 'src/app/core/service';
+import { ConfiguracionParaPaginarService, LocalidadExtraService, LocalidadBackendService } from 'src/app/core/service';
 
 @Component({
   selector: 'componente-localidad-lista',
@@ -13,14 +13,14 @@ export class LocalidadListaComponent implements OnInit {
   public configPaginacion: ConfigurarPagina = new ConfigurarPagina();
   public tamanioPagina: number = 20;
   public tamanioPaginaLista: any = [];
-  public backendLocalidades: any = [];
+  public localidadesBackend: any = [];
   public nombreLocalidadGuardada: string = '';
 
 
-  constructor(private _configPagina: ConfiguracionParaPaginarService) { }
+  constructor(private _configPagina: ConfiguracionParaPaginarService, private _localidadExtraService: LocalidadExtraService, private _localidadBackendService: LocalidadBackendService) { }
 
   ngOnInit(): void {
-    this.prepararListado(this.listados.backendLocalidades, 1);
+    this.prepararListado(this.listados.localidadesBackend, 1);
   }
   /**
    * agrega una localidad en el listado extra
@@ -29,13 +29,13 @@ export class LocalidadListaComponent implements OnInit {
    */
    agregarLocalidadExtra(confirmacion: boolean, id:number) {
     if (confirmacion) {
-      /* this._localidadExtraService.guardar(id).subscribe(
+      this._localidadExtraService.guardar(id).subscribe(
         respuesta => {
-          this._msj.exitoso("Se ha agreado correctamente la localidad en listado extras.");
+          // this._msj.exitoso("Se ha agreado correctamente la localidad en listado extras.");
           this.cambiarPagina(this.configPaginacion.page);
           this.actualizarLocalidadesExtras();
-        }, error => { this._msj.cancelado(error); }
-      ) */
+        }, error => { /* this._msj.cancelado(error); */ }
+      )
     }
   }
 
@@ -51,11 +51,11 @@ export class LocalidadListaComponent implements OnInit {
     // configuro para que se dirija a la primera pagina
     this.configPaginacion.page = 1;
     // realizo la busqueda
-    /* this._backendLocalidadService.buscar(apiBusqueda).subscribe(
+    this._localidadBackendService.buscar(apiBusqueda).subscribe(
       respuesta => {
         this.prepararListado(respuesta, page);
-      }, error => { this._msj.cancelado(error); }
-    ) */
+      }, error => { /* this._msj.cancelado(error); */ }
+    )
   }
   /**
    * prepara el listado con paginacion
@@ -66,7 +66,7 @@ export class LocalidadListaComponent implements OnInit {
     // preparo la variable con la configuracion para el paginado
     this.configPaginacion = this._configPagina.config(listado, pagina);
 
-    this.backendLocalidades = listado.resultado;
+    this.localidadesBackend = listado.resultado;
     this.tamanioPaginaLista = [{size: 10}, {size: 20}, {size: 50}, {size: 100}];
   }
   /**
@@ -98,11 +98,11 @@ export class LocalidadListaComponent implements OnInit {
    * al agregar una localidad en listado extra actualizo el listado de localidadesExtras
    */
   actualizarLocalidadesExtras() {
-    /* this._localidadExtraService.buscar({page: 0, pagesize: 20}).subscribe(
+    this._localidadExtraService.buscar({page: 0, pagesize: 20}).subscribe(
       respuesta => {
         this.listados.localidadesExtras = respuesta;
-      }, error => { this._msj.cancelado(error); }
-    ); */
+      }, error => { /* this._msj.cancelado(error); */ }
+    );
   }
 }
 

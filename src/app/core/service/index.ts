@@ -12,3 +12,6 @@ export * from './marca.service';
 export * from './unidad-medida.service';
 export * from './proveedor.service';
 export * from './config-tabla.service';
+export * from './localidad-backend.service';
+export * from './localidad-extra.service';
+export * from './localidad.service';
