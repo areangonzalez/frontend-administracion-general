@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { DepartamentoService, UtilService } from 'src/app/core/service';
 
 @Component({
   selector: 'componente-localidad-busqueda',
@@ -12,15 +13,9 @@ export class LocalidadBusquedaComponent implements OnInit {
   public btnSeleccion: boolean = false;
   public mostrar: boolean = false;
   public busquedaAvanzada: FormGroup;
-  //public departamentos: any = [];
+  public departamentos: any = [];
 
-  /* Borrar esta variable */
-  public departamentos: any = [
-    { id: 5, nombre: "Alberti", provinciaid: 2 },{ id: 6, nombre: "Avellaneda", provinciaid: 2 },
-    { id: 7, nombre: "Ayacucho", provinciaid: 2 },{ id: 8, nombre: "Azul", provinciaid: 2 },
-  ];
-
-  constructor(private _fb: FormBuilder, /* private _mensajeService: NotificacionService, private _util: UtilService, private _departamentoService: DepartamentoService, private _msj: NotificacionService */) {
+  constructor(private _fb: FormBuilder, private _util: UtilService, private _departamentoService: DepartamentoService, /* private _mensajeService: NotificacionService, */ ) {
     this.busquedaAvanzada = _fb.group({
       nombre: '',
       provinciaid: '',
@@ -81,15 +76,15 @@ export class LocalidadBusquedaComponent implements OnInit {
    * @param valor numero de id de provincia
    */
   public departamentoPorProvincia(valor: any) {
-    /* if (valor != "") {
+    if (valor != "") {
       let provinciaid = parseInt(valor);
       this._departamentoService.buscarPorProvinciaId(provinciaid).subscribe(
         respuesta => {
           this.departamentos = respuesta;
-        }, error => { this._msj.cancelado(error); }
+        }, error => { /* this._msj.cancelado(error); */ }
       );
     }else{
       this.departamentos = [];
-    } */
+    }
   }
 }

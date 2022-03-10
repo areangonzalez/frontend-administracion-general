@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UtilService } from 'src/app/core/service';
+import { DepartamentoService, LocalidadBackendService, UtilService } from 'src/app/core/service';
 
 @Component({
   selector: 'componente-localidad-form',
@@ -16,7 +16,7 @@ export class LocalidadFormComponent implements OnInit {
   public departamentos: any = [];
   public localidades: any = [];
 
-  constructor(private _fb: FormBuilder, private _util: UtilService) {
+  constructor(private _fb: FormBuilder, private _util: UtilService, private _departamentoService: DepartamentoService, private _localidadBackendService: LocalidadBackendService) {
     this.localidadForm = _fb.group({
       id: '',
       nombre: ['', [Validators.required]],
@@ -40,11 +40,11 @@ export class LocalidadFormComponent implements OnInit {
 
     if (valor.target.value != "") {
       let provinciaid = parseInt(valor.target.value);
-      /* this._departamentoService.buscarPorProvinciaId(provinciaid).subscribe(
+      this._departamentoService.buscarPorProvinciaId(provinciaid).subscribe(
         respuesta => {
           this.departamentos = respuesta;
-        }, error => { this._msj.cancelado(error); }
-      ); */
+        }, error => { /* this._msj.cancelado(error); */ }
+      );
 
       // borrar este ejmplo
       this.departamentos = [
@@ -82,17 +82,17 @@ export class LocalidadFormComponent implements OnInit {
       let nombre = this.localidadForm.controls.nombre.value;
       let params = this.localidadForm.value;
       if (params.id != '') { // editar
-        /* this._localidadService.guardar(params, params.id).subscribe(
+        this._localidadBackendService.guardar(params, params.id).subscribe(
           respuesta => {
-            this._msj.exitoso("Se ha editado Correctamente la localidad");
+            // this._msj.exitoso("Se ha editado Correctamente la localidad");
             this.cancelarForm.emit(nombre);
-          }, error => { this._msj.cancelado(error); }); */
+          }, error => { /* this._msj.cancelado(error); */ });
         } else { // agregar
-        /* this._localidadService.guardar(params).subscribe(
+        this._localidadBackendService.guardar(params).subscribe(
           respuesta => {
-            this._msj.exitoso("Se ha guardado correctamente la localidad");
+            // this._msj.exitoso("Se ha guardado correctamente la localidad");
             this.cancelarForm.emit(nombre);
-          }, error => { this._msj.cancelado(error); }); */
+          }, error => { /* this._msj.cancelado(error); */ });
       }
     }
   }
