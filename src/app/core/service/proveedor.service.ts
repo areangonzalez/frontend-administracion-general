@@ -24,7 +24,7 @@ export class ProveedorService implements Resolve<any> {
   }
 
   borrar(id: number) {
-    return this._api.delete('/inventario-proveedors/' + id);
+    return this._api.delete('/inventario-proveedors/baja/' + id);
   }
 
   buscar(params:any) {
@@ -38,7 +38,9 @@ export class ProveedorService implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
     ): Observable<any>|Promise<any>|any {
-    return this._api.get('/inventario-proveedors');
+    let httpParams = new HttpParams();
+    httpParams = this._api.formatParams(httpParams, { pagesize: 20 });
+    return this._api.get('/inventario-proveedors', httpParams);
   }
 
 }

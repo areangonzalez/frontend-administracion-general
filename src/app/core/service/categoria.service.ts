@@ -24,7 +24,7 @@ export class CategoriaService implements Resolve<any> {
   }
 
   borrar(id: number) {
-    return this._api.delete('/inventario-categorias/' + id);
+    return this._api.delete('/inventario-categorias/baja/' + id);
   }
 
   buscar(params:any) {
@@ -38,7 +38,9 @@ export class CategoriaService implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
     ): Observable<any>|Promise<any>|any {
-    return this._api.get('/inventario-categorias');
+    let httpParams = new HttpParams();
+    httpParams = this._api.formatParams(httpParams, { pagesize: 20 });
+    return this._api.get('/inventario-categorias', httpParams);
   }
 
 }

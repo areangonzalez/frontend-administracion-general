@@ -39,7 +39,9 @@ export class ProductoService implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
     ): Observable<any>|Promise<any>|any {
-    return this._api.get('/productos');
+    let httpParams = new HttpParams();
+    httpParams = this._api.formatParams(httpParams, { pagesize: 20 });
+    return this._api.get('/inventario-productos', httpParams);
   }
 
 }

@@ -24,7 +24,7 @@ export class MarcaService implements Resolve<any> {
   }
 
   borrar(id: number) {
-    return this._api.delete('/inventario-marcas/' + id);
+    return this._api.delete('/inventario-marcas/baja/' + id);
   }
 
   buscar(params:any) {

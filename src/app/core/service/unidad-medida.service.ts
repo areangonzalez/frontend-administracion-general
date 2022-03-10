@@ -24,7 +24,7 @@ export class UnidadMedidaService implements Resolve<any> {
   }
 
   borrar(id: number) {
-    return this._api.delete('/inventario-unidad-medidas/' + id);
+    return this._api.delete('/inventario-unidad-medidas/baja/' + id);
   }
 
   buscar(params:any) {
