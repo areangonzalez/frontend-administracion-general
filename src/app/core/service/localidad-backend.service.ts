@@ -9,20 +9,20 @@ import { ApiService } from './api.service';
 })
 export class LocalidadBackendService implements Resolve<any> {
 
-  constructor(private _http: ApiService) { }
+  constructor(private _api: ApiService) { }
 
   guardar(params: object, id?: number) {
     if (id) { // Editar
-      return this._http.put("/lugar-localidads/" + id, params);
+      return this._api.put("/lugar-localidads/" + id, params);
     } else { // Crear
-      return this._http.post("/lugar-localidads", params);
+      return this._api.post("/lugar-localidads", params);
     }
   }
 
   buscar(params: object) {
     let httpParams = new HttpParams();
-    httpParams = this._http.formatParams(httpParams, params);
-    return this._http.get('/lugar-localidads', httpParams);
+    httpParams = this._api.formatParams(httpParams, params);
+    return this._api.get('/lugar-localidads', httpParams);
   }
 
   resolve(
@@ -30,7 +30,7 @@ export class LocalidadBackendService implements Resolve<any> {
     state: RouterStateSnapshot,
     ): Observable<any>|Promise<any>|any {
       let httpParams = new HttpParams();
-      httpParams = this._http.formatParams(httpParams, { pagesize: 20, pages: 0 });
-    return this._http.get('/lugar-localidads', httpParams);
+      httpParams = this._api.formatParams(httpParams, { pagesize: 20, pages: 0 });
+    return this._api.get('/lugar-localidads', httpParams);
   }
 }
