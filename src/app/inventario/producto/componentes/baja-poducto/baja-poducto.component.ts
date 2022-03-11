@@ -27,19 +27,22 @@ export class BajaPoductoContent {
 
   constructor( public _activeModal: NgbActiveModal ) { }
 
+  /**
+   * se da baja y alta para el producto
+   * @param baja boolean
+   */
   darBaja(baja: boolean) {
     if (baja) { // TRUE
-      this._activeModal.close(0);
+      this._activeModal.close(0); // dar baja
     }else{ // FALSE
-      this._activeModal.close(1);
+      this._activeModal.close(1); // dar alta
     }
   }
 
   /**
-   * Se da de baja el producto con el id
+   * Se cancela el modal
    */
   cancelar() {
-    console.log("se ha cancelado la baja");
     this._activeModal.close('closed');
   }
 }
