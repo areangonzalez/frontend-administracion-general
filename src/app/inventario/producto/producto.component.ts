@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfiguracionParaPaginarService, ProductoService } from '../../core/service';
+import { ConfiguracionParaPaginarService, ProductoService, NotificacionService } from '../../core/service';
 import { ConfigurarListas, ConfigurarPagina } from 'src/app/core/model';
 import { ActivatedRoute } from '@angular/router';
 
@@ -15,6 +15,7 @@ export class ProductoComponent implements OnInit {
 
   constructor(
     private _configurarPaginacion: ConfiguracionParaPaginarService, private _productoService: ProductoService, private _route: ActivatedRoute,
+    private _msj: NotificacionService
   ) { }
 
   ngOnInit(): void {
@@ -48,13 +49,12 @@ export class ProductoComponent implements OnInit {
   buscar(params:any, page:number, pagesize: number) {
     Object.assign(params, {page: page-1, pagesize: pagesize});
     this.filtradoBusqueda = params;
-    console.log("Realizo la busqueda de productos con los parametros", params); // log para borrar despues de confirmar el uso
 
     // se descomenta la linea para poder utilizar el renderizado al api que da servicio
     this._productoService.buscar(params).subscribe(
       respuesta => {
         this.prepararListado(respuesta, page);
-    }, error => { /* this._mensaje.cancelado(error); */ });
+    }, error => { this._msj.showDanger(error); });
   }
 
 

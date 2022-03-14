@@ -4,6 +4,7 @@
   <div class="main">
     <layout-cabecera (ocultarMenu)="ocultarMenu($event)" ></layout-cabecera>
     <main class="contenedor-principal" >
+      <shared-notificacion aria-live="polite" aria-atomic="true" ></shared-notificacion>
         <router-outlet></router-outlet>
       </main>
     </div>

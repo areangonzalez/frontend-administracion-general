@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ConfigurarPagina } from 'src/app/core/model';
-import { ConfiguracionParaPaginarService, LocalidadBackendService, LocalidadExtraService } from 'src/app/core/service';
+import { ConfiguracionParaPaginarService, LocalidadBackendService, LocalidadExtraService, NotificacionService } from 'src/app/core/service';
 
 @Component({
   selector: 'componente-localidad-extra-lista',
@@ -15,7 +15,9 @@ export class LocalidadExtraListaComponent implements OnInit {
   public tamanioPaginaLista: any = [];
   public localidadesExtras: any = [];
 
-  constructor(private _configPagina: ConfiguracionParaPaginarService, private _localidadBackendService: LocalidadBackendService , private _localidadExtraService: LocalidadExtraService, /* private _msj: NotificacionService*/) { }
+  constructor(
+    private _configPagina: ConfiguracionParaPaginarService, private _localidadBackendService: LocalidadBackendService,
+    private _localidadExtraService: LocalidadExtraService, private _msj: NotificacionService) { }
 
   ngOnInit(): void {
     this.prepararListado(this.listados.localidadesExtras, 1);
@@ -29,10 +31,10 @@ export class LocalidadExtraListaComponent implements OnInit {
     if (confirmacion) {
       this._localidadExtraService.borrar(id).subscribe(
         respuesta => {
-          // this._msj.exitoso("Se ha borrado la localidad del listado extra con exito.");
+          this._msj.showSuccess(respuesta.message);
           this.cambiarPagina(this.configPaginacion.page);
           this.actualizarLocalidadesBackend();
-        }, error => { /* this._msj.cancelado(error); */ }
+        }, error => { this._msj.showDanger(error); }
       )
     }
   }
@@ -52,7 +54,7 @@ export class LocalidadExtraListaComponent implements OnInit {
     this._localidadExtraService.buscar(apiBusqueda).subscribe(
       respuesta => {
         this.prepararListado(respuesta, page);
-      }, error => { /* this._msj.cancelado(error); */ }
+      }, error => { this._msj.showDanger(error); }
     )
   }
   prepararListado(listado:any, pagina: number) {
@@ -84,7 +86,7 @@ export class LocalidadExtraListaComponent implements OnInit {
     this._localidadBackendService.buscar({page: 0, pagesize: 20}).subscribe(
       respuesta => {
         this.listados.localidadesBackend = respuesta;
-      }, error => { /* this._msj.cancelado(error); */ }
+      }, error => { this._msj.showDanger(error);}
     );
   }
 }

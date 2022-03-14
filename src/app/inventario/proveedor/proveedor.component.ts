@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ConfigurarPagina } from 'src/app/core/model';
-import { ProveedorService, ConfiguracionParaPaginarService } from 'src/app/core/service';
+import { ProveedorService, ConfiguracionParaPaginarService, NotificacionService } from 'src/app/core/service';
 
 @Component({
   selector: 'app-proveedor',
@@ -17,7 +17,7 @@ export class ProveedorComponent implements OnInit {
 
   constructor(
     private _route: ActivatedRoute, private _proveedorService: ProveedorService, private _configurarPaginado: ConfiguracionParaPaginarService,
-    private _fb: FormBuilder
+    private _fb: FormBuilder, private _msj: NotificacionService
     ) {
       this.busquedaForm = _fb.group({
         global_param: ''
@@ -37,7 +37,7 @@ export class ProveedorComponent implements OnInit {
     this._proveedorService.buscar(params).subscribe(
       resultado => {
         this.prepararListado(resultado, this.configPaginacion.page);
-      }, error => { console.log(error); } // mensaje de error
+      }, error => { this._msj.showDanger(error); } // mensaje de error
     )
   }
   /**
@@ -66,17 +66,17 @@ export class ProveedorComponent implements OnInit {
       if (datos["id"] == 0){ // CREAR
         this._proveedorService.guardar(datos, 0).subscribe(
           respuesta => {
-            // this._toastrService.success('Se ha creado un nuevo proveedor!!!');
+            this._msj.showSuccess(respuesta.message);
             this.busquedaForm.patchValue({global_param: datos["nombre"]});
             this.realizarBusqueda(this.busquedaForm.value, this.configPaginacion.page);
-          }, error => { /* this._toastrService.error(error); */ });
+          }, error => { this._msj.showDanger(error); });
       }else{ // EDITAR
         this._proveedorService.guardar(datos, datos["id"]).subscribe(
           respuesta => {
-            // this._toastrService.success('El proveedor ha sido editado correctamente!!!');
+            this._msj.showSuccess(respuesta.message);
             this.busquedaForm.patchValue({global_param: datos["nombre"]});
             this.realizarBusqueda(this.busquedaForm.value, this.configPaginacion.page);
-        }, error => { /* this._toastrService.error(error); */ });
+        }, error => { this._msj.showDanger(error); });
       }
     }
   }
@@ -87,10 +87,10 @@ export class ProveedorComponent implements OnInit {
   borrar(datos:any) {
     this._proveedorService.borrar(datos['id'], datos).subscribe(
       respuesta => {
-        // this._toastrService.success("Se ha dado de baja al proveedor correctamente.");
+        this._msj.showSuccess(respuesta.message);
         this.busquedaForm.patchValue({global_param: ''});
         this.realizarBusqueda({}, this.configPaginacion.page);
-      }, error => { /* this._toastrService.error(error); */ });
+      }, error => { this._msj.showDanger(error); });
   }
 
 }

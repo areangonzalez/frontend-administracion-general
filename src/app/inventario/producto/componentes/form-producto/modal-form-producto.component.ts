@@ -65,9 +65,9 @@ export class ModalFormProductoComponent {
     modalRef.result.then(
       (result) => {
         if (result !== 'closed') {
-          this.confirmarGuardado.emit(true);
+          this.confirmarGuardado.emit(result);
         }
-      }, error => { console.log(error); });
+      });
   }
 
 }

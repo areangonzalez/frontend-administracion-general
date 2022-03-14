@@ -16,4 +16,5 @@ export * from './localidad-backend.service';
 export * from './localidad-extra.service';
 export * from './localidad.service';
 export * from './provincia.service';
-export *from './departamento.service';
+export * from './departamento.service';
+export * from './notificacion.service';

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfigurarListas } from 'src/app/core/model';
-import { UtilService, ProductoService } from 'src/app/core/service';
+import { UtilService, ProductoService, NotificacionService } from 'src/app/core/service';
 
 @Component({
   selector: 'componente-form-producto',
@@ -16,7 +16,7 @@ export class FormProductoComponent implements OnInit {
   public productoForm!: FormGroup;
   public submitted: boolean = false;
 
-  constructor( private _fb: FormBuilder, private _util: UtilService, private _productoService: ProductoService ) {
+  constructor( private _fb: FormBuilder, private _util: UtilService, private _productoService: ProductoService, private _msj: NotificacionService ) {
     this.productoForm = _fb.group({
       id: 0,
       codigo: '',
@@ -73,19 +73,17 @@ export class FormProductoComponent implements OnInit {
    */
   guardarProducto(params: any, id?: number ) {
     if (id) {// editar producto
-      console.log("Se ha editado un producto");
-      this.confirmacionGuardado.emit(true);
-      /* this._productoService.guardar(params, id).subscribe(
-        resultado => {
+      this._productoService.guardar(params, id).subscribe(
+        respuesta => {
+          this._msj.showSuccess(respuesta.message);
           this.confirmacionGuardado.emit(true);
-        }, error => { console.log(error); }) */
+        }, error => { this._msj.showDanger(error); })
     } else { // Crear producto
-      console.log("Se ha creado un producto");
-      this.confirmacionGuardado.emit(true);
-      /* this._productoService.guardar(params).subscribe(
-        resultado => {
+      this._productoService.guardar(params).subscribe(
+        respuesta => {
+          this._msj.showSuccess(respuesta.message);
           this.confirmacionGuardado.emit(true);
-        }, error => { console.log(error); }) */
+        }, error => { this._msj.showDanger(error); })
     }
   }
 

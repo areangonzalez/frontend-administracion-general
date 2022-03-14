@@ -12,7 +12,7 @@ import { fakeBackendProvider } from './core/helpers';
 
 import { RoutingModule } from './routing.module';
 
-import { CabeceraComponent, MenuComponent, LoaderComponent, LayoutLoginComponent, SistemaComponent } from "./shared";
+import { CabeceraComponent, MenuComponent, LoaderComponent, LayoutLoginComponent, SistemaComponent, NotificacionComponent } from "./shared";
 import { AppComponent } from './app.component';
 import { ErrorInterceptor, JwtInterceptor } from './core/interceptor';
 
@@ -20,7 +20,8 @@ import { ErrorInterceptor, JwtInterceptor } from './core/interceptor';
   declarations: [
     CabeceraComponent, MenuComponent,
     AppComponent, LoaderComponent,
-    LayoutLoginComponent, SistemaComponent
+    LayoutLoginComponent, SistemaComponent,
+    NotificacionComponent
   ],
   imports: [
     BrowserModule,

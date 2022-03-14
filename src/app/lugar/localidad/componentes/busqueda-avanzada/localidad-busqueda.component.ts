@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { DepartamentoService, UtilService } from 'src/app/core/service';
+import { DepartamentoService, NotificacionService, UtilService } from 'src/app/core/service';
 
 @Component({
   selector: 'componente-localidad-busqueda',
@@ -15,7 +15,9 @@ export class LocalidadBusquedaComponent implements OnInit {
   public busquedaAvanzada: FormGroup;
   public departamentos: any = [];
 
-  constructor(private _fb: FormBuilder, private _util: UtilService, private _departamentoService: DepartamentoService, /* private _mensajeService: NotificacionService, */ ) {
+  constructor(
+    private _fb: FormBuilder, private _util: UtilService, private _departamentoService: DepartamentoService,
+    private _msj: NotificacionService, ) {
     this.busquedaAvanzada = _fb.group({
       nombre: '',
       provinciaid: '',
@@ -81,7 +83,7 @@ export class LocalidadBusquedaComponent implements OnInit {
       this._departamentoService.buscarPorProvinciaId(provinciaid).subscribe(
         respuesta => {
           this.departamentos = respuesta;
-        }, error => { /* this._msj.cancelado(error); */ }
+        }, error => { this._msj.showDanger(error); }
       );
     }else{
       this.departamentos = [];

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ConfigurarPagina } from 'src/app/core/model';
-import { UnidadMedidaService, ConfiguracionParaPaginarService } from 'src/app/core/service';
+import { UnidadMedidaService, ConfiguracionParaPaginarService, NotificacionService } from 'src/app/core/service';
 
 @Component({
   selector: 'inventario-unidad-medida',
@@ -17,7 +17,7 @@ export class UnidadMedidaComponent implements OnInit {
 
   constructor(
     private _route: ActivatedRoute, private _unidadMedidaService: UnidadMedidaService, private _configurarPaginado: ConfiguracionParaPaginarService,
-    private _fb: FormBuilder
+    private _fb: FormBuilder, private _msj: NotificacionService
     ) {
       this.busquedaForm = _fb.group({
         global_param: ''
@@ -36,7 +36,7 @@ export class UnidadMedidaComponent implements OnInit {
     this._unidadMedidaService.buscar(params).subscribe(
       resultado => {
         this.prepararListado(resultado, this.configPaginacion.page);
-      }, error => { console.log(error); } // mensaje de error
+      }, error => { this._msj.showDanger(error); } // mensaje de error
     )
   }
   /**
@@ -65,17 +65,17 @@ export class UnidadMedidaComponent implements OnInit {
       if (datos["id"] == 0){ // CREAR
         this._unidadMedidaService.guardar(datos, 0).subscribe(
           respuesta => {
-            // this._toastrService.success('Se ha creado una nueva unidad de medida!!!');
+            this._msj.showSuccess(respuesta.message);
             this.busquedaForm.patchValue({global_param: datos["nombre"]});
             this.realizarBusqueda(this.busquedaForm.value, this.configPaginacion.page);
-          }, error => { /* this._toastrService.error(error); */ });
+          }, error => { this._msj.showDanger(error); });
       }else{ // EDITAR
         this._unidadMedidaService.guardar(datos, datos["id"]).subscribe(
           respuesta => {
-            // this._toastrService.success('La unidad de medida ha sido editado correctamente!!!');
+            this._msj.showSuccess(respuesta.message);
             this.busquedaForm.patchValue({global_param: datos["nombre"]});
             this.realizarBusqueda(this.busquedaForm.value, this.configPaginacion.page);
-        }, error => { /* this._toastrService.error(error); */ });
+        }, error => { this._msj.showDanger(error); });
       }
     }
   }
@@ -86,10 +86,10 @@ export class UnidadMedidaComponent implements OnInit {
   borrar(datos: any) {
     this._unidadMedidaService.borrar(datos['id'], datos).subscribe(
       respuesta => {
-        // this._toastrService.success("Se ha dado de baja la unidad de medida correctamente.");
+        this._msj.showSuccess(respuesta.message);
         this.busquedaForm.patchValue({global_param: ''});
         this.realizarBusqueda({}, this.configPaginacion.page);
-      }, error => { /* this._toastrService.error(error); */ });
+      }, error => { this._msj.showDanger(error); });
   }
 
 }

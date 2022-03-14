@@ -2,7 +2,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ConfigurarPagina } from 'src/app/core/model';
-import { MarcaService, ConfiguracionParaPaginarService } from 'src/app/core/service';
+import { MarcaService, ConfiguracionParaPaginarService, NotificacionService } from 'src/app/core/service';
 
 @Component({
   selector: 'inventario-marca',
@@ -17,7 +17,7 @@ export class MarcaComponent implements OnInit {
 
   constructor(
     private _route: ActivatedRoute, private _marcaService: MarcaService, private _configurarPaginado: ConfiguracionParaPaginarService,
-    private _fb: FormBuilder
+    private _fb: FormBuilder, private _msj: NotificacionService
   ) {
     this.busquedaForm = _fb.group({
       global_param: ''
@@ -33,7 +33,7 @@ export class MarcaComponent implements OnInit {
     this._marcaService.buscar(params).subscribe(
       resultado => {
         this.prepararListado(resultado, this.configPaginacion.page);
-      }, error => { console.log(error); } // mensaje de error
+      }, error => { this._msj.showDanger(error); } // mensaje de error
     )
   }
   /**
@@ -65,14 +65,14 @@ export class MarcaComponent implements OnInit {
             //this._toastrService.success('Se ha creado una nueva marca!!!');
             this.busquedaForm.patchValue({global_param: datos["nombre"]});
             this.realizarBusqueda(this.busquedaForm.value, this.configPaginacion.page);
-          }, error => { /* this._toastrService.error(error);  */});
+          }, error => { this._msj.showDanger(error); });
       }else{ // EDITAR
         this._marcaService.guardar(datos, datos["id"]).subscribe(
           respuesta => {
-            //this._toastrService.success('La marca ha sido editada correctamente!!!');
+            this._msj.showSuccess(respuesta.message);
             this.busquedaForm.patchValue({global_param: datos["nombre"]});
             this.realizarBusqueda(this.busquedaForm.value, this.configPaginacion.page);
-        }, error => { /* this._toastrService.error(error); */ });
+        }, error => { this._msj.showDanger(error); });
       }
     }
   }
@@ -83,10 +83,10 @@ export class MarcaComponent implements OnInit {
   borrar(datos: any) {
     this._marcaService.borrar(datos['id'], datos).subscribe(
       respuesta => {
-        //this._toastrService.success("Se ha dado de baja la marca correctamente.");
+        this._msj.showSuccess(respuesta.message);
         this.busquedaForm.patchValue({global_param: ''});
         this.realizarBusqueda({}, this.configPaginacion.page);
-      }, error => { /* this._toastrService.error(error); */ });
+      }, error => { this._msj.showDanger(error); });
   }
 
 }

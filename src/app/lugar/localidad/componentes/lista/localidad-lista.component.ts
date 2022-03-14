@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ConfigurarPagina } from 'src/app/core/model';
-import { ConfiguracionParaPaginarService, LocalidadExtraService, LocalidadBackendService } from 'src/app/core/service';
+import { ConfiguracionParaPaginarService, LocalidadExtraService, LocalidadBackendService, NotificacionService } from 'src/app/core/service';
 
 @Component({
   selector: 'componente-localidad-lista',
@@ -17,7 +17,10 @@ export class LocalidadListaComponent implements OnInit {
   public nombreLocalidadGuardada: string = '';
 
 
-  constructor(private _configPagina: ConfiguracionParaPaginarService, private _localidadExtraService: LocalidadExtraService, private _localidadBackendService: LocalidadBackendService) { }
+  constructor(
+    private _configPagina: ConfiguracionParaPaginarService, private _localidadExtraService: LocalidadExtraService,
+    private _localidadBackendService: LocalidadBackendService, private _msj: NotificacionService
+  ) { }
 
   ngOnInit(): void {
     this.prepararListado(this.listados.localidadesBackend, 1);
@@ -31,10 +34,10 @@ export class LocalidadListaComponent implements OnInit {
     if (confirmacion) {
       this._localidadExtraService.guardar(id).subscribe(
         respuesta => {
-          // this._msj.exitoso("Se ha agreado correctamente la localidad en listado extras.");
+          this._msj.showSuccess(respuesta.message);
           this.cambiarPagina(this.configPaginacion.page);
           this.actualizarLocalidadesExtras();
-        }, error => { /* this._msj.cancelado(error); */ }
+        }, error => { this._msj.showDanger(error); }
       )
     }
   }
@@ -54,7 +57,7 @@ export class LocalidadListaComponent implements OnInit {
     this._localidadBackendService.buscar(apiBusqueda).subscribe(
       respuesta => {
         this.prepararListado(respuesta, page);
-      }, error => { /* this._msj.cancelado(error); */ }
+      }, error => { this._msj.showDanger(error); }
     )
   }
   /**
@@ -101,7 +104,7 @@ export class LocalidadListaComponent implements OnInit {
     this._localidadExtraService.buscar({page: 0, pagesize: 20}).subscribe(
       respuesta => {
         this.listados.localidadesExtras = respuesta;
-      }, error => { /* this._msj.cancelado(error); */ }
+      }, error => { this._msj.showDanger(error); }
     );
   }
 }
