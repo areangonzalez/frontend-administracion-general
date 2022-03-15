@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ThemeService } from 'ng-bootstrap-darkmode';
 import { AutenticacionService } from 'src/app/core/service';
@@ -9,6 +9,8 @@ import { AutenticacionService } from 'src/app/core/service';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  @Input("mostrarMenu") public mostrarMenu: boolean = false;
+  public nombreUsuario: string = /* this._auth.getUserName() */ "Admin";
   public tema: any;
   public isCollapsedInv:boolean = true;
   public isCollapsedLug:boolean = true;

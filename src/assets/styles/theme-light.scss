@@ -1,3 +1,9 @@
+[data-theme="light"] .border,
+[data-theme="light"] .border-top,
+[data-theme="light"] .border-end,
+[data-theme="light"] .border-bottom,
+[data-theme="light"] .border-start { border-color: #dee2e6 !important; }
+
 /* PROPIOS SCSS */
 [data-theme="light"] .bg-dhyas { background-color: #f8f9fa !important; }
 [data-theme="light"] .btn-toggle-nav {
