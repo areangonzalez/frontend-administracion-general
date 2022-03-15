@@ -33,7 +33,7 @@ export class TablaPersonalizadaComponent implements OnInit {
    */
   eliminarElementoId(listaTitulos: any) {
     for (let i = 0; i < listaTitulos.length; i++) {
-      if (listaTitulos[i] !== 'id') {
+      if (listaTitulos[i] !== 'id' && listaTitulos[i] !== 'activo') {
         this.titulosTabla.push(listaTitulos[i]);
       }
     }
@@ -80,6 +80,13 @@ export class TablaPersonalizadaComponent implements OnInit {
    */
   cambiarPagina(pagina:number) {
     this.cambioDePagina.emit(pagina);
+  }
+
+  inactivo(esActivo: any) {
+    if(esActivo == 0) {
+      return "Este Registro se encuentra Inactivo.";
+    }
+    else{ return "" ; }
   }
 
 }

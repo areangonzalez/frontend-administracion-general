@@ -32,7 +32,7 @@
       </tr>
       </tbody>
     <tbody *ngIf="(listaDatos.length > 0)">
-      <tr *ngFor="let fila of listaDatos">
+      <tr *ngFor="let fila of listaDatos" [ngClass]="{'table-danger': (fila['activo'] == 0)}" [ngbTooltip]="inactivo(fila['activo'])" >
         <td *ngFor="let col of titulosTabla">{{fila[col]}}</td>
         <td class="text-end w-25">
           <shared-crear-editar-modal [tipo]="'editar'" [titulo]="tituloEditar" [armarForm]="titulosArray" [importarDatos]="fila" (obtenerDatos)="editar($event)"></shared-crear-editar-modal>
