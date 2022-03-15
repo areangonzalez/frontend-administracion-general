@@ -1,4 +1,4 @@
-<div class="d-flex flex-column flex-shrink-0 sidebar-content p-3 bg-dhyas" >
+<div class="d-flex flex-column flex-shrink-0 sidebar-content p-3" >
   <span class="d-flex align-items-center pb-2 text-dark text-decoration-none border-bottom">
     <img *ngIf="(tema !== 'dark')" src="../../../assets/img/logoRN.svg" width="50" height="30" alt="Desarrollo humano y articulación solidaria">
     <img *ngIf="(tema == 'dark')" src="../../../assets/img/logoRN-white.svg" width="50" height="30" alt="Desarrollo humano y articulación solidaria">
@@ -40,16 +40,18 @@
       <li class="solo-link" [routerLinkActive]="['active']" ><a [routerLink]="['/usuarios']" class="link-dark rounded"><i class="fa-solid fa-users"></i>&nbsp;&nbsp;Usuarios</a></li>
     </ul>
   </div>
-  <div class="user-tag border-top border-light position-fixed bottom-0 start-0 menu-flotante start" [ngClass]="{'ocultar': mostrarMenu}">
-    <button class="btn btn-toggle-nav align-items-center w-100" style="text-align: left !important;">
-      <i class="fa-solid fa-user"></i>
-      &nbsp;&nbsp;&nbsp;
-      {{nombreUsuario}}
-    </button>
-    <button class="btn btn-toggle-nav btn-sombra align-items-center w-100 rounded" style="text-align: left !important;" (click)="cerrarSesion()">
-      <i class="fas fa-sign-out-alt"></i>
-      &nbsp;&nbsp;
-      Cerrar Sesión
-    </button>
+  <div class="bg-dhyas position-fixed bottom-0 start-0 menu-flotante start" [ngClass]="{'ocultar': mostrarMenu}" >
+    <div class="user-tag border-top border-light" style="height: 90px;" >
+      <button class="btn btn-toggle-nav align-items-center w-100" style="text-align: left !important;">
+        <i class="fa-solid fa-user"></i>
+        &nbsp;&nbsp;&nbsp;
+        {{nombreUsuario}}
+      </button>
+      <button class="btn btn-toggle-nav btn-sombra align-items-center w-100 rounded" style="text-align: left !important;" (click)="cerrarSesion()">
+        <i class="fas fa-sign-out-alt"></i>
+        &nbsp;&nbsp;
+        Cerrar Sesión
+      </button>
+    </div>
   </div>
 </div>

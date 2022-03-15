@@ -16,8 +16,6 @@ export class CabeceraComponent implements OnInit {
 
   mostrarMenu() {
     this.mostrar = !this.mostrar;
-    console.log(this.mostrar);
-
     this.ocultarMenu.emit(this.mostrar);
   }
 }
