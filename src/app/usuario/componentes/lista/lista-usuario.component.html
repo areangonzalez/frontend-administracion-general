@@ -2,7 +2,7 @@
   <table class="table table-light table-sm table-hover">
     <thead>
       <tr>
-        <th scope="col">Apellido y Nombre</th>
+        <th scope="col" colspan="2">Apellido y Nombre</th>
         <th class="text-center" scope="col">Usuario</th>
         <th class="text-center" scope="col">Fecha Ingreso</th>
         <th scope="col">Modulo/s</th>
@@ -13,33 +13,24 @@
         </th>
       </tr>
     </thead>
-    <!-- <tbody *ngIf="(listadosArray.productos.length == 0)" >
+    <tbody *ngIf="(listadosArray.usuarios.length == 0)" >
       <tr scope="col">
         <td class="text-center table-warning" scope="col" rowspan="1" colspan="6" ><strong>NO SE HAN ENCONTRADO RESULTADOS</strong></td>
       </tr>
-    </tbody> -->
-    <!-- <tbody *ngIf="(listadosArray.productos.length > 0)"> -->
-    <tbody>
-      <!-- <tr *ngFor="let item of listadosArray.productos" [ngClass]="{'table-danger': (item.activo === 0) }"> -->
-      <tr>
-        <td scope="col">test, user</td>
-        <td scope="col" class="text-center" >test</td>
-        <td scope="col" class="text-center">10/02/2022</td>
-        <td scope="col">GCB</td>
-        <td scope="col" class="text-end">
-          <button class="btn btn-outline-secondary" ><i class="fa-solid fa-user-gear"></i></button>
-          <button class="btn btn-outline-danger" ><i class="fa-solid fa-user-minus"></i></button>
-          <componente-seleccionar-modulo-modal [usuarioid]="1" ></componente-seleccionar-modulo-modal>
-        </td>
-        <!-- <td class="text-center" scope="col">{{item.codigo}}</td>
-        <td scope="col">{{item.nombre}}</td>
-        <td class="text-center" scope="col">{{item.marca}}</td>
-        <td class="text-center" scope="col">{{item.unidad_valor}}&nbsp;{{item.unidad_medida}}</td>
-        <td class="text-center" scope="col">{{item.categoria}}</td>
+    </tbody>
+    <tbody *ngIf="(listadosArray.usuarios.length > 0)">
+      <tr *ngFor="let user of listadosArray.usuarios">
+        <td class="text-left" scope="col" colspan="2">{{user.apellido}}, {{user.nombre}}</td>
+        <td scope="col">{{user.username}}</td>
+        <td class="text-center" scope="col">{{user.created_at}}</td>
+        <td></td>
+        <!-- <td class="text-center" scope="col">{{user.unidad_valor}}&nbsp;{{user.unidad_medida}}</td> -->
+        <!-- <td class="text-center" scope="col">{{user.categoria}}</td> -->
         <td class="text-end">
-          <componente-modal-form-producto [tipo]="'editar'" [titulo]="'Editar Producto'" [listas]="listadosArray" [datosProducto]="item" (confirmarGuardado)="actualizarListado($event)"></componente-modal-form-producto>
-          <componente-baja-poducto (obtenerConfirmacion)="bajaProducto($event, item.id)" ></componente-baja-poducto>
-        </td> -->
+          <componente-seleccionar-modulo-modal ></componente-seleccionar-modulo-modal>
+          <!-- <componente-modal-form-producto [tipo]="'editar'" [titulo]="'Editar Producto'" [listas]="listadosArray" [datosProducto]="user" (confirmarGuardado)="actualizarListado($event)"></componente-modal-form-producto>
+          <componente-baja-poducto (obtenerConfirmacion)="bajaProducto($event, user.id)" ></componente-baja-poducto> -->
+        </td>
       </tr>
       </tbody>
   </table>

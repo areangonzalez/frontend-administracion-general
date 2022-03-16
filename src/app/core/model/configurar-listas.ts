@@ -10,4 +10,6 @@ export interface ConfigurarListas {
   localidadesBackend?: any;
   localidadesExtras?: any;
   provincias?: any;
+  roles?: any;
+  modulos?: any;
 }

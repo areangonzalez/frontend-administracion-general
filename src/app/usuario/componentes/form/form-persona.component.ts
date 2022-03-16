@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { ConfigurarListas } from 'src/app/core/model';
 //import { UsuarioService, AlertService, UtilService, NotificacionService } from './../../../core/service';
 
 @Component({
@@ -9,8 +10,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
   providers: [FormBuilder]
 })
 export class FormPersonaComponent implements OnInit {
-  @Input("localidades") public localidades: any;
-  @Input("roles") public roles: any;
+  @Input("listasArray") public listasArray: ConfigurarListas | any;
   @Output("cancelarForm") public cancelarForm = new EventEmitter();
   // public persona: FormGroup | any;
   public cuil_medio: string = "";
@@ -29,6 +29,8 @@ export class FormPersonaComponent implements OnInit {
     usuario: _fb.group({
       personaid: '',
       username: ['', [Validators.required, Validators.minLength(3)]],
+      rol: ['', [Validators.required]],
+      moduloid: ['', [Validators.required]],
       email: ['', [Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
       localidadid: '',
       password: ['', [Validators.required, Validators.minLength(8)]],
@@ -38,7 +40,7 @@ export class FormPersonaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setRol(this.roles);
+    this.setRol(this.listasArray.roles);
   }
 
   /**

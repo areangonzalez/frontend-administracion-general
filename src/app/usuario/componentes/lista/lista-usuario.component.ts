@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ConfigurarListas } from 'src/app/core/model';
 
 @Component({
   selector: 'lista-usuario-componente',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lista-usuario.component.scss']
 })
 export class ListaUsuarioComponent implements OnInit {
+  @Input("listadosArray") public listadosArray!: ConfigurarListas;
 
   constructor() { }
 

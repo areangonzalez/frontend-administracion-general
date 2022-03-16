@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { ConfigurarListas } from 'src/app/core/model';
 /* import { AlertService } from './../../../core/service';
 import { ConfiguracionListados } from './../../../core/model'; */
 
@@ -18,6 +19,7 @@ import { ConfiguracionListados } from './../../../core/model'; */
   styleUrls: ['./modal-agregar-usuario.component.scss']
 })
 export class ModalAgregarUsuarioContent {
+  @Input("listasArray") public listasArray: ConfigurarListas | any;
   @Input("localidades") public localidades:any;
   @Input("roles") public roles:any;
   constructor(public activeModal: NgbActiveModal) {}
@@ -35,10 +37,10 @@ export class ModalAgregarUsuarioContent {
 export class ModalAgregarUsuarioComponent {
   /**
    * @var usuarioid {number} identificador de un usuario
-   * @var listas {object} objeto que contiene listados
+   * @var listasArray {array} objeto que contiene listados
    */
   @Input("usuarioid") public usuarioid: number | any;
-  /* @Input("listas") public listas: ConfiguracionListados; */
+  @Input("listasArray") public listasArray: ConfigurarListas | any;
   @Output("confirmarGuardado") public confirmarGuardado = new EventEmitter;
 
   constructor(
@@ -50,6 +52,7 @@ export class ModalAgregarUsuarioComponent {
 
   abrirModal() {
     const modalRef = this.modalService.open(ModalAgregarUsuarioContent);
+    modalRef.componentInstance.listasArray = this.listasArray;
     /* modalRef.componentInstance.localidades = this.listas.localidades;
     modalRef.componentInstance.roles = this.listas.roles; */
     modalRef.result.then(

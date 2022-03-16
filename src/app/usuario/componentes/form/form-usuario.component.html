@@ -1,5 +1,27 @@
 <fieldset [formGroup]="usuario">
   <div class="row">
+    <div class="form-group col-md-12">
+      <label for="rol" class="prioridad">Rol:</label>
+      <select class="form-select" id="rol" formControlName="rol">
+        <option value="">Seleccione un Rol</option>
+        <option *ngFor="let rol of listasArray.roles" value="{{rol.name}}">{{rol.name}}</option>
+      </select>
+      <div *ngIf="(usuario.get('rol')?.invalid && submitted)"
+      class="text-danger">
+        <div *ngIf="usuario.get('rol')?.hasError('required')">Este campo es requerido. </div>
+      </div>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="modulo" class="prioridad">Modulo:</label>
+      <select class="form-select" id="modulo" formControlName="modulo">
+        <option value="">Seleccione un Módulo</option>
+        <option *ngFor="let modulo of listasArray.modulos" value="{{modulo.id}}">{{modulo.nombre}}</option>
+      </select>
+      <div *ngIf="(usuario.get('modulo')?.invalid && submitted)"
+      class="text-danger">
+        <div *ngIf="usuario.get('modulo')?.hasError('required')">Este campo es requerido. </div>
+      </div>
+    </div>
     <div class="form-group col-md-6">
       <label for="nombre_usuario" class="prioridad">Usuario (<span class="is-invalid">*</span>):</label>
       <input type="text" id="nombre_usuario" placeholder="Nombre de usuario" class="form-control" formControlName="username" [ngClass]="{'is-invalid': (usuario.get('username').invalid && submitted)}">
@@ -13,7 +35,7 @@
       <label for="email" class="prioridad">Localidad:</label>
       <select class="form-select" id="localidad" formControlName="localidadid" [ngClass]="{'is-invalid': (usuario.get('localidadid').invalid && submitted)}">
         <option value="">Seleccione Localidad</option>
-        <option *ngFor="let localidad of localidades" value="{{localidad.id}}">{{localidad.nombre}}</option>
+        <option *ngFor="let localidad of listasArray.localidades" value="{{localidad.id}}">{{localidad.nombre}}</option>
       </select>
       <div *ngIf="(usuario.get('localidadid').invalid && submitted)" class="text-danger">
           <div *ngIf="usuario.get('localidadid').hasError('required')">Por favor Seleccione localidad. </div>

@@ -14,17 +14,6 @@ import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-boots
       <div class="row">
         <fieldset class="padding-custom" [formGroup]="formRolPermisos" >
           <div class="form-group col-md-12">
-            <label for="rol" class="prioridad">Rol:</label>
-            <select class="form-select" id="rol" formControlName="rol">
-              <option value="">Seleccione un Rol</option>
-              <option *ngFor="let rol of listaRoles" value="{{rol.name}}">{{rol.name}}</option>
-            </select>
-            <div *ngIf="(formRolPermisos.get('rol')?.invalid && submitted)"
-            class="text-danger">
-              <div *ngIf="formRolPermisos.get('rol')?.hasError('required')">Este campo es requerido. </div>
-            </div>
-          </div>
-          <div class="form-group col-md-12">
             <label for="modulo" class="prioridad">Modulo:</label>
             <select class="form-select" id="modulo" formControlName="modulo">
               <option value="">Seleccione un Módulo</option>
@@ -56,7 +45,6 @@ export class SeleccionarModuloContent implements OnInit {
 
   constructor(public activeModal: NgbActiveModal, private _fb: FormBuilder) {
     this.formRolPermisos = _fb.group({
-      rol: ['', [Validators.required]],
       modulo: ['', [Validators.required]]
     })
   }

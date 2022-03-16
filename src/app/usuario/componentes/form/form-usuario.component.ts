@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { ConfigurarListas } from 'src/app/core/model';
 
 @Component({
   selector: 'componente-form-usuario',
@@ -7,8 +8,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./form-usuario.component.scss']
 })
 export class FormUsuarioComponent implements OnInit {
-  @Input("localidades") public localidades: any;
-  @Input("listaRoles") public listaRoles: any;
+  @Input("listasArray") public listasArray: ConfigurarListas | any;
   @Input("usuario") public usuario: FormGroup | any;
   @Input("submitted") public submitted: boolean = false;
   @Input("baja") public baja: boolean = false;
