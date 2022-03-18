@@ -19,3 +19,4 @@ export * from './provincia.service';
 export * from './departamento.service';
 export * from './usuario.service';
 export * from './notificacion.service';
+export * from './modulo.service';

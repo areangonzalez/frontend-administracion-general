@@ -7,9 +7,7 @@
         <th class="text-center" scope="col">Fecha Ingreso</th>
         <th scope="col">Modulo/s</th>
         <th class="text-end w-25">
-          <!-- <button class="btn btn-outline-success"><i class="fa-solid fa-user-plus"></i> Agregar</button> -->
-          <componente-modal-agregar-usuario></componente-modal-agregar-usuario>
-          <!-- <componente-modal-form-producto [tipo]="'agregar'" [titulo]="'Agregar Producto'" [listas]="listadosArray" (confirmarGuardado)="actualizarListado($event)" ></componente-modal-form-producto> -->
+          <componente-modal-agregar-usuario [listasArray]="listadosArray" ></componente-modal-agregar-usuario>
         </th>
       </tr>
     </thead>
@@ -23,13 +21,11 @@
         <td class="text-left" scope="col" colspan="2">{{user.apellido}}, {{user.nombre}}</td>
         <td scope="col">{{user.username}}</td>
         <td class="text-center" scope="col">{{user.created_at}}</td>
-        <td></td>
-        <!-- <td class="text-center" scope="col">{{user.unidad_valor}}&nbsp;{{user.unidad_medida}}</td> -->
-        <!-- <td class="text-center" scope="col">{{user.categoria}}</td> -->
+        <td>
+          <!-- <span *ngFor="let mod of user.modulo" ngbTooltip="Gestor Bancario" class="badge rounded-pill bg-info">{{user.modulo}}</span> -->
+        </td>
         <td class="text-end">
-          <componente-seleccionar-modulo-modal ></componente-seleccionar-modulo-modal>
-          <!-- <componente-modal-form-producto [tipo]="'editar'" [titulo]="'Editar Producto'" [listas]="listadosArray" [datosProducto]="user" (confirmarGuardado)="actualizarListado($event)"></componente-modal-form-producto>
-          <componente-baja-poducto (obtenerConfirmacion)="bajaProducto($event, user.id)" ></componente-baja-poducto> -->
+          <componente-seleccionar-modulo-modal></componente-seleccionar-modulo-modal>
         </td>
       </tr>
       </tbody>

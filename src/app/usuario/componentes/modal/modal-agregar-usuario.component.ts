@@ -13,15 +13,13 @@ import { ConfiguracionListados } from './../../../core/model'; */
       </button>
     </div>
     <div class="modal-body">
-      <componente-form-persona-usuario [localidades]="localidades" [roles]="roles" (cancelarForm)="cancelarModal($event)" ></componente-form-persona-usuario>
+      <componente-form-persona-usuario [listasArray]="listasArray" (cancelarForm)="cancelarModal($event)" ></componente-form-persona-usuario>
     </div>
   `,
   styleUrls: ['./modal-agregar-usuario.component.scss']
 })
 export class ModalAgregarUsuarioContent {
   @Input("listasArray") public listasArray: ConfigurarListas | any;
-  @Input("localidades") public localidades:any;
-  @Input("roles") public roles:any;
   constructor(public activeModal: NgbActiveModal) {}
 
   cancelarModal(cancelar: boolean) {

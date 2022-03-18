@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ConfigurarListas } from 'src/app/core/model';
-//import { UsuarioService, AlertService, UtilService, NotificacionService } from './../../../core/service';
+import { UsuarioService, UtilService, NotificacionService } from './../../../core/service';
 
 @Component({
   selector: 'componente-form-persona-usuario',
@@ -18,7 +18,7 @@ export class FormPersonaComponent implements OnInit {
   private usuarioid: number = 0;
   public persona: FormGroup;
 
-  constructor( private _fb: FormBuilder, /* private _util: UtilService, private _msj: AlertService, private _usuarioService: UsuarioService */) {
+  constructor( private _fb: FormBuilder, private _util: UtilService, private _msj: NotificacionService, private _usuarioService: UsuarioService) {
     this.persona = _fb.group({
     nro_documento: ['', [Validators.required, Validators.minLength(7)]],
     apellido: ['', [Validators.required, Validators.minLength(3)]],
@@ -26,22 +26,20 @@ export class FormPersonaComponent implements OnInit {
     cuil: '',
     cuil_prin: ['', [Validators.required, Validators.minLength(2)]],
     cuil_fin: ['', [Validators.required, Validators.minLength(1)]],
-    usuario: _fb.group({
+     usuario: _fb.group({
       personaid: '',
       username: ['', [Validators.required, Validators.minLength(3)]],
       rol: ['', [Validators.required]],
       moduloid: ['', [Validators.required]],
-      email: ['', [Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
-      localidadid: '',
+      localidadid: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPass: ['', [Validators.required]]
-    }, { validators:  this.checkPasswords })
-  });
+      confirmPass: ['', [Validators.required]],
+      email: ['', [Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
+      }, { validators:  this.checkPasswords })
+    });
   }
 
-  ngOnInit(): void {
-    this.setRol(this.listasArray.roles);
-  }
+  ngOnInit(): void {}
 
   /**
    * cancela el formulario
@@ -56,49 +54,60 @@ export class FormPersonaComponent implements OnInit {
    */
   validarForm() {
     this.submitted = true;
-    /* if (!this._util.validarUltimoDigitoCuil(this.persona.get("cuil").value)){
-      this._msj.cancelado("El numero de cuil es incorrecto, Por favor verifique el Número de Documento o los digitos de CUIL.");
+
+    if (!this._util.validarUltimoDigitoCuil(this.persona.get("cuil")?.value)){
+      this._msj.showDanger("El numero de cuil es incorrecto, Por favor verifique el Número de Documento o los digitos de CUIL.");
       return;
     }
-    if (this.persona.invalid && this.persona.get('usuario').invalid) { // verifico la validación en los campos del formulario
-      this._msj.cancelado("Campos sin completar!!");
+    if (this.persona.invalid || this.persona.value.usuario.invalid) { // verifico la validación en los campos del formulario
+      this._msj.showDanger("Campos sin completar!!");
       return;
     }else{ // si pasa la validación
-      let usuario = this.persona.value;
-      this.guardarUsuario(usuario);
-    } */
+      let params = this.persona.value;
+
+      params['usuario']['modulo'] = this.obtenerDatosModulo(params['usuario'].moduloid);
+
+      this.guardarUsuario(params);
+    }
   }
   /**
    * guardado de usuario al completar y ser validado del formulario
    * @param params valores utilizados para el guardado de un usuario
    */
   public guardarUsuario(params: object) {
-    /* this._usuarioService.guardar(params).subscribe(
+    console.log(params);
+
+    this._usuarioService.guardar(params).subscribe(
       respuesta => {
-        this._msj.exitoso("Se ha guardado el usuario con exito.");
+        this._msj.showSuccess("Se ha guardado el usuario con exito.");
         this.cancelarForm.emit(false);
       }, error => {
-        this._msj.cancelado(error);
+        this._msj.showDanger(error);
       }
-    ) */
+    )
   }
   /**
    * Checkea la comparacion de las contraseñas para validar
    * @param group formulario que contiene los valores a comparar
    */
-  checkPasswords(group: AbstractControl): { invalid: boolean } { // here we have the 'passwords' group
-    if ( group.get('password')?.value !== group.get('confirmPass')?.value ) {
-      return { invalid: true };
-    } else { return { invalid: false }; }
+  checkPasswords(group: AbstractControl) { // here we have the 'passwords' group
+    const password: string = group.get('password')?.value;
+    const confirmPassword: string = group.get('confirmPass')?.value;
+
+    if ( password !== confirmPassword ) {
+      group.get('confirmPass')?.setErrors({ NoPassswordMatch: true });
+    }
+      /* return { invalid: true };
+    } else { return { invalid: false }; } */
   }
   /**
    * @function soloNumero valida que los datos ingresados en un input sean solo numeros.
    * @param datos objeto que contiene los datos de un input.
    */
   public soloNumero(datos:any){
-    /* if (!this._util.validarNumero(datos.value)) {
+    if (!this._util.validarNumero(datos.value)) {
       datos.value = datos.value.substring(0,datos.value.length - 1);
-    } */
+    }
   }
   /**
    * @function validarCuil valida el numero de cuil que esta en el medio
@@ -110,7 +119,7 @@ export class FormPersonaComponent implements OnInit {
     }else{
       this.cuil_medio = nroDocumento;
     }
-    //return this.cuil_medio;
+    return this.cuil_medio;
   }
   /**
    * @function armarCuil funcion que arma el cuil uniendo las variables de los formularios
@@ -141,7 +150,7 @@ export class FormPersonaComponent implements OnInit {
     const cuil_fin = this.persona.get('cuil_fin')?.value;
 
     /* se busca al usuario por cuil */
-    /* this._usuarioService.buscarPorCuil(cuil).subscribe(
+    this._usuarioService.buscarPorCuil(cuil).subscribe(
       datos => {
         if (datos.success){
           const datosPersona = datos.resultado;
@@ -149,22 +158,20 @@ export class FormPersonaComponent implements OnInit {
           if (datosPersona.usuario !== undefined) {
             this.persona.reset();
             this.cuil_medio = '';
-            this._msj.cancelado("Este usuario ya esta registrado en el sistema.");
+            this._msj.showDanger("Este usuario ya esta registrado en el sistema.");
           }else{ // si la persona viene sin usuario completo el formulario de persona
             this.persona.patchValue(datosPersona);
             this.persona.get('usuario')?.patchValue({'personaid': datosPersona.id});
             this.persona.patchValue({'cuil_prin': cuil_pri});
             this.persona.patchValue({'cuil_fin': cuil_fin});
-            this.setRol(this.roles);
           }
         }else{
           this.persona.patchValue({'nro_documento': nro_documento});
           this.persona.patchValue({'cuil_prin': cuil_pri});
           this.persona.patchValue({'cuil_fin': cuil_fin});
           this.persona.get('usuario')?.patchValue({'personaid': ''});
-          this.setRol(this.roles);
         }
-      }, error => { this._msj.cancelado(error); }); */
+      }, error => { this._msj.showDanger(error); });
   }
   // reseteo el formulario y pongo las variables en vacio
   public resetForm(formGroup: FormGroup) {
@@ -184,14 +191,9 @@ export class FormPersonaComponent implements OnInit {
     });
   }
 
-  /**
-   * seteo el combo de rol si solo tiene un valor para seleccionar
-   * @param listaRoles listado de roles que obtengo por api
-   */
-   setRol(listaRoles: any) {
-    if ((listaRoles) && listaRoles.length === 1) {
-      this.persona.get('usuario')?.patchValue({'rol':listaRoles[0].name});
-    }
+  public obtenerDatosModulo(id: number) {
+    let modulo = this.listasArray.modulos.filter((mod: any) => { return (mod.id == id); });
+    return modulo[0];
   }
 
 }

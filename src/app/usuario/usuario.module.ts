@@ -1,3 +1,4 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -30,7 +31,7 @@ import {
     ConfirmarBorradoPermisoContent, ConfirmarBorradoPermisoComponent
   ],
   imports: [
-    CommonModule,
+    CommonModule, NgbModule,
     NgSelectModule,
     UsuarioRoutingModule,
     FormsModule, ReactiveFormsModule

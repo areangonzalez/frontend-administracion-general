@@ -1,12 +1,12 @@
-import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LocalidadService implements Resolve<any> {
+export class ModuloService implements Resolve <any> {
 
   constructor(private _api: ApiService) { }
 
@@ -14,6 +14,6 @@ export class LocalidadService implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
     ): Observable<any>|Promise<any>|any {
-    return this._api.get('/lugar-localidads?provinciaid=16');
+    return this._api.get("/modulos");
   }
 }

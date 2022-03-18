@@ -13,10 +13,10 @@ export class UsuarioService {
   constructor(private _api: ApiService) { }
 
   guardar(params: object, id?:number) {
-    if (id !== undefined) { // guardar
-      return this._api.post('/usaurios', params);
-    }else { // editar
+    if (id !== undefined) { // editar
       return this._api.put('/usuarios/' + id, params);
+    }else { // guardar
+      return this._api.post('/usuarios', params);
     }
   }
 
@@ -29,6 +29,10 @@ export class UsuarioService {
     httpParams = this._api.formatParams(httpParams, params);
 
     return this._api.get('/usuarios', httpParams);
+  }
+
+  public buscarPorCuil(cuil: string) {
+    return this._api.get('/usuarios/buscar-persona-por-cuil/' + cuil );
   }
 
   resolve(

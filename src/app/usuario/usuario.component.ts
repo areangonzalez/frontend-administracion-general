@@ -15,6 +15,8 @@ export class UsuarioComponent implements OnInit {
   constructor( private _route: ActivatedRoute, private _configurarPaginacion: ConfiguracionParaPaginarService) { }
 
   ngOnInit(): void {
+    this.listados.localidades = this._route.snapshot.data["localidades"];
+    this.listados.modulos = this._route.snapshot.data["modulos"];
     this.prepararListado(this._route.snapshot.data["usuarios"], 1);
   }
 

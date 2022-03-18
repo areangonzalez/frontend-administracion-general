@@ -1,19 +1,18 @@
-import { LocalidadService } from 'src/app/core/services';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UsuarioService, LoaderService } from '../core/service';
+import { UsuarioService, LocalidadService, ModuloService } from '../core/service';
 import { UsuarioComponent } from './usuario.component';
 
 const routes: Routes = [
   {
     path: '', component: UsuarioComponent,
-    resolve: { usuarios: UsuarioService, LocalidadService }
+    resolve: { usuarios: UsuarioService, localidades: LocalidadService, modulos: ModuloService }
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [UsuarioService]
+  providers: [UsuarioService, LocalidadService, ModuloService]
 })
 export class UsuarioRoutingModule { }
