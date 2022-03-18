@@ -97,8 +97,6 @@ export class FormPersonaComponent implements OnInit {
     if ( password !== confirmPassword ) {
       group.get('confirmPass')?.setErrors({ NoPassswordMatch: true });
     }
-      /* return { invalid: true };
-    } else { return { invalid: false }; } */
   }
   /**
    * @function soloNumero valida que los datos ingresados en un input sean solo numeros.

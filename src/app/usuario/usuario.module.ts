@@ -17,6 +17,7 @@ import {
   PermisosPrestacionesSocialesComponent, ListaPermisosPrestacionesSocialesComponent,
   ConfirmarBorradoPermisoContent, ConfirmarBorradoPermisoComponent
 } from './componentes';
+import { UsuarioTabComponent } from './componentes/tab/usuario-tab.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import {
     PermisosGcbComponent, ListaPermisosGcbComponent,
     PermisosInventarioComponent, ListaPermisosInventarioComponent,
     PermisosPrestacionesSocialesComponent, ListaPermisosPrestacionesSocialesComponent,
-    ConfirmarBorradoPermisoContent, ConfirmarBorradoPermisoComponent
+    ConfirmarBorradoPermisoContent, ConfirmarBorradoPermisoComponent, UsuarioTabComponent
   ],
   imports: [
     CommonModule, NgbModule,
