@@ -24,6 +24,10 @@ export class UsuarioService {
     return this._api.put('/usuarios/baja/' + id);
   }
 
+  public buscarPorId(id: number) {
+    return this._api.get('/usuarios/' + id);
+  }
+
   buscar(params: any) {
     let httpParams = new HttpParams();
     httpParams = this._api.formatParams(httpParams, params);

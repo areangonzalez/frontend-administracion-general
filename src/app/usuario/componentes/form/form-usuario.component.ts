@@ -12,6 +12,7 @@ export class FormUsuarioComponent implements OnInit {
   @Input("usuario") public usuario: FormGroup | any;
   @Input("submitted") public submitted: boolean = false;
   @Input("baja") public baja: boolean = false;
+  @Input("mostrarCampos") public mostrarCampos: boolean = true;
 
   constructor() { }
 

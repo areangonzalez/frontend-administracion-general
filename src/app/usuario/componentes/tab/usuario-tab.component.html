@@ -15,7 +15,7 @@
     <a ngbNavLink>Administrar contraseña</a>
     <ng-template ngbNavContent>
       <div class="col-md-12 m-1">
-        <componente-form-usuario [listasArray]="configListas" [usuario]="usuario" [submitted]="submitted" [baja]="usuarioBaja" ></componente-form-usuario>
+        <componente-form-usuario [listasArray]="configListas" [usuario]="usuario" [submitted]="submitted" [baja]="usuarioBaja" [mostrarCampos]="false" ></componente-form-usuario>
       </div>
       <div class="col-md-12 mt-1 mb-3" *ngIf="!usuarioBaja">
         <button type="button" class="btn btn-success btn-block" (click)="cambiarPass()"><i class="far fa-save"></i> Guardar</button>

@@ -15,9 +15,9 @@ import {
   PermisosGcbComponent, ListaPermisosGcbComponent,
   PermisosInventarioComponent, ListaPermisosInventarioComponent,
   PermisosPrestacionesSocialesComponent, ListaPermisosPrestacionesSocialesComponent,
-  ConfirmarBorradoPermisoContent, ConfirmarBorradoPermisoComponent
+  ConfirmarBorradoPermisoContent, ConfirmarBorradoPermisoComponent, UsuarioTabComponent,
+  ConfigurarUsuarioContent, ConfigurarUsuarioComponent
 } from './componentes';
-import { UsuarioTabComponent } from './componentes/tab/usuario-tab.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import { UsuarioTabComponent } from './componentes/tab/usuario-tab.component';
     PermisosGcbComponent, ListaPermisosGcbComponent,
     PermisosInventarioComponent, ListaPermisosInventarioComponent,
     PermisosPrestacionesSocialesComponent, ListaPermisosPrestacionesSocialesComponent,
-    ConfirmarBorradoPermisoContent, ConfirmarBorradoPermisoComponent, UsuarioTabComponent
+    ConfirmarBorradoPermisoContent, ConfirmarBorradoPermisoComponent, UsuarioTabComponent,
+    ConfigurarUsuarioContent, ConfigurarUsuarioComponent
   ],
   imports: [
     CommonModule, NgbModule,
@@ -43,7 +44,8 @@ import { UsuarioTabComponent } from './componentes/tab/usuario-tab.component';
     PermisosGcbComponent, ListaPermisosGcbComponent,
     PermisosInventarioComponent, ListaPermisosInventarioComponent,
     PermisosPrestacionesSocialesComponent, ListaPermisosPrestacionesSocialesComponent,
-    ConfirmarBorradoPermisoContent, ConfirmarBorradoPermisoComponent
+    ConfirmarBorradoPermisoContent, ConfirmarBorradoPermisoComponent, UsuarioTabComponent,
+    ConfigurarUsuarioContent, ConfigurarUsuarioComponent
   ]
 
 })

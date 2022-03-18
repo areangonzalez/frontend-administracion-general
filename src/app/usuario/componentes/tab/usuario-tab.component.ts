@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { UsuarioService, NotificacionService } from 'src/app/core/service';
 
 @Component({
-  selector: 'app-usuario-tab',
+  selector: 'componente-usuario-tab',
   templateUrl: './usuario-tab.component.html',
   styleUrls: ['./usuario-tab.component.scss']
 })
@@ -18,10 +18,11 @@ export class UsuarioTabComponent implements OnInit {
   constructor(private _fb: FormBuilder, private _usuarioService: UsuarioService, private _msj: NotificacionService) {
     this.usuario = _fb.group({
         personaid: '',
-        rol: ['', [Validators.required]],
+        rol: [{value: '', disabled: true}],
         username: ['', [Validators.required, Validators.minLength(3)]],
         email: ['', [Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
         localidadid: '',
+        moduloid: [{value: '', disabled: true}],
         password: ['', [Validators.required, Validators.minLength(8)]],
         confirmPass: ['', [Validators.required]]
       }, { validators:  this.checkPasswords })
