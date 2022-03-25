@@ -11,6 +11,8 @@ import { UsuarioService, UtilService, NotificacionService } from './../../../cor
 })
 export class FormPersonaComponent implements OnInit {
   @Input("listasArray") public listasArray: ConfigurarListas | any;
+  @Input("mostrarCampos") public mostrarCampos: boolean = true;
+  @Input("datosUsuarios") public datosUsuarios: any;
   @Output("cancelarForm") public cancelarForm = new EventEmitter();
   // public persona: FormGroup | any;
   public cuil_medio: string = "";
@@ -39,7 +41,11 @@ export class FormPersonaComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.datosUsuarios !== undefined) {
+      this.editarDatosUsuario(this.datosUsuarios);
+    }
+  }
 
   /**
    * cancela el formulario
@@ -187,6 +193,16 @@ export class FormPersonaComponent implements OnInit {
             control.setErrors(null);
         }
     });
+  }
+
+  editarDatosUsuario(datosPersona: any) {
+    this.persona.patchValue(datosPersona);
+    this.persona.get('usuario')?.patchValue(datosPersona.usuario);
+    this.persona.get('usuario')?.patchValue({'personaid': datosPersona.id});
+    this.persona.get('usuario')?.patchValue({'password': ''});
+    this.persona.get('usuario')?.patchValue({'confirmPass': ''});
+    this.persona.get('usuario')?.get('moduloid')?.disable();
+    this.persona.get('usuario')?.get('rol')?.disable();
   }
 
   public obtenerDatosModulo(id: number) {

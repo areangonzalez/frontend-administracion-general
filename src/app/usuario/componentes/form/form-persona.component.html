@@ -47,11 +47,11 @@
       </div>
     </div>
     <hr>
-    <componente-form-usuario [listasArray]="listasArray" [usuario]="persona.controls['usuario']" [submitted]="submitted"></componente-form-usuario>
+    <componente-form-usuario [listasArray]="listasArray" [usuario]="persona.controls['usuario']" [submitted]="submitted" [mostrarCampos]="mostrarCampos" ></componente-form-usuario>
     <hr class="pt1">
     <div class="d-flex justify-content-between">
-        <button type="button" class="btn btn-danger" (click)="cancelar()"><span class="is-invalid" class="oi oi-ban" title="Cancelar" aria-hidden="true"></span> Cancelar</button>&nbsp;
-        <button type="button" class="btn btn-success" (click)="validarForm()" ><span class="fas fa-save" title="Guardar" aria-hidden="true"></span> Guardar</button>
+        <button *ngIf="(mostrarCampos)" type="button" class="btn btn-danger justify-content-start" (click)="cancelar()"><span class="is-invalid" class="oi oi-ban" title="Cancelar" aria-hidden="true"></span> Cancelar</button>&nbsp;
+        <button type="button" class="btn btn-success justify-content-end" (click)="validarForm()" ><span class="fas fa-save" title="Guardar" aria-hidden="true"></span> Guardar</button>
     </div>
 
   </fieldset>

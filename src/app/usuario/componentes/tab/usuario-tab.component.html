@@ -3,6 +3,7 @@
     <a ngbNavLink>Datos Usuario</a>
     <ng-template ngbNavContent>
       <!-- <admin-usuario-info [datosUsuario]="datosUsuario" ></admin-usuario-info> -->
+      <componente-usuario-info [datosUsuario]="datosUsuario" ></componente-usuario-info>
     </ng-template>
   </li>
   <li ngbNavItem="permisos">
@@ -15,11 +16,12 @@
     <a ngbNavLink>Administrar contraseña</a>
     <ng-template ngbNavContent>
       <div class="col-md-12 m-1">
-        <componente-form-usuario [listasArray]="configListas" [usuario]="usuario" [submitted]="submitted" [baja]="usuarioBaja" [mostrarCampos]="false" ></componente-form-usuario>
+        <!-- <componente-form-usuario [listasArray]="configListas" [usuario]="usuario" [submitted]="submitted" [baja]="usuarioBaja" [mostrarCampos]="false" ></componente-form-usuario> -->
+        <componente-form-persona-usuario [listasArray]="configListas" [datosUsuario]="datosUsuario" [mostrarCampos]="false" ></componente-form-persona-usuario>
       </div>
-      <div class="col-md-12 mt-1 mb-3" *ngIf="!usuarioBaja">
+      <!-- <div class="col-md-12 mt-1 mb-3" *ngIf="!usuarioBaja">
         <button type="button" class="btn btn-success btn-block" (click)="cambiarPass()"><i class="far fa-save"></i> Guardar</button>
-      </div>
+      </div> -->
       <div class="col-md-12 mt-1 mb-3" *ngIf="usuarioBaja">
         <div class="alert alert-danger text-center" role="alert">
           El usuario ha sido dado de baja. En estos momentos no se pueden modificar sus datos.

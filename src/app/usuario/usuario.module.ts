@@ -16,7 +16,8 @@ import {
   PermisosInventarioComponent, ListaPermisosInventarioComponent,
   PermisosPrestacionesSocialesComponent, ListaPermisosPrestacionesSocialesComponent,
   ConfirmarBorradoPermisoContent, ConfirmarBorradoPermisoComponent, UsuarioTabComponent,
-  ConfigurarUsuarioContent, ConfigurarUsuarioComponent
+  ConfigurarUsuarioContent, ConfigurarUsuarioComponent,
+  UsuarioInfoComponent
 } from './componentes';
 
 @NgModule({
@@ -30,7 +31,7 @@ import {
     PermisosInventarioComponent, ListaPermisosInventarioComponent,
     PermisosPrestacionesSocialesComponent, ListaPermisosPrestacionesSocialesComponent,
     ConfirmarBorradoPermisoContent, ConfirmarBorradoPermisoComponent, UsuarioTabComponent,
-    ConfigurarUsuarioContent, ConfigurarUsuarioComponent
+    ConfigurarUsuarioContent, ConfigurarUsuarioComponent, UsuarioInfoComponent
   ],
   imports: [
     CommonModule, NgbModule,
@@ -45,7 +46,7 @@ import {
     PermisosInventarioComponent, ListaPermisosInventarioComponent,
     PermisosPrestacionesSocialesComponent, ListaPermisosPrestacionesSocialesComponent,
     ConfirmarBorradoPermisoContent, ConfirmarBorradoPermisoComponent, UsuarioTabComponent,
-    ConfigurarUsuarioContent, ConfigurarUsuarioComponent
+    ConfigurarUsuarioContent, ConfigurarUsuarioComponent, UsuarioInfoComponent
   ]
 
 })

@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import es from "@angular/common/locales/es";
+import { registerLocaleData } from '@angular/common';
+import localeEsAR from "@angular/common/locales/es-AR";
+registerLocaleData(localeEsAR, 'es-Ar');
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgBootstrapDarkmodeModule } from 'ng-bootstrap-darkmode';

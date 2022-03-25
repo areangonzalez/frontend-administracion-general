@@ -14,7 +14,6 @@ import { UsuarioService, NotificacionService } from 'src/app/core/service';
     </div>
     <div class="modal-body">
       <componente-usuario-tab [datosUsuario]="datosUsuario" [configListas]="listados" ></componente-usuario-tab>
-      <!-- <admin-configuracion-tab [datosUsuario]="datosUsuario" [configListas]="listados" ></admin-configuracion-tab> -->
     </div>
   `,
   styleUrls: ['./configurar-usuario.component.scss']
