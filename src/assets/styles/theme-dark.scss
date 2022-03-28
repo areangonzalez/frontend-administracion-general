@@ -47,7 +47,7 @@
 [data-theme="dark"] .btn-light:disabled,
 [data-theme="dark"] .btn-light.disabled { color: #fff; background-color: #212529; border-color: #212529; }
 
-[data-theme="dark"] .btn-outline-dark { color: #f8f9fa; border-color: #f8f9fa; }
+[data-theme="dark"] .btn-outline-dark { color: #f8f9fa !important; border-color: #f8f9fa !important;}
 [data-theme="dark"] .btn-outline-dark:hover { color: #000; background-color: #f8f9fa; border-color: #f8f9fa; }
 [data-theme="dark"] .btn-check:focus + .btn-outline-dark,
 [data-theme="dark"] .btn-outline-dark:focus { box-shadow: 0 0 0 0.25rem rgba(248, 249, 250, 0.5); }
@@ -272,3 +272,4 @@
 [data-theme="dark"] .table-warning {
   --#{$variable-prefix}table-hover-bg: #332701;
 }
+[data-theme="dark"] .div-cuil-num-center { background: #aaa !important; }

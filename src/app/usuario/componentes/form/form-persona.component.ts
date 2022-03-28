@@ -12,12 +12,12 @@ import { UsuarioService, UtilService, NotificacionService } from './../../../cor
 export class FormPersonaComponent implements OnInit {
   @Input("listasArray") public listasArray: ConfigurarListas | any;
   @Input("mostrarCampos") public mostrarCampos: boolean = true;
-  @Input("datosUsuarios") public datosUsuarios: any;
+  @Input("datosUsuario") public datosUsuario: any;
   @Output("cancelarForm") public cancelarForm = new EventEmitter();
   // public persona: FormGroup | any;
   public cuil_medio: string = "";
   public submitted: boolean = false;
-  private usuarioid: number = 0;
+  public idUsuario: number = 0;
   public persona: FormGroup;
 
   constructor( private _fb: FormBuilder, private _util: UtilService, private _msj: NotificacionService, private _usuarioService: UsuarioService) {
@@ -42,8 +42,9 @@ export class FormPersonaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.datosUsuarios !== undefined) {
-      this.editarDatosUsuario(this.datosUsuarios);
+    if (this.datosUsuario !== undefined) {
+      this.idUsuario = this.datosUsuario.usuario.id;
+      this.editarDatosUsuario(this.datosUsuario);
     }
   }
 
@@ -73,24 +74,33 @@ export class FormPersonaComponent implements OnInit {
 
       params['usuario']['modulo'] = this.obtenerDatosModulo(params['usuario'].moduloid);
 
-      this.guardarUsuario(params);
+      this.guardarUsuario(params, this.idUsuario);
     }
   }
   /**
    * guardado de usuario al completar y ser validado del formulario
    * @param params valores utilizados para el guardado de un usuario
    */
-  public guardarUsuario(params: object) {
-    console.log(params);
-
-    this._usuarioService.guardar(params).subscribe(
-      respuesta => {
-        this._msj.showSuccess("Se ha guardado el usuario con exito.");
-        this.cancelarForm.emit(false);
-      }, error => {
-        this._msj.showDanger(error);
-      }
-    )
+  public guardarUsuario(params: object, id: number) {
+    if (id == 0) { // guardar
+      this._usuarioService.guardar(params).subscribe(
+        respuesta => {
+          this._msj.showSuccess("Se ha guardado el usuario con exito.");
+          this.cancelarForm.emit(false);
+        }, error => {
+          this._msj.showDanger(error);
+        }
+      );
+    } else {
+      this._usuarioService.guardar(params, id).subscribe(
+        respuesta => {
+          this._msj.showSuccess("El usuario ha sido editado con exito.");
+          this.cancelarForm.emit(false);
+        }, error => {
+          this._msj.showDanger(error);
+        }
+      );
+    }
   }
   /**
    * Checkea la comparacion de las contraseñas para validar
@@ -183,7 +193,7 @@ export class FormPersonaComponent implements OnInit {
     // formulario reset
     formGroup.reset();
     formGroup.markAsUntouched();
-    this.usuarioid = 0;
+    this.idUsuario = 0;
     Object.keys(formGroup.controls).forEach((name) => {
         control = formGroup.controls[name];
         if(control instanceof FormGroup){
@@ -196,6 +206,13 @@ export class FormPersonaComponent implements OnInit {
   }
 
   editarDatosUsuario(datosPersona: any) {
+    if (datosPersona['cuil'] != '') {
+      datosPersona['cuil_prin'] = datosPersona['cuil'].substring(0, 2);
+      datosPersona['cuil_fin'] = datosPersona['cuil'].substring(10);
+      this.cuil_medio = datosPersona['nro_documento'];
+    }
+    this.validarCuil(datosPersona['nro_documento']);
+
     this.persona.patchValue(datosPersona);
     this.persona.get('usuario')?.patchValue(datosPersona.usuario);
     this.persona.get('usuario')?.patchValue({'personaid': datosPersona.id});

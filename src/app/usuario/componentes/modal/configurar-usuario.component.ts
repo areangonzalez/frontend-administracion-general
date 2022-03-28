@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { map } from 'rxjs/operators';
 import { UsuarioService, NotificacionService } from 'src/app/core/service';
@@ -13,7 +13,7 @@ import { UsuarioService, NotificacionService } from 'src/app/core/service';
       </button>
     </div>
     <div class="modal-body">
-      <componente-usuario-tab [datosUsuario]="datosUsuario" [configListas]="listados" ></componente-usuario-tab>
+      <componente-usuario-tab [datosUsuario]="datosUsuario" [configListas]="listados" (actualizarLista)="actualizar($event)" ></componente-usuario-tab>
     </div>
   `,
   styleUrls: ['./configurar-usuario.component.scss']
@@ -28,6 +28,10 @@ export class ConfigurarUsuarioContent {
     this.activeModal.close('closed');
   }
 
+  actualizar(confirmacion: boolean) {
+    this.activeModal.close(confirmacion);
+  }
+
 }
 
 @Component({
@@ -38,6 +42,7 @@ export class ConfigurarUsuarioContent {
 export class ConfigurarUsuarioComponent {
   @Input("listasConfig") public listasConfig: any;
   @Input("usuarioid") public usuarioid: any;
+  @Output("actualizarListado") public actualizarListado = new EventEmitter();
 
   constructor(
     private modalService: NgbModal, private _msj: NotificacionService, private config: NgbModalConfig,
@@ -51,6 +56,13 @@ export class ConfigurarUsuarioComponent {
     const modalRef = this.modalService.open(ConfigurarUsuarioContent, { size: 'lg' });
     modalRef.componentInstance.listados = this.listasConfig;
     modalRef.componentInstance.datosUsuario = datosUsuario;
+    modalRef.result.then(
+      result => {
+        if (result !== 'closed') {
+          this.actualizarListado.emit(true);
+        }
+      }
+    )
   }
 
   configurarModal() {

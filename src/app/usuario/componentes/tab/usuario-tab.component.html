@@ -1,27 +1,16 @@
 <ul ngbNav #nav="ngbNav" class="nav-pills nav-justified" >
   <li ngbNavItem="datos">
-    <a ngbNavLink>Datos Usuario</a>
+    <a ngbNavLink>Datos del Usuario</a>
     <ng-template ngbNavContent>
-      <!-- <admin-usuario-info [datosUsuario]="datosUsuario" ></admin-usuario-info> -->
       <componente-usuario-info [datosUsuario]="datosUsuario" ></componente-usuario-info>
     </ng-template>
   </li>
-  <li ngbNavItem="permisos">
-    <a ngbNavLink>Permiso/s</a>
-    <ng-template ngbNavContent>
-      <!-- <admin-administrar-rol-permiso-form [idUsuario]="datosUsuario.usuario.id" [listaPermisos]="configListas.permisos" [baja]="usuarioBaja"></admin-administrar-rol-permiso-form> -->
-    </ng-template>
-  </li>
   <li ngbNavItem="administrarUsuario">
-    <a ngbNavLink>Administrar contraseña</a>
+    <a ngbNavLink>Edición de los datos del usuario</a>
     <ng-template ngbNavContent>
       <div class="col-md-12 m-1">
-        <!-- <componente-form-usuario [listasArray]="configListas" [usuario]="usuario" [submitted]="submitted" [baja]="usuarioBaja" [mostrarCampos]="false" ></componente-form-usuario> -->
-        <componente-form-persona-usuario [listasArray]="configListas" [datosUsuario]="datosUsuario" [mostrarCampos]="false" ></componente-form-persona-usuario>
+        <componente-form-persona-usuario [listasArray]="configListas" [datosUsuario]="datosUsuario" [mostrarCampos]="false" (cancelarForm)="actualizarDatos($event)" ></componente-form-persona-usuario>
       </div>
-      <!-- <div class="col-md-12 mt-1 mb-3" *ngIf="!usuarioBaja">
-        <button type="button" class="btn btn-success btn-block" (click)="cambiarPass()"><i class="far fa-save"></i> Guardar</button>
-      </div> -->
       <div class="col-md-12 mt-1 mb-3" *ngIf="usuarioBaja">
         <div class="alert alert-danger text-center" role="alert">
           El usuario ha sido dado de baja. En estos momentos no se pueden modificar sus datos.

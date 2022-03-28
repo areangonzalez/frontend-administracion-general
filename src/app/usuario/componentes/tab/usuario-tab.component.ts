@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { map } from 'rxjs/operators';
 import { UsuarioService, NotificacionService } from 'src/app/core/service';
 
 @Component({
@@ -10,23 +11,52 @@ import { UsuarioService, NotificacionService } from 'src/app/core/service';
 export class UsuarioTabComponent implements OnInit {
   @Input("datosUsuario") public datosUsuario: any;
   @Input("configListas") configListas: any;
+  @Output("actualizarLista") public actualizarLista = new EventEmitter();
   public usuarioBaja: boolean = false;
 
-  constructor(private _fb: FormBuilder, private _usuarioService: UsuarioService, private _msj: NotificacionService) {
-    /* this.usuario = _fb.group({
-        personaid: '',
-        rol: [{value: '', disabled: true}],
-        username: ['', [Validators.required, Validators.minLength(3)]],
-        email: ['', [Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
-        localidadid: '',
-        moduloid: [{value: '', disabled: true}],
-        password: ['', [Validators.required, Validators.minLength(8)]],
-        confirmPass: ['', [Validators.required]]
-      }, { validators:  this.checkPasswords }) */
-  }
+  constructor(private _usuarioService: UsuarioService, private _msj: NotificacionService) { }
 
   ngOnInit() {
     // this.prepararFormulario(this.datosUsuario);
+  }
+
+  public actualizarDatos(confirmar: boolean) {
+    if (!confirmar) {
+      this.buscarPorId(this.datosUsuario.usuario.id);
+      this.actualizarLista.emit(true);
+    }
+  }
+
+  public buscarPorId(idUsuario: number) {
+    this._usuarioService.buscarPorId(idUsuario)
+    .pipe(map((vDatos: any) => {
+      let vUsuario: any = {
+        id: vDatos['personaid'],
+        nombre: vDatos['nombre'],
+        apellido: vDatos['apellido'],
+        cuil: vDatos['cuil'],
+        nro_documento: vDatos['nro_documento'],
+        usuario: {
+          id: vDatos['id'],
+          personaid: vDatos['personaid'],
+          username: vDatos['username'],
+          rol: vDatos['rol'],
+          email: vDatos['email'],
+          localidad: vDatos['localidad'],
+          localidadid: vDatos['localidadid'],
+          created_at: vDatos['created_at'],
+          fecha_baja: vDatos['fecha_baja'],
+          baja: (vDatos['fecha_baja']) ? true : false,
+          descripcion_baja: vDatos['descripcion_baja']
+        }
+      };
+      return vUsuario;
+    })).subscribe(
+      (datos: any) => {
+        this. datosUsuario = datos;
+      },
+      (error: any) => { this._msj.showDanger(error)}
+    );
   }
 
   // /**

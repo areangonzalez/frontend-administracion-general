@@ -25,7 +25,7 @@
           <!-- <span *ngFor="let mod of user.modulo" ngbTooltip="Gestor Bancario" class="badge rounded-pill bg-info">{{user.modulo}}</span> -->
         </td>
         <td class="text-end">
-          <componente-configurar-usuario-modal [usuarioid]="user.id" [listasConfig]="listadosArray"></componente-configurar-usuario-modal>
+          <componente-configurar-usuario-modal [usuarioid]="user.id" [listasConfig]="listadosArray" (actualizarListado)="actualizar($event)" ></componente-configurar-usuario-modal>
           <componente-seleccionar-modulo-modal></componente-seleccionar-modulo-modal>
         </td>
       </tr>
