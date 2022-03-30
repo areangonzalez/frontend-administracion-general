@@ -1,49 +1,27 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { ConfigurarListas } from 'src/app/core/model';
+import { UtilService } from 'src/app/core/service';
 
 @Component({
   selector: 'content-seleccionar-modulo-modal',
-  template: `
-    <div class="modal-header">
-      <h4 class="modal-title">Selección de Permisos del Usuario</h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('closed')">
-      </button>
-    </div>
-    <div class="modal-body">
-      <div class="row">
-        <fieldset class="padding-custom" [formGroup]="formRolPermisos" >
-          <div class="form-group col-md-12">
-            <label for="modulo" class="prioridad">Modulo:</label>
-            <select class="form-select" id="modulo" formControlName="modulo">
-              <option value="">Seleccione un Módulo</option>
-              <option *ngFor="let modulo of listaModulos" value="{{modulo.id}}">{{modulo.nombre}}</option>
-            </select>
-            <div *ngIf="(formRolPermisos.get('modulo')?.invalid && submitted)"
-            class="text-danger">
-              <div *ngIf="formRolPermisos.get('modulo')?.hasError('required')">Este campo es requerido. </div>
-            </div>
-          </div>
-        </fieldset>
-      </div>
-      <!-- <componente-permisos-gcb [submitted]="submitted" [idUsuario]="idUsuario" (cancelarForm)="cancelar($event)" (obtenerPermisos)="validarDatos($event)" ></componente-permisos-gcb> -->
-      <!-- <componente-permisos-inventario [idUsuario]="idUsuario" (cancelarForm)="cancelar($event)" (obtenerPermisos)="validarDatos($event)"></componente-permisos-inventario> -->
-      <componente-permisos-prestaciones-sociales [idUsuario]="idUsuario" (cancelarForm)="cancelar($event)" (obtenerPermisos)="validarDatos($event)"></componente-permisos-prestaciones-sociales>
-    </div>
-  `,
+  templateUrl: './seleccionar-modulo.content.html',
   styleUrls: ['./seleccionar-modulo.component.scss'],
   providers: [FormBuilder]
 })
 export class SeleccionarModuloContent implements OnInit {
   @Input("idUsuario") public idUsuario: number | any;
+  @Input("listadosArray") public listadosArray!: ConfigurarListas;
   public formRolPermisos: FormGroup;
   public submitted: boolean = false;
+  public tipoModulo: string = '';
 
   /* borrar ejemlos */
   public listaRoles: any = [{name: "usuario"}, {name: "soporte"}];
   public listaModulos: any = [{id: 1, nombre: "Gestor Bancario"}, {id: 2, nombre: "Inventario"}]
 
-  constructor(public activeModal: NgbActiveModal, private _fb: FormBuilder) {
+  constructor(public activeModal: NgbActiveModal, private _fb: FormBuilder, private _util: UtilService) {
     this.formRolPermisos = _fb.group({
       modulo: ['', [Validators.required]]
     })
@@ -73,9 +51,16 @@ export class SeleccionarModuloContent implements OnInit {
       params["rol"] = this.formRolPermisos.get("rol")?.value;
       console.log(params)
     }
+  }
 
-
-
+  obtenerTipomodulo(modulo: any) {
+    let moduloObj: any;
+    if (modulo.value !== '') {
+      moduloObj = this._util.buscarDatosPorId(this.listadosArray.modulos, modulo.value)
+      this.tipoModulo = moduloObj.sigla;
+    } else {
+      this.tipoModulo = '';
+    }
   }
 
 }
@@ -91,6 +76,7 @@ export class SeleccionarModuloComponent {
    * @var listas {object} objeto que contiene listados
    */
    @Input("usuarioid") public usuarioid: number | any;
+   @Input("listadosArray") public listadosArray!: ConfigurarListas;
    /* @Input("listas") public listas: ConfiguracionListados; */
 
    constructor(
@@ -103,6 +89,7 @@ export class SeleccionarModuloComponent {
    abrirModal() {
      const modalRef = this.modalService.open(SeleccionarModuloContent);
      modalRef.componentInstance.idUsuario = this.usuarioid;
+     modalRef.componentInstance.listadosArray = this.listadosArray;
      /* modalRef.componentInstance.localidades = this.listas.localidades;
      modalRef.componentInstance.roles = this.listas.roles; */
    }
