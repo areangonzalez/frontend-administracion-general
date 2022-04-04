@@ -1,8 +1,6 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ConfigurarListas } from 'src/app/core/model';
-/* import { AlertService } from './../../../core/service';
-import { ConfiguracionListados } from './../../../core/model'; */
 
 @Component({
   selector: 'content-modal-agregar-usuario',
@@ -51,8 +49,6 @@ export class ModalAgregarUsuarioComponent {
   abrirModal() {
     const modalRef = this.modalService.open(ModalAgregarUsuarioContent);
     modalRef.componentInstance.listasArray = this.listasArray;
-    /* modalRef.componentInstance.localidades = this.listas.localidades;
-    modalRef.componentInstance.roles = this.listas.roles; */
     modalRef.result.then(
       (result) => {
           if (result == 'closed'){
