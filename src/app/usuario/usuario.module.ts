@@ -17,8 +17,9 @@ import {
   PermisosPrestacionesSocialesComponent, ListaPermisosPrestacionesSocialesComponent,
   ConfirmarBorradoPermisoContent, ConfirmarBorradoPermisoComponent, UsuarioTabComponent,
   ConfigurarUsuarioContent, ConfigurarUsuarioComponent,
-  UsuarioInfoComponent
+  UsuarioInfoComponent, BajaModuloContent, BajaModuloComponent
 } from './componentes';
+import {  } from './componentes/modal/baja-modulo.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {
     PermisosInventarioComponent, ListaPermisosInventarioComponent,
     PermisosPrestacionesSocialesComponent, ListaPermisosPrestacionesSocialesComponent,
     ConfirmarBorradoPermisoContent, ConfirmarBorradoPermisoComponent, UsuarioTabComponent,
-    ConfigurarUsuarioContent, ConfigurarUsuarioComponent, UsuarioInfoComponent
+    ConfigurarUsuarioContent, ConfigurarUsuarioComponent, UsuarioInfoComponent,
+    BajaModuloContent, BajaModuloComponent
   ],
   imports: [
     CommonModule, NgbModule,
@@ -46,7 +48,8 @@ import {
     PermisosInventarioComponent, ListaPermisosInventarioComponent,
     PermisosPrestacionesSocialesComponent, ListaPermisosPrestacionesSocialesComponent,
     ConfirmarBorradoPermisoContent, ConfirmarBorradoPermisoComponent, UsuarioTabComponent,
-    ConfigurarUsuarioContent, ConfigurarUsuarioComponent, UsuarioInfoComponent
+    ConfigurarUsuarioContent, ConfigurarUsuarioComponent, UsuarioInfoComponent,
+    BajaModuloContent, BajaModuloComponent
   ]
 
 })
