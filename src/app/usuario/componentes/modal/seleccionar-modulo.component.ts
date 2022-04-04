@@ -17,13 +17,10 @@ export class SeleccionarModuloContent implements OnInit {
   public submitted: boolean = false;
   public tipoModulo: string = '';
 
-  /* borrar ejemlos */
-  public listaRoles: any = [{name: "usuario"}, {name: "soporte"}];
-  public listaModulos: any = [{id: 1, nombre: "Gestor Bancario"}, {id: 2, nombre: "Inventario"}]
-
   constructor(public activeModal: NgbActiveModal, private _fb: FormBuilder, private _util: UtilService) {
     this.formRolPermisos = _fb.group({
-      modulo: ['', [Validators.required]]
+      modulo: ['', [Validators.required]],
+      rol: ['', [Validators.required]]
     })
   }
 
@@ -38,15 +35,11 @@ export class SeleccionarModuloContent implements OnInit {
     let error: boolean = false;
     this.submitted = true;
     if (!this.formRolPermisos.valid) {
-      console.log("entra");
-
       error = true;
       return;
     }
-
-    console.log(error);
-
     if (!error) {
+      params["usuarioid"] = this.idUsuario;
       params["moduloid"] = this.formRolPermisos.get("modulo")?.value;
       params["rol"] = this.formRolPermisos.get("rol")?.value;
       console.log(params)

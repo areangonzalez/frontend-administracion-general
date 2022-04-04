@@ -26,7 +26,7 @@
         </td>
         <td class="text-end">
           <componente-configurar-usuario-modal [usuarioid]="user.id" [listasConfig]="listadosArray" (actualizarListado)="actualizar($event)" ></componente-configurar-usuario-modal>
-          <componente-seleccionar-modulo-modal [listadosArray]="listadosArray" ></componente-seleccionar-modulo-modal>
+          <componente-seleccionar-modulo-modal [usuarioid]="user.id" [listadosArray]="listadosArray" ></componente-seleccionar-modulo-modal>
         </td>
       </tr>
       </tbody>
