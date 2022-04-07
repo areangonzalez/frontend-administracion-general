@@ -19,7 +19,6 @@ import {
   ConfigurarUsuarioContent, ConfigurarUsuarioComponent,
   UsuarioInfoComponent, BajaModuloContent, BajaModuloComponent
 } from './componentes';
-import {  } from './componentes/modal/baja-modulo.component';
 
 @NgModule({
   declarations: [

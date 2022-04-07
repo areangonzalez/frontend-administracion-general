@@ -1,12 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 // Required
-  @import "./assets/fontawesome/scss/fontawesome.scss";
-  @import "./assets/fontawesome/scss/solid.scss";
-  @import "./assets/fontawesome/scss/brands.scss";
+@import "./assets/fontawesome/scss/fontawesome.scss";
+@import "./assets/fontawesome/scss/solid.scss";
+@import "./assets/fontawesome/scss/brands.scss";
 
-  $font-family-base: 'Montserrat';
+$font-family-base: 'Montserrat';
 
-  @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/_variables.scss";
 
   @import '~bootstrap-darkmode/css/darktheme';
   @import './assets/styles/theme-light.scss';
@@ -18,3 +19,6 @@
     z-index: 2000 !important;
   }
 
+  .modal-backdrop {
+    z-index: 1055 !important;
+  }

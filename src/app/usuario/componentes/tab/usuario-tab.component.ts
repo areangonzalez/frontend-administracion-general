@@ -1,23 +1,28 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { map } from 'rxjs/operators';
-import { UsuarioService, NotificacionService } from 'src/app/core/service';
+import { UsuarioService, NotificacionService, UtilService } from 'src/app/core/service';
+import { ConfigurarListas } from 'src/app/core/model';
+import { BajaModuloContent } from '../modal';
 
 @Component({
   selector: 'componente-usuario-tab',
   templateUrl: './usuario-tab.component.html',
   styleUrls: ['./usuario-tab.component.scss']
 })
-export class UsuarioTabComponent implements OnInit {
+export class UsuarioTabComponent {
   @Input("datosUsuario") public datosUsuario: any;
-  @Input("configListas") configListas: any;
+  @Input("configListas") configListas: ConfigurarListas = {};
   @Output("actualizarLista") public actualizarLista = new EventEmitter();
   public usuarioBaja: boolean = false;
+  public moduloForm: FormGroup;
+  public submitted: boolean = false;
 
-  constructor(private _usuarioService: UsuarioService, private _msj: NotificacionService) { }
-
-  ngOnInit() {
-    // this.prepararFormulario(this.datosUsuario);
+  constructor( private _fb: FormBuilder, private _usuarioService: UsuarioService, private _msj: NotificacionService, private _util: UtilService, private modalService: NgbModal ) {
+    this.moduloForm = _fb.group({
+      moduloid: ['', [Validators.required]]
+    });
   }
 
   public actualizarDatos(confirmar: boolean) {
@@ -59,49 +64,40 @@ export class UsuarioTabComponent implements OnInit {
     );
   }
 
-  // /**
-  //  * Checkea la comparacion de las contraseñas para validar
-  //  * @param group formulario que contiene los valores a comparar
-  //  */
-  //  checkPasswords(group: AbstractControl) { // here we have the 'passwords' group
-  //   const password: string = group.get('password')?.value;
-  //   const confirmPassword: string = group.get('confirmPass')?.value;
+  public validarSeleccionModulo(idUsuario: number) {
+    this.submitted = true;
+    if (this.moduloForm.invalid) {
+      return;
+    }else{
+      this.abrirModal(idUsuario)
+    }
+  }
 
-  //   if ( password !== confirmPassword ) {
-  //     group.get('confirmPass')?.setErrors({ NoPassswordMatch: true });
-  //   }
-  // }
-  // /**
-  //  * Completa el formulario del usuario
-  //  * @param datos datos del usuario
-  //  */
-  // public prepararFormulario(datos: any){
-  //   this.usuario.patchValue(datos['usuario']);
-  //   this.idUsuario = datos['usuario']['id'];
-  //   this.usuarioBaja = datos['usuario']['baja'];
-  // }
+  abrirModal(idUsuario: number) {
+    let modalRef: NgbModalRef
+    modalRef = this.modalService.open(BajaModuloContent);
+    modalRef.result.then(
+      (result) => {
+          if (result == 'closed'){
+          }else{
+            // obtengo el resultado de la operacion y reseteo el listado a la pagina 1.
+            return this.confirmarBajaModulo(result, idUsuario);
+          }
+      }
+    )
+  }
 
-  // /**
-  //  * funcion que valida el formulario y el cambio de contraseña
-  //  */
-  // public cambiarPass() {
-  //   this.submitted = true;
-  //   if (this.usuario.invalid) {
-  //     this._msj.showDanger("¡Campos sin completar!");
-  //     return;
-  //   } else {
-  //     let datos = this.usuario.value;
+  public confirmarBajaModulo(confirmacion: boolean, idUsuario: number) {
+    let params: any = {};
+    let moduloid = this.moduloForm.get("moduloid")?.value;
+    if (confirmacion && (moduloid && moduloid != "")) {
+      params["usuarioid"] = idUsuario;
+      params["moduloid"] = moduloid;
+      params["modulo"] = this._util.buscarDatosPorId(this.configListas.modulos, moduloid);
 
-  //     this.cambiarDatosUsuario(datos, this.idUsuario);
-  //   }
-  // }
-  // private cambiarDatosUsuario(datos: object, id: number) {
-  //   this._usuarioService.guardar(datos, id).subscribe(
-  //     respuesta => {
-  //       this._msj.showSuccess("Los datos del usuario han sido actualizados correctamente.");
-  //       this.usuario.patchValue({"password": ""});
-  //       this.usuario.patchValue({"confirmPass": ""});
-  //     }, error => { this._msj.showDanger(error); }
-  //   );
-  // }
+      console.log(params);
+
+    }
+  }
+
 }

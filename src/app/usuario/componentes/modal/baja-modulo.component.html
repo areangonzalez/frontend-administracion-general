@@ -1,1 +1,12 @@
-<p>baja-modulo works!</p>
+<div class="modal-header">
+  <h4 class="modal-title">Dar baja módulo</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('closed')">
+  </button>
+</div>
+<div class="modal-body">
+  ¿Está seguro que quiere dar de baja al usuario de este Módulo?
+</div>
+<div class="modal-footer d-flex justify-content-between">
+  <button class="btn btn-danger" type="button" (click)="cerrarModal(false)" ><i class="fa-solid fa-ban"></i> No</button>
+  <button class="btn btn-success" type="button" (click)="cerrarModal(true)" ><i class="fa-solid fa-check"></i> Si</button>
+</div>
