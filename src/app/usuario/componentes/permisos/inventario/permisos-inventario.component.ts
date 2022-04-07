@@ -7,7 +7,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class PermisosInventarioComponent implements OnInit {
   @Input("idUsuario") public idUsuario: number | any;
-  /* @Input("listaPermisos") public listaPermisos: any; */ public listaPermisos: any = [{name: "agregar"}, {name: "borrar"}, {name: "editar"}];
+  /* @Input("listaPermisos") public listaPermisos: any; */ public listaPermisos: any = [{name: "comprobante_crear"}, {name: "borrar"}, {name: "editar"}];
   @Input("baja") public baja: boolean = false;
   @Output("obtenerPermisos") public obtenerPermisos = new EventEmitter();
   @Output("cancelarForm") public cancelarForm = new EventEmitter();

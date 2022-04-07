@@ -43,7 +43,7 @@ export class SeleccionarModuloContent implements OnInit {
     }
     if (!error) {
       let modulo = this._util.buscarDatosPorId(this.listadosArray.modulos, this.formRolPermisos.get("modulo")?.value);
-      params["usuarioid"] = this.idUsuario;
+      params["userid"] = this.idUsuario;
       params["moduloid"] = this.formRolPermisos.get("modulo")?.value;
       params["rol"] = this.formRolPermisos.get("rol")?.value;
       params["servicio"] = modulo.servicio;
