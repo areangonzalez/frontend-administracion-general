@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ConfigurarListas } from 'src/app/core/model';
-import { UtilService } from 'src/app/core/service';
+import { NotificacionService, UtilService, UsuarioService } from 'src/app/core/service';
 
 @Component({
   selector: 'content-seleccionar-modulo-modal',
@@ -17,7 +17,10 @@ export class SeleccionarModuloContent implements OnInit {
   public submitted: boolean = false;
   public tipoModulo: string = '';
 
-  constructor(public activeModal: NgbActiveModal, private _fb: FormBuilder, private _util: UtilService) {
+  constructor(
+    public activeModal: NgbActiveModal, private _fb: FormBuilder, private _util: UtilService, private _usuarioService: UsuarioService,
+    private _msj: NotificacionService
+  ) {
     this.formRolPermisos = _fb.group({
       modulo: ['', [Validators.required]],
       rol: ['', [Validators.required]]
@@ -39,11 +42,23 @@ export class SeleccionarModuloContent implements OnInit {
       return;
     }
     if (!error) {
+      let modulo = this._util.buscarDatosPorId(this.listadosArray.modulos, this.formRolPermisos.get("modulo")?.value);
       params["usuarioid"] = this.idUsuario;
       params["moduloid"] = this.formRolPermisos.get("modulo")?.value;
       params["rol"] = this.formRolPermisos.get("rol")?.value;
-      console.log(params)
+      params["servicio"] = modulo.servicio;
+
+      this.guardar(params);
     }
+  }
+
+  guardar(params: any) {
+    this._usuarioService.crearAsignacion(params).subscribe(
+      respuesta => {
+        console.log(respuesta);
+
+    }, error => { console.log(error);
+     });
   }
 
   obtenerTipomodulo(modulo: any) {

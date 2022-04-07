@@ -39,6 +39,10 @@ export class UsuarioService {
     return this._api.get('/usuarios/buscar-persona-por-cuil/' + cuil );
   }
 
+  public crearAsignacion(params: any) {
+    return this._api.post('/usuarios/crear-asignacion', params);
+  }
+
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
